@@ -37,3 +37,10 @@ function btnNotifyNext() {
 function btnCloseShare() {
     $('.shareBackground').hide();
 }
+var updateBackgroundHeight = function () 
+{
+    document.getElementsByClassName('pageBackground')[0].style.height = window.innerWidth * 3 + 'px';
+}
+updateBackgroundHeight();
+
+window.addEventListener("resize", updateBackgroundHeight, false);

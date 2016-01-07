@@ -16,3 +16,9 @@ D:\Projects\HTML5\xiaowangdalai0105\xiaowangdalai\xiaowangdalai\bin\xiaowangdala
 D:\Projects\HTML5\xiaowangdalai0105\xiaowangdalai\xiaowangdalai\obj\Debug\xiaowangdalai.csprojResolveAssemblyReference.cache
 D:\Projects\HTML5\xiaowangdalai0105\xiaowangdalai\xiaowangdalai\obj\Debug\xiaowangdalai.dll
 D:\Projects\HTML5\xiaowangdalai0105\xiaowangdalai\xiaowangdalai\obj\Debug\xiaowangdalai.pdb
+D:\Projects\Web\xiaowangdalai\xiaowangdalai\bin\xiaowangdalai.dll.config
+D:\Projects\Web\xiaowangdalai\xiaowangdalai\bin\xiaowangdalai.dll
+D:\Projects\Web\xiaowangdalai\xiaowangdalai\bin\xiaowangdalai.pdb
+D:\Projects\Web\xiaowangdalai\xiaowangdalai\obj\Debug\xiaowangdalai.csprojResolveAssemblyReference.cache
+D:\Projects\Web\xiaowangdalai\xiaowangdalai\obj\Debug\xiaowangdalai.dll
+D:\Projects\Web\xiaowangdalai\xiaowangdalai\obj\Debug\xiaowangdalai.pdb
