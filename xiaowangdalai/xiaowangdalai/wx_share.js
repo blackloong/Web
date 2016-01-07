@@ -2,7 +2,7 @@
 var lineLink = "http://tm.uncn88.com/uncn/promotion";   //网站网址，必须是绝对路径
 var descContent = '小往大来新手活动棒棒哒，理财平台稳健省心最重要。'; //分享给朋友或朋友圈时的文字简介
 var shareTitle = '良心老板喊你来领年终奖，全额8888元';  //分享title
-var appid = ''; //apiID，可留空
+var appid = 'wx9abe0ce3434ea8de'; //apiID，可留空
 
 function shareFriend() {
     WeixinJSBridge.invoke('sendAppMessage', {

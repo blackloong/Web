@@ -109,8 +109,8 @@ body {
 .slide-mask {
     position: relative;
     overflow: hidden;
-    left: 16%;
-    top: 56.5%;
+    left: 12%;
+    top: 56%;
     width: 75%;
     height: 7%;
     /*border:5px solid red;*/
@@ -125,7 +125,7 @@ body {
     position: absolute;
     /*font-size: 2rem;*/
     line-height: 200%;
-    text-align: center;
+    /*text-align: center;*/
     color: #fff;
     /*border:5px solid red;*/   
     margin:0;
@@ -135,7 +135,6 @@ body {
 {
     /*font-size: 2rem;*/
     list-style:none;
-    text-align: center;
 }
 
 .textReceiveCount
