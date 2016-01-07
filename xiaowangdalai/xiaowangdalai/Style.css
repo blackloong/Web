@@ -26,10 +26,12 @@ body {
     height : 2917px;
     background: url(background.png) no-repeat;
     -webkit-background-size: 100% 100%;
-    background-size: 100% 100%;
+    /*background-size: 100% 100%;*/
     position:relative;
     margin:0 auto;
-    /*max-width: 960px;*/
+    /*min-width:960px;*/
+    max-width: 960px;
+    background-size: cover;
 }
 
 .shareBackground {
