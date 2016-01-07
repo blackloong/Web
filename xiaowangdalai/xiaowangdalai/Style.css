@@ -18,7 +18,7 @@ body {
     -webkit-overflow-scrolling: touch;
     -webkit-touch-callout: none;
     margin: 0;
-    font-size:0.24rem;
+    font-size:2.00rem;
 }
 
 .pageBackground {
@@ -54,8 +54,8 @@ body {
     z-index: 2;
     background: url(btnTopHover.png) no-repeat;
     -webkit-background-size: 100% 100%;
-    background-size: 100% 100%;
-    font-size: 250%;
+    /*background-size: 100% 100%;*/
+    max-width: 960px;
     position : fixed;
 }
 
@@ -67,7 +67,6 @@ body {
     background: url(btnTopHover.png) no-repeat;
     -webkit-background-size: 100% 100%;
     background-size: 100% 100%;
-    font-size: 250%;
     position : fixed;
 }
 
@@ -102,7 +101,7 @@ body {
     top:45%;
     width:76%;
     height:2%;
-    font-size:2rem;   
+    /*font-size:0.1rem;*/   
     color:white;
     /*border:5px solid red;*/   
 }
@@ -111,19 +110,20 @@ body {
     position: relative;
     overflow: hidden;
     left: 16%;
-    top: 56%;
-    width: 72%;
+    top: 56.5%;
+    width: 75%;
     height: 7%;
     /*border:5px solid red;*/
+    margin:0;
 }
 
 .slideup {
     /*background: rgba(45,55,64,.5);*/
     left:0;
     top:0;
-    width:100%;
+    /*width:72%;*/
     position: absolute;
-    font-size: 2rem;
+    /*font-size: 2rem;*/
     line-height: 200%;
     text-align: center;
     color: #fff;
@@ -133,21 +133,24 @@ body {
 
 .slide
 {
+    /*font-size: 2rem;*/
     list-style:none;
+    text-align: center;
 }
 
 .textReceiveCount
 {
     position : absolute;
     left:17%;
-    top:53.8%;
+    top:54.2%;
     width:70%;
     height:2%;
     color:white;
     /*text-align:center;*/
-    line-height:50px;
-    font-size:1.5rem;
+    /*line-height:50px;*/
+    font-size:0.7em;
     /*border:5px solid red;*/   
+    margin:0;
 }
 
 .textActivityInfo
@@ -160,7 +163,7 @@ body {
     color:rgb(35,54,75);
     text-align:center;
     line-height:50px;
-    font-size:1.8rem;
+    /*font-size:1.8rem;*/
     /*border:5px solid red;*/   
 }
 
@@ -174,7 +177,7 @@ body {
     color:rgb(35,54,75);
     text-align:center;
     line-height:50px;
-    font-size:2rem;   
+    /*font-size:2rem;*/   
 }
 
 .textCompanyProfile
@@ -186,5 +189,5 @@ body {
     height:6%;
     color:rgb(35,54,75);
     line-height:30px;
-    font-size:1rem;   
+    /*font-size:1rem;*/   
 }

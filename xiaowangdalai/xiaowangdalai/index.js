@@ -39,9 +39,12 @@ function btnCloseShare() {
 }
 var updateBackgroundHeight = function () 
 {
-    if (window.innerWidth > 960)
-        window.innerWidth = 960;
-    document.getElementsByClassName('pageBackground')[0].style.height = window.innerWidth * 3 + 'px';
+    var tWindowWidth = window.innerWidth; 
+    if (tWindowWidth > 960)
+        tWindowWidth = 960;
+    var tFontSize = 2.00 * (tWindowWidth / 960) + "rem";
+    document.getElementsByClassName('pageBackground')[0].style.height = tWindowWidth * 3.0385 + 'px';
+    document.getElementsByClassName('body')[0].style.fontSize = tFontSize;
 }
 updateBackgroundHeight();
 
