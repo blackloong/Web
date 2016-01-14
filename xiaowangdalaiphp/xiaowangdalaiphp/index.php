@@ -1,10 +1,6 @@
 <?php require_once "jssdk.php";
-	$jssdk = new JSSDK("wx580cbdc1e130c188", "43d6e288cef7049055b51b69a668aa8d");
+	$jssdk = new JSSDK("wx580cbdc1e130c188", "43d6e288cef7049055b51b69a668aa8d"); //服务号
 	$signPackage = $jssdk->GetSignPackage();
-	$news = array("Title" =>"良心老板喊你来领年终奖，全额8888元", 
-	"Description"=>"小往大来新手活动棒棒哒，理财平台稳健省心最重要。", 
-	"PicUrl" =>'http://tm.uncn88.com/Public/cus/uncn/web/images/sharelogo.png', 
-	"Url" =>'http://tm.uncn88.com/uncn/promotion');  
 ?>
 
 <!DOCTYPE html>
@@ -23,10 +19,7 @@
             <div class="btnTopHover">&nbsp;</div>
         </div>
         <marquee class="marqueeCompanyBrief">本活动由小往大来理财平台赞助，小往大来9年老品牌资产管理公司出品，央企强力支撑，多家第三方权威机构认证。稳健理财就选小往大来，收益率最高13%。</marquee>
-        <div class="textReceiveCount">已有1331位同事领取年终奖</div>
-        <!--<div class="textActivityInfo">国民省心理财平台“小往大来”上线啦<br>WULI新手活动棒棒哒，年尾注册即送8888元体验金<br>1亿好友红包随便发，限时疯抢中</div>
-        <div class="textActivityTime">活动时间：2016.1.8——2016.2.18</div>
-        <div class="textCompanyProfile">小往大来是一家专注于P2B互联网金融借贷的平台，主推有着八重风控保障的A2P融资租赁公司债权转让理财项目。小往大来有充足的风险备用金，严格的风控把关，透明的业务模式，用专业为投资者搭建更稳健的理财平台。<br>权威：多家第三方权威机构认证的互联网金融平台<br>规模：业务遍布全国，除上海总公司外，北京、江苏、广东等地设立分公司。<br>专业：从业9年老牌资产管理公司出品 管理资产突破200亿<br>稳健：严格七重信贷审批，精选5%最优实体项目<br>专注：专注于医疗与文化产业，坚持透明的业务模式</div>-->
+        <div class="textReceiveCount">已有<?php echo $signPackage["VisitCount"];?>位同事领取年终奖</div>
         <div onclick="btnRegister();">
             <div class="btnRegister">&nbsp;</div>
         </div>
@@ -53,24 +46,7 @@
         </div>
     </div>
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-	<script>
-		wx.config({
-			debug: true,
-			appId: '<?php echo $signPackage["appId"];?>',
-			timestamp: <?php echo $signPackage["timestamp"];?>,
-		nonceStr: '<?php echo $signPackage["nonceStr"];?>',
-		signature: '<?php echo $signPackage["signature"];?>',
-		jsApiList: 
-		[
-			// 所有要调用的 API 都要加到这个列表中
-			'onMenuShareTimeline',
-			'onMenuShareAppMessage',
-			'onMenuShareQQ',
-			'onMenuShareWeibo'
-		]
-		});
-	</script>
-    <script src="wx_share.js"></script>
+    <?PHP require_once "wxsdk.php"; ?>
     <script src="jquery-1.8.3.min.js"></script>
     <script src="index.js"></script>
 </body>

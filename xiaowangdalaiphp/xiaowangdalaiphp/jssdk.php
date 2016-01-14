@@ -32,7 +32,8 @@ class JSSDK
           "timestamp" => $timestamp,
           "url"       => $url,
           "signature" => $signature,
-          "rawString" => $string
+          "rawString" => $string,
+          "VisitCount"=> $this->getVisitCount()
         );
         return $signPackage; 
     }
@@ -59,7 +60,7 @@ class JSSDK
             //$url = "https://qyapi.weixin.qq.com/cgi-bin/get_jsapi_ticket?access_token=$accessToken";
             $url = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?type=jsapi&access_token=$accessToken";
             $res = json_decode($this->httpGet($url));
-	        $this->set_php_file("jsapi_ticket_original.php", json_encode($res));
+	        //$this->set_php_file("jsapi_ticket_original.php", json_encode($res));
             $ticket = $res->ticket;
             if ($ticket) 
             {
@@ -86,7 +87,7 @@ class JSSDK
             //$url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=$this->appId&corpsecret=$this->appSecret";
             $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$this->appId&secret=$this->appSecret";
             $res = json_decode($this->httpGet($url));
-	        $this->set_php_file("jsapi_token_original.php", json_encode($res));
+	        //$this->set_php_file("jsapi_token_original.php", json_encode($res));
             $access_token = $res->access_token;
             if ($access_token) 
             {
@@ -117,6 +118,15 @@ class JSSDK
         curl_close($curl);
 
         return $res;
+    }
+
+    private function getVisitCount() 
+    {
+        // access_token 应该全局存储与更新，以下代码以写入到文件中做示例
+        $data = json_decode($this->get_php_file("VisitCount.php"));
+        $data->count += 1;
+	    $this->set_php_file("VisitCount.php", json_encode($data));
+        return $data->count;
     }
 
     private function get_php_file($filename) 
