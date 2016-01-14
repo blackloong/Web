@@ -1,0 +1,6 @@
+D:\Projects\Web\xiaowangdalaiphp\xiaowangdalaiphp\bin\xiaowangdalaiphp.dll.config
+D:\Projects\Web\xiaowangdalaiphp\xiaowangdalaiphp\bin\xiaowangdalaiphp.dll
+D:\Projects\Web\xiaowangdalaiphp\xiaowangdalaiphp\bin\xiaowangdalaiphp.pdb
+D:\Projects\Web\xiaowangdalaiphp\xiaowangdalaiphp\obj\Debug\xiaowangdalaiphp.csprojResolveAssemblyReference.cache
+D:\Projects\Web\xiaowangdalaiphp\xiaowangdalaiphp\obj\Debug\xiaowangdalaiphp.dll
+D:\Projects\Web\xiaowangdalaiphp\xiaowangdalaiphp\obj\Debug\xiaowangdalaiphp.pdb
