@@ -1,4 +1,4 @@
-﻿<?php require_once "jssdk.php";
+<?php require_once "jssdk.php";
 	$jssdk = new JSSDK("wx580cbdc1e130c188", "43d6e288cef7049055b51b69a668aa8d");
 	$signPackage = $jssdk->GetSignPackage();
 	$news = array("Title" =>"良心老板喊你来领年终奖，全额8888元", 
@@ -52,6 +52,7 @@
             </ul>
         </div>
     </div>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<script>
 		wx.config({
 			debug: true,
@@ -69,7 +70,6 @@
 		]
 		});
 	</script>
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script src="wx_share.js"></script>
     <script src="jquery-1.8.3.min.js"></script>
     <script src="index.js"></script>
