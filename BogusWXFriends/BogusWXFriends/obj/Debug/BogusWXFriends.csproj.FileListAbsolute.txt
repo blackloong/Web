@@ -1,6 +1,0 @@
-D:\Projects\Web\BogusWXFriends\BogusWXFriends\bin\BogusWXFriends.dll.config
-D:\Projects\Web\BogusWXFriends\BogusWXFriends\bin\BogusWXFriends.dll
-D:\Projects\Web\BogusWXFriends\BogusWXFriends\bin\BogusWXFriends.pdb
-D:\Projects\Web\BogusWXFriends\BogusWXFriends\obj\Debug\BogusWXFriends.csprojResolveAssemblyReference.cache
-D:\Projects\Web\BogusWXFriends\BogusWXFriends\obj\Debug\BogusWXFriends.dll
-D:\Projects\Web\BogusWXFriends\BogusWXFriends\obj\Debug\BogusWXFriends.pdb
