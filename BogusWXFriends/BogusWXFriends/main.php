@@ -4,6 +4,13 @@ $appsecret = 'd4624c36b6795d1d99dcf0547af5443d';
 require_once "wxsdk.php";
 $wxsdk = new CWXSDK($appid, $appsecret);
 $user_info = $wxsdk->GetUserInfo();
+$wxsdk->SetShareData("OMG!明星都在我朋友圈里！", 
+					"万万没想到，朋友圈里竟然有辣么多明星，猛料频频哦！", 
+					"http://shihaijiang.com/boguswxfriends/img/tft.jpg", 
+					"http://shihaijiang.com/boguswxfriends");
+//echo '<pre>';
+//print_r($user_info);
+//echo '</pre>';
 ?>
 
 <!DOCTYPE html>
@@ -380,7 +387,11 @@ $user_info = $wxsdk->GetUserInfo();
 	headimgurl = "<?PHP echo $user_info->headimgurl; ?>";
 	uid = "<?PHP echo $user_info->openid; ?>";
 	img = headimgurl;
-	$(function(){
+    $(".data-name").text(safetostring(nickname));
+    $(".data-avt").attr("src",headimgurl);
+    var cw = $('.list-img').width();
+    $('.list-img').css({'height':cw+'px'});
+	/*$(function(){
 		
 		$(".loading").hide();	  
 		$("#header").show();	  
@@ -394,7 +405,6 @@ $user_info = $wxsdk->GetUserInfo();
 		//alert(link);
 		JSSDK.init(tit,doc,link,img);
 		
-		
     setTimeout(function(){
         $(".data-name").text(safetostring(nickname));
         $(".data-avt").attr("src",headimgurl);
@@ -404,7 +414,7 @@ $user_info = $wxsdk->GetUserInfo();
     },20);
 	
 		
-	})
+	})*/
 	
     $(window).resize(function() {
         var cw = $('.list-img').width();

@@ -8,7 +8,9 @@ require_once "tools.php";
 
 class CWXSDK
 {
+    /** 微信的AppID */
     private $appID;
+    /** 微信的AppSecret */
     private $appSecret;
 
     /**
@@ -18,37 +20,114 @@ class CWXSDK
     {
 		$this->appID = $appID;
         $this->appSecret = $appSecret;
-		$this->setupShare();
 	}
 
     /**
-     * 根据appID和appSecret初始化微信SDK相关的分享接口
+     * 设置微信分享的相关数据
+     * @param inInstWXSDK CWXSDK的实例
+     * @param inTitle 分享的标题
+     * @param inDesc 分享的描述
+     * @param inIcon 分享的图标
+     * @param inLink 分享的链接
      */
-    private function setupShare() 
+    public function SetShareData($inTitle, $inDesc, $inIcon, $inLink)
+    {
+        $wxShareJSConfigData = $this->GetWXShareJSConfigData();
+        echo "<script src='http://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>";
+        echo "<script type='text/javascript'>
+                      var strTile = '$inTitle';
+                      var strDescription = '$inDesc';
+                      var urlIcon = '$inIcon';
+                      var urlLink = '$inLink';
+
+                      wx.config({
+                          debug: true,
+                          appId: '$this->appID',
+                          timestamp: '$wxShareJSConfigData->timestamp',
+                          nonceStr: '$wxShareJSConfigData->noncestr',
+                          signature: '$wxShareJSConfigData->signature',
+                          jsApiList:
+                          [
+                              // 所有要调用的 API 都要加到这个列表中
+                              'onMenuShareTimeline',
+                              'onMenuShareAppMessage',
+                              'onMenuShareQQ',
+                              'onMenuShareWeibo'
+                          ]
+                      });//end wx.config
+
+                      wx.ready(function () {
+                          // 在这里调用 API
+                          //获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+                          wx.onMenuShareTimeline({
+                              title: strTile, // 分享标题
+                              link: urlLink, // 分享链接
+                              imgUrl: urlIcon, // 分享图标
+                              // 用户确认分享后执行的回调函数
+                              success: function () { },
+                              // 用户取消分享后执行的回调函数
+                              cancel: function () { }
+                          });//end wx.onMenuShareTimeline
+
+                          //获取“分享给朋友”按钮点击状态及自定义分享内容接口
+                          wx.onMenuShareAppMessage({
+                              title: strTile, // 分享标题
+                              desc: strDescription, // 分享描述
+                              link: urlLink, // 分享链接
+                              imgUrl: urlIcon, // 分享图标
+                              //type: '', // 分享类型,music、video或link，不填默认为link
+                              //dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                              // 用户确认分享后执行的回调函数
+                              success: function () { },
+                              // 用户取消分享后执行的回调函数
+                              cancel: function () { }
+                          });//end wx.onMenuShareAppMessage
+
+                          wx.onMenuShareQQ({
+                              title: strTile, // 分享标题
+                              desc: strDescription, // 分享描述
+                              link: urlLink, // 分享链接
+                              imgUrl: urlIcon, // 分享图标
+                              // 用户确认分享后执行的回调函数
+                              success: function () { },
+                              // 用户取消分享后执行的回调函数
+                              cancel: function () { }
+                          });//end wx.onMenuShareQQ
+
+                          wx.onMenuShareWeibo({
+                              title: strTile, // 分享标题
+                              desc: strDescription, // 分享描述
+                              link: urlLink, // 分享链接
+                              imgUrl: urlIcon, // 分享图标
+                              // 用户确认分享后执行的回调函数
+                              success: function () { },
+                              // 用户取消分享后执行的回调函数
+                              cancel: function () { }
+                          });//end wx.onMenuShareWeibo
+                      });//end wx.ready
+              </script>";
+    }
+
+    /**
+     * 获取微信分享JS使用的配置数据
+     * @return 使用微信分享JS的配置数据
+     */
+    private function GetWXShareJSConfigData() 
     {
         $jsapiTicket = $this->getJsApiTicket();
 
 		// 注意 URL 一定要动态获取，不能 hardcode.
         $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-        $url = "$protocol$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        $jsConfigData->url = "$protocol$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-        $timestamp = time();
-        $nonceStr = $this->createNonceStr();
+        $jsConfigData->timestamp = time();
+        $jsConfigData->noncestr = $this->createNonceStr();
 
         // 这里参数的顺序要按照 key 值 ASCII 码升序排序
-        $string = "jsapi_ticket=$jsapiTicket&noncestr=$nonceStr&timestamp=$timestamp&url=$url";
+        $jsConfigData->rawString = "jsapi_ticket=$jsapiTicket&noncestr=$jsConfigData->noncestr&timestamp=$jsConfigData->timestamp&url=$jsConfigData->url";
 
-        $signature = sha1($string);
-
-        $signPackage = array(
-          "appId"     => $this->appID,
-          "nonceStr"  => $nonceStr,
-          "timestamp" => $timestamp,
-          "url"       => $url,
-          "signature" => $signature,
-          "rawString" => $string,
-        );
-		return $signPackage; 
+        $jsConfigData->signature = sha1($jsConfigData->rawString);
+    	return $jsConfigData; 
     }
 
     /**
