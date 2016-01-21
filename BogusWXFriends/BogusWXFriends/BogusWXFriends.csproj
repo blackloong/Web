@@ -65,10 +65,37 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\css.css" />
+    <Content Include="img\0.jpg" />
+    <Content Include="img\abt.jpg" />
+    <Content Include="img\ads.png" />
+    <Content Include="img\bb.jpg" />
+    <Content Include="img\bbt.jpg" />
+    <Content Include="img\bg.jpg" />
+    <Content Include="img\bq2.png" />
+    <Content Include="img\bq3.png" />
+    <Content Include="img\bq4.png" />
+    <Content Include="img\bq5.png" />
+    <Content Include="img\bq6.png" />
+    <Content Include="img\bq7.png" />
+    <Content Include="img\c.png" />
+    <Content Include="img\dq.jpg" />
+    <Content Include="img\gg.jpg" />
+    <Content Include="img\l.png" />
+    <Content Include="img\link.png" />
+    <Content Include="img\qr.jpg" />
+    <Content Include="img\sz.jpg" />
+    <Content Include="img\tf.jpg" />
+    <Content Include="img\tft.jpg" />
+    <Content Include="img\xk.jpg" />
+    <Content Include="img\zl.jpg" />
+    <Content Include="img\zlt.jpg" />
     <Content Include="index.php" />
-    <Content Include="jquery.min.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\main_script.js" />
+    <Content Include="main.html" />
+    <Content Include="js\my_jssdk.js" />
     <Content Include="main.php" />
-    <Content Include="my_jssdk.js" />
     <Content Include="tools.php" />
     <Content Include="Web.config" />
   </ItemGroup>
