@@ -94,7 +94,6 @@
     <Content Include="js\jquery.min.js" />
     <Content Include="js\main_script.js" />
     <Content Include="main.html" />
-    <Content Include="js\my_jssdk.js" />
     <Content Include="main.php" />
     <Content Include="tools.php" />
     <Content Include="Web.config" />

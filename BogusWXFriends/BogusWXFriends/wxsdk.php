@@ -221,7 +221,7 @@ class CWXSDK
         $token = json_decode(file_get_contents($token_url));
         if (isset($token->errcode))
         {
-            echo '<h1>错误：</h1>'.$token->errcode;
+			echo '<h1>错误access_token：</h1>'.$token->errcode;
             echo '<br />
                       <h2>错误信息：</h2>'.$token->errmsg;
             exit;
@@ -231,7 +231,7 @@ class CWXSDK
         $access_token = json_decode(file_get_contents($access_token_url));
         if (isset($access_token->errcode))
         {
-            echo '<h1>错误：</h1>'.$access_token->errcode;
+			echo '<h1>错误refresh_token：</h1>'.$access_token->errcode;
             echo '<br />
                       <h2>错误信息：</h2>'.$access_token->errmsg;
             exit;
@@ -241,7 +241,7 @@ class CWXSDK
         $user_info = json_decode(file_get_contents($user_info_url));
         if (isset($user_info->errcode))
         {
-            echo '<h1>错误：</h1>'.$user_info->errcode;
+			echo '<h1>错误userinfo：</h1>'.$user_info->errcode;
             echo '<br />
                       <h2>错误信息：</h2>'.$user_info->errmsg;
             exit;
