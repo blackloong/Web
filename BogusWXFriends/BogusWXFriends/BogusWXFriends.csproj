@@ -93,10 +93,14 @@
     <Content Include="index.php" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\main_script.js" />
+    <Content Include="js\wxshareconfig.js" />
     <Content Include="main.html" />
     <Content Include="main.php" />
+    <Content Include="mysql.php" />
     <Content Include="tools.php" />
+    <Content Include="UserInfo.sql" />
     <Content Include="Web.config" />
+    <Content Include="wxsdk.php" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />

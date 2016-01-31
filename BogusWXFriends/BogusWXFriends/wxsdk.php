@@ -23,14 +23,14 @@ class CWXSDK
 	}
 
     /**
-     * 设置微信分享的相关数据
+     * 设置微信分享的相关数据(暂时不用，实现放在了wxshareconfig.js)
      * @param inInstWXSDK CWXSDK的实例
      * @param inTitle 分享的标题
      * @param inDesc 分享的描述
      * @param inIcon 分享的图标
      * @param inLink 分享的链接
      */
-    public function SetShareData($inTitle, $inDesc, $inIcon, $inLink)
+	private function SetShareData($inTitle, $inDesc, $inIcon, $inLink)
     {
         $wxShareJSConfigData = $this->GetWXShareJSConfigData();
         echo "<script src='http://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>";
@@ -112,7 +112,7 @@ class CWXSDK
      * 获取微信分享JS使用的配置数据
      * @return 使用微信分享JS的配置数据
      */
-    private function GetWXShareJSConfigData() 
+	public function GetWXShareJSConfigData() 
     {
         $jsapiTicket = $this->getJsApiTicket();
 

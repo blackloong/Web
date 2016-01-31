@@ -44,6 +44,7 @@ class CMySQL
         $result = mysql_query($inStr, $this->sql);
         if(!$result)
         {
+			print_r($inStr);
             die('Error' . mysql_error());
         }
         return $result;
