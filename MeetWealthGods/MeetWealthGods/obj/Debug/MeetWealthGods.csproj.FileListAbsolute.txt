@@ -1,0 +1,8 @@
+D:\Projects\Web\MeetWealthGods\MeetWealthGods\bin\BogusWXFriends.dll.config
+D:\Projects\Web\MeetWealthGods\MeetWealthGods\bin\BogusWXFriends.dll
+D:\Projects\Web\MeetWealthGods\MeetWealthGods\bin\BogusWXFriends.pdb
+D:\Projects\Web\MeetWealthGods\MeetWealthGods\obj\Debug\MeetWealthGods.csprojResolveAssemblyReference.cache
+D:\Projects\Web\MeetWealthGods\MeetWealthGods\obj\Debug\BogusWXFriends.Properties.Resources.resources
+D:\Projects\Web\MeetWealthGods\MeetWealthGods\obj\Debug\MeetWealthGods.csproj.GenerateResource.Cache
+D:\Projects\Web\MeetWealthGods\MeetWealthGods\obj\Debug\BogusWXFriends.dll
+D:\Projects\Web\MeetWealthGods\MeetWealthGods\obj\Debug\BogusWXFriends.pdb
