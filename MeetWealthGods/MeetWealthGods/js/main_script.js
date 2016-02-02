@@ -1,73 +1,21 @@
-function gotoplay(scene) {
-    var gourl = "http://shihaijiang.com/boguswxfriends";
-    location.href = gourl;
-};
-function safetostring(str) {
-    return String(str).replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
+var body = document.getElementById("body");
+var bg = document.getElementById("bg");
+var btnMeetGods = document.getElementById("btnMeetGods");
+var btnPayGods = document.getElementById("btnPayGods");
+
+function MeetGods()
+{
+    bg.style.background = "url(img/page2.png)";
+    btnMeetGods.style.display = "none";
+    btnPayGods.style.display = "";
 }
 
-$(".data-name").text(safetostring(nickname));
-$(".data-avt").attr("src", headimgurl);
-var cw = $('.list-img').width();
-$('.list-img').css({ 'height': cw + 'px' });
-
-$(window).resize(function () {
-    var cw = $('.list-img').width();
-    $('.list-img').css({ 'height': cw + 'px' });
-});
-
-$(document.body).show();
-function hideActionSheet(weuiActionsheet, mask) {
-    weuiActionsheet.removeClass('weui_actionsheet_toggle');
-    mask.removeClass('weui_fade_toggle');
-    weuiActionsheet.on('transitionend', function () {
-        mask.hide();
-    }).on('webkitTransitionEnd', function () {
-        mask.hide();
-    })
+function PayGods()
+{
 }
-function showActionSheet() {
-    var mask = $('#mask');
-    var weuiActionsheet = $('#weui_actionsheet');
-    weuiActionsheet.addClass('weui_actionsheet_toggle');
-    mask.show().addClass('weui_fade_toggle').click(function () {
-        hideActionSheet(weuiActionsheet, mask);
-    });
-    $('#actionsheet_cancel').click(function () {
-        hideActionSheet(weuiActionsheet, mask);
-    });
-    weuiActionsheet.unbind('transitionend').unbind('webkitTransitionEnd');
+
+function UpdatePageSize()
+{
 }
-$('#list').on('click', function () {
-    //   showActionSheet();
-});
-$('img').on('click', function () {
-    //     showActionSheet();
-});
 
-$('.play_pyq').on('click', function () {
-    var scene = $(this).data("scene");
-    gotoplay(scene);
-});
-
-
-$('body').on('click', function (e) {
-
-    var tar = e.target || window.event.srcElement;
-    var tid = $(tar).attr("id")
-    var tcl = $(tar).attr("class")
-
-    if (tid != "gotoplay" && tid != "actionsheet_cancel" && tid != "xq" && tcl != "weui_actionsheet_cell play_pyq") {
-
-        if ($("#shopping-box").is(":visible")) {
-            $("#shopping-box").slideUp();
-        } else {
-            $("#shopping-box").hide();
-            $("#shopping-box").slideDown();
-        }
-    }
-});
-$(window).scroll(function () {
-    //   $("#shopping-box").hide();
-    $("#shopping-box").slideUp();
-})
+UpdatePageSize();

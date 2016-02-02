@@ -66,12 +66,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\css.css" />
+    <Content Include="img\meetgods.png" />
+    <Content Include="img\Nan_WG.png" />
+    <Content Include="img\page1.png" />
+    <Content Include="img\page2.png" />
+    <Content Include="img\page3.png" />
+    <Content Include="img\pay.png" />
+    <Content Include="img\paygods.png" />
+    <Content Include="img\Pian_WG.png" />
+    <Content Include="img\sharefriend.png" />
+    <Content Include="img\Wen_WG.png" />
+    <Content Include="img\Wu_WG.png" />
+    <Content Include="img\Xi_WG.png" />
     <Content Include="index.php" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\main_script.js" />
     <Content Include="js\WxShare.Config.js" />
     <Content Include="lib\jsapi.php" />
     <Content Include="lib\Log.php" />
+    <Content Include="main.html" />
     <Content Include="WxPayNotify.php" />
     <Content Include="lib\WxPay.Api.php" />
     <Content Include="lib\Config.php" />
@@ -79,7 +92,6 @@
     <Content Include="lib\WxPay.Exception.php" />
     <Content Include="lib\WxPay.JsApiPay.php" />
     <Content Include="lib\WxPay.Notify.php" />
-    <Content Include="main.html" />
     <Content Include="main.php" />
     <Content Include="lib\MySQL.php" />
     <Content Include="lib\Tools.php" />
@@ -95,9 +107,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="img\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
