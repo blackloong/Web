@@ -66,18 +66,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\css.css" />
+    <Content Include="img\1.88.png" />
+    <Content Include="img\3.88.png" />
+    <Content Include="img\6.88.png" />
+    <Content Include="img\8.88.png" />
+    <Content Include="img\guanglun.png" />
+    <Content Include="img\page1.jpg" />
+    <Content Include="img\page2.jpg" />
+    <Content Include="img\page3.jpg" />
+    <Content Include="img\shareGuide.jpg" />
+    <Content Include="img\WG_Bei.png" />
+    <Content Include="img\WG_Dong.png" />
     <Content Include="img\meetgods.png" />
-    <Content Include="img\Nan_WG.png" />
-    <Content Include="img\page1.png" />
-    <Content Include="img\page2.png" />
-    <Content Include="img\page3.png" />
+    <Content Include="img\WG_Nan.png" />
     <Content Include="img\pay.png" />
     <Content Include="img\paygods.png" />
-    <Content Include="img\Pian_WG.png" />
+    <Content Include="img\WG_Pian.png" />
     <Content Include="img\sharefriend.png" />
-    <Content Include="img\Wen_WG.png" />
-    <Content Include="img\Wu_WG.png" />
-    <Content Include="img\Xi_WG.png" />
+    <Content Include="img\WG_Wen.png" />
+    <Content Include="img\WG_Wu.png" />
+    <Content Include="img\WG_Xi.png" />
     <Content Include="index.php" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\main_script.js" />

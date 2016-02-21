@@ -15,7 +15,8 @@ wx.config({
         'onMenuShareTimeline',
         'onMenuShareAppMessage',
         'onMenuShareQQ',
-        'onMenuShareWeibo'
+        'onMenuShareWeibo',
+        'chooseWXPay'
     ]
 });//end wx.config
 

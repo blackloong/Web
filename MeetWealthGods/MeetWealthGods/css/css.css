@@ -2,20 +2,35 @@
 
 body
 {
-    width : 690px;
-    height : 1290px;
+    width : 100%;
+    height : 100%;
     margin : 0 auto;
     font-size : 2.00rem;
 }
 
 .pageBackground
 {
-    position : relative;
+    position : absolute;
     width : 100%;
     height : 100%;
-    background : url(../img/page1.png) no-repeat;
-    background-size : cover;
+    background : url(../img/page1.jpg) no-repeat;
+    background-size : 100% 100%;
+    z-index:-1;
+    overflow : hidden;
     /*border:5px solid red;*/   
+}
+
+.shareGuide {
+    display:none;
+    left:0;
+    top:0;
+    width: 100%;
+    height : 100%;
+    z-index: 3;
+    background: url(../img/shareGuide.jpg) no-repeat;
+    background-size: 100% 100%;
+    color:rgba(255,255,255,255);
+    position : fixed;
 }
 
 .btnMeetGods
@@ -26,16 +41,18 @@ body
     width : 45%;
     height : 6.82%;
     background : url(../img/meetgods.png) no-repeat;
+    background-size : 100% 100%;
 }
 
 .btnPayGods
 {
     position : absolute;
-    left : 25%;
+    left : 30%;
     top : 80%;
     width : 45%;
     height : 6.82%;
     background : url(../img/paygods.png) no-repeat;
+    background-size : 100% 100%;
 }
 
 .btnPay
@@ -46,6 +63,7 @@ body
     width : 45%;
     height : 6%;
     background : url(img/pay.png) no-repeat;
+    background-size : 100% 100%;
 }
 
 .btnShareFriend
@@ -56,4 +74,66 @@ body
     width : 45%;
     height : 6%;
     background : url(../img/sharefriend.png) no-repeat;
+    background-size : 100% 100%;
+}
+
+.previewGodsBox
+{
+    transform-origin : 50% 180%;
+    position : absolute;
+    left : 25%;
+    top : 1%;
+    width : 50%;
+    height : 50%;
+    background : url(../img/WG_Nan.png) no-repeat;
+    background-size : 100% 100%;
+}
+
+.myGodsBox
+{
+    transform-origin : 50% 180%;
+    position : absolute;
+    left : 25%;
+    top : 1%;
+    width : 50%;
+    height : 50%;
+    background : url(../img/WG_Nan.png) no-repeat;
+    background-size : 100% 100%;
+}
+
+.imgMeetPay
+{
+    position : absolute;
+    left : 35%;
+    top : 65%;
+    width : 40%;
+    height : 8%;
+    background : url(../img/1.88.png) no-repeat;
+    background-size : 100% 100%;
+}
+
+.textDesc
+{
+    position : absolute; 
+    color : #e7b367;
+    font-size : 1.5rem;
+    font-weight : bold;
+}
+
+.guanglun
+{
+    position : absolute;
+    left : 10%;
+    top : 10%;
+    width : 80%;
+    height : 50%;
+    background : url(../img/guanglun.png) no-repeat;
+    background-size : 100% 100%;
+    transition-duration : 5s;
+}
+
+.btnImage
+{
+    position : absolute;
+    background-size : 100% 100%;
 }

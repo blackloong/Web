@@ -4,7 +4,7 @@
  * 调用微信SDK相关的接口实现功能
  */
 
-require_once "tools.php";
+require_once "Tools.php";
 
 class CWxShareApi
 {
@@ -216,9 +216,11 @@ class CWxShareApi
 		$code = $_GET['code'];
         $state = $_GET['state'];
         if (empty($code))
-            $this->error('授权失败');
+		{
+			$this->error('授权失败');
+		}
         $token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->appID.'&secret='.$this->appSecret.'&code='.$code.'&grant_type=authorization_code';
-        $token = json_decode(file_get_contents($token_url));
+		$token = json_decode(file_get_contents($token_url));
         if (isset($token->errcode))
         {
 			echo '<h1>错误access_token：</h1>'.$token->errcode;

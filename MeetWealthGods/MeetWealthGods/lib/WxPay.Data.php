@@ -116,6 +116,7 @@ class WxPayDataBase
 		//签名步骤二：在string后加入KEY
 		$string = $string . "&key=".WxPayConfig::KEY;
 		//签名步骤三：MD5加密
+		//echo $string;
 		$string = md5($string);
 		//签名步骤四：所有字符转为大写
 		$result = strtoupper($string);
@@ -2727,7 +2728,7 @@ class WxPayJsApiPay extends WxPayDataBase
 	**/
 	public function SetTimeStamp($value)
 	{
-		$this->values['timeStamp'] = $value;
+		$this->values['timeStamp'] = (string)$value;
 	}
 	/**
 	* 获取支付时间戳的值

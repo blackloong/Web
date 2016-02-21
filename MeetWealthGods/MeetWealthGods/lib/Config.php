@@ -13,7 +13,7 @@ class WxBaseConfig
 	 * AppSecret：公众帐号secert（仅JSAPI支付的时候需要配置， 登录公众平台，进入开发者中心可设置），
 	 */
 	const AppID = 'wx85f3be66fc565402';
-	const AppSecret = '01c6d59a3f9024db6336662ac95c8e74';
+	const AppSecret = '87225f45f5a40ed2fc62e1d9bf73f230';
 }
 
 /**
@@ -33,8 +33,8 @@ class WxPayConfig
 	 * 设置地址：https://pay.weixin.qq.com/index.php/account/api_cert
 	 * 
 	 */
-	const MCHID = '1225312702';
-	const KEY = 'e10adc3949ba59abbe56e057f20f883e';
+	const MCHID = '1310794901';
+	const KEY = '35d3868f23568284d466099dea1de96d';
 	
 	//=======【证书路径设置】=====================================
 	/**
