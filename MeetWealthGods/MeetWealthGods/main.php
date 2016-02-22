@@ -46,8 +46,8 @@ $gWxPayJSApi = new JsApiPay();
 
 //初始化统一下单数据
 //价格列表与财神数量对应
-//$gMeetPays = array(188, 388, 688, 688, 888, 888, 888);
-$gMeetPays = array(1, 1, 1, 1, 1, 1, 1);
+$gMeetPays = array(188, 388, 688, 688, 888, 888, 888);
+//$gMeetPays = array(1, 1, 1, 1, 1, 1, 1);
 $gMeetNames = array("文财神", "武财神", "北路财神", "南路财神", "西路财神", "东路财神", "偏财神");
 $gMeetPayIndex = rand(0, count($gMeetPays) - 1);
 $gOrder = new WxPayUnifiedOrder();
@@ -71,16 +71,17 @@ echo "<script type='text/javascript'>
 			  var appid = '$gAppID';
 	          var nickname = '$user_info->nickname';
 			  var headimgurl = '$user_info->headimgurl';
-			  var strTile = '接财神 发大财 ';
+			  var strTile = '正月十五接财神 一年发大财 ';
 			  var strDescription = '我今年的守护财神是' + '$gMeetNames[$gMeetPayIndex]' + '，快来请你的财神吧！';
 			  var urlIcon = 'http://shihaijiang.com/MeetWealthGods/img/icon.jpg';
-			  var urlLink = 'http://shihaijiang.com/MeetWealthGods/main.php?openid='+'$user_info->openid';
+			  var urlLink = 'http://shihaijiang.com/MeetWealthGods';
 			  var timestamp = '$gWxShareConfig->timestamp';
 			  var noncestr = '$gWxShareConfig->noncestr';
 			  var nonceStr = '$gWxShareConfig->noncestr';
 			  var signature = '$gWxShareConfig->signature';
 			  var gWxPayJsApiParameters = '$gWxPayJsApiParameters';
 			  var gMeetPayIndex = '$gMeetPayIndex';
+              var gMeetPay = $gMeetPays[$gMeetPayIndex] * 0.01;
 	  </script>";
 echo "<script src='http://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>";
 echo "<script src='js/WxShare.Config.js'></script>";

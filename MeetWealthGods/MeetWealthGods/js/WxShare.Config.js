@@ -4,7 +4,7 @@
 //var urlLink = '$inLink';
 
 wx.config({
-    debug: true,
+    debug: false,
     appId: appid,
     timestamp: timestamp,
     nonceStr: noncestr,

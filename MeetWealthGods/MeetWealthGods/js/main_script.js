@@ -6,8 +6,7 @@ var btnMeetGods = document.getElementById("btnMeetGods");
 //接财神页面的变量
 var btnPayGods = document.getElementById("btnPayGods");
 var previewGodBoxs = document.getElementsByClassName("previewGodsBox");
-var textMeetPay = document.getElementById("imgMeetPayText");
-var MeetPayTextImages = new Array("img/1.88.png", "img/3.88.png", "img/6.88.png", "img/6.88.png", "img/8.88.png", "img/8.88.png", "img/8.88.png");
+var textMeetPay2 = document.getElementById("textMeetPay");
 var curPGBRotateIndex = 0;//当前旋转的索引
 
 //迎财神成功的页面变量
@@ -26,7 +25,12 @@ var imgGod = document.getElementById("imgMyGod");
 var btnPay = document.getElementById("btnPay");
 var btnShare = document.getElementById("btnShare");
 var curGuangLunRotateCount = 0;//当前光轮旋转的次数
-var GuangLunRotateDeg = 45; //光轮每次旋转的角度
+var GuangLunRotateDeg = 180; //光轮每次旋转的角度
+//var gMeetPayIndex = 1;
+//var gMeetPay = 3.88;
+
+//背景音乐
+var audioBG = document.getElementById("audioBG");
 
 function WxPayJsApiCall() {
     var jsonPayInfo = JSON.parse(gWxPayJsApiParameters);
@@ -39,12 +43,12 @@ function WxPayJsApiCall() {
         success: function (res)
         {
             // 支付成功后的回调函数
-            alert('pay sucess'.res);
+            //alert('pay sucess' + res);
             SetPageInfo(3);
         },
         fail:function(res)
         {
-            alert('pay cancel'.res);
+            //alert('pay cancel');
         }
     });
 }
@@ -56,6 +60,7 @@ function MeetGods()
 
 function PayGods()
 {
+    //SetPageInfo(3);
     if (typeof WeixinJSBridge == 'undefined') {
         if (document.addEventListener) {
             document.addEventListener('WeixinJSBridgeReady', WxPayJsApiCall, false);
@@ -105,38 +110,36 @@ function SetPageInfo(inPageIndex)
     {
         case 1://起始页面
             SetPreviewGodBoxsDisplay(false);
-            textMeetPay.style.display = "none";
+            textMeetPay2.style.display = "none";
             break;
         case 2://接财神的界面
             bg.style.background = "url(img/page2.jpg) no-repeat";
             bg.style.backgroundSize = "100% 100%";
             btnMeetGods.style.display = "none";
             btnPayGods.style.display = "";
-            textMeetPay.style.display = "";
-            textMeetPay.style.background = "url(" + MeetPayTextImages[gMeetPayIndex] + ") no-repeat";
-            //textMeetPay.style.background = "url(" + MeetPayTextImages[2] + ") no-repeat";
-            textMeetPay.style.backgroundSize = "100% 100%";
+            textMeetPay2.style.display = "";
+            textMeetPay2.textContent = gMeetPay;
             SetPreviewGodBoxsDisplay(true);
-            window.setInterval(RotatePreviewGodBoxs, 2000);
+            window.setInterval(RotatePreviewGodBoxs, 3000);
             break;
         case 3://成功接到财神的界面
             bg.style.background = "url(img/page3.jpg) no-repeat";
             bg.style.backgroundSize = "100% 100%";
             btnPayGods.style.display = "none";
-            textMeetPay.style.display = "none";
+            textMeetPay2.style.display = "none";
             textGodTitle.style.display = "";
             textGodName.style.display = "";
             textGodDesc.style.display = "";
             imgGod.style.display = "";
             imgGuagnLun.style.display = "";
-            btnPay.style.display = "";
+//            btnPay.style.display = "";
             btnShare.style.display = "";
             textGodName.textContent = godsInfo[gMeetPayIndex].name;
             textGodDesc.textContent = godsInfo[gMeetPayIndex].desc;
             imgGod.style.background = "url(" + godsInfo[gMeetPayIndex].img + ") no-repeat";;
             imgGod.style.backgroundSize = "100% 100%";
             SetPreviewGodBoxsDisplay(false);
-            window.setInterval(RotateGuanglun, 5000);
+            window.setInterval(RotateGuanglun, 2500);
             break;
         default:
             break;
@@ -157,4 +160,5 @@ $(function () {
     $('#pageBackground').height($(window).height());
     $('#pageBackground').width($(window).width());
     SetPageInfo(1);
+    audioBG.play();
 });

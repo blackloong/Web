@@ -36,9 +36,9 @@ body
 .btnMeetGods
 {
     position : absolute;
-    left : 25%;
-    top : 50%;
-    width : 45%;
+    left : 30%;
+    top : 55%;
+    width : 35%;
     height : 6.82%;
     background : url(../img/meetgods.png) no-repeat;
     background-size : 100% 100%;
@@ -47,9 +47,9 @@ body
 .btnPayGods
 {
     position : absolute;
-    left : 30%;
-    top : 80%;
-    width : 45%;
+    left : 35%;
+    top : 81%;
+    width : 35%;
     height : 6.82%;
     background : url(../img/paygods.png) no-repeat;
     background-size : 100% 100%;
@@ -79,7 +79,7 @@ body
 
 .previewGodsBox
 {
-    transform-origin : 50% 180%;
+    transform-origin : 50% 240%;
     position : absolute;
     left : 25%;
     top : 1%;
@@ -105,7 +105,7 @@ body
 {
     position : absolute;
     left : 35%;
-    top : 65%;
+    top : 69%;
     width : 40%;
     height : 8%;
     background : url(../img/1.88.png) no-repeat;
@@ -116,8 +116,19 @@ body
 {
     position : absolute; 
     color : #e7b367;
-    font-size : 1.5rem;
+    font-size : 1.2rem;
     font-weight : bold;
+    /*border:5px solid red;*/   
+}
+
+.textMeetPay
+{
+    position : absolute; 
+    color : #e7b367;
+    font-size : 2.2rem;
+    font-weight : bold;
+    text-align : center;
+    /*border:5px solid red;*/   
 }
 
 .guanglun
@@ -129,7 +140,7 @@ body
     height : 50%;
     background : url(../img/guanglun.png) no-repeat;
     background-size : 100% 100%;
-    transition-duration : 5s;
+    transition-duration : 2.5s;
 }
 
 .btnImage
