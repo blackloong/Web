@@ -24,6 +24,7 @@ class CMySQL
             die('Count not connect: ' . mysql_error());
         }
         mysql_select_db($inDBName, $this->sql);
+		mysql_query("set names utf8");
 	}
 
     /**
