@@ -81,7 +81,7 @@ echo "<script type='text/javascript'>
 			  var signature = '$gWxShareConfig->signature';
 			  var gWxPayJsApiParameters = '$gWxPayJsApiParameters';
 			  var gMeetPayIndex = '$gMeetPayIndex';
-              var gMeetPay = $gMeetPays[$gMeetPayIndex] * 0.01;
+              var gMeetPay = $gMeetPays[$gMeetPayIndex];
 	  </script>";
 echo "<script src='http://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>";
 echo "<script src='js/WxShare.Config.js'></script>";

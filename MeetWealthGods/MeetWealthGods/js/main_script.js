@@ -118,7 +118,7 @@ function SetPageInfo(inPageIndex)
             btnMeetGods.style.display = "none";
             btnPayGods.style.display = "";
             textMeetPay2.style.display = "";
-            textMeetPay2.textContent = gMeetPay;
+            textMeetPay2.textContent = gMeetPay / 100;
             SetPreviewGodBoxsDisplay(true);
             window.setInterval(RotatePreviewGodBoxs, 3000);
             break;
@@ -146,6 +146,11 @@ function SetPageInfo(inPageIndex)
     }
 }
 
+function PlayBG()
+{
+    audioBG.play();
+}
+
 function OpenShareGuide()
 {
     $('.shareGuide').show();
@@ -160,5 +165,4 @@ $(function () {
     $('#pageBackground').height($(window).height());
     $('#pageBackground').width($(window).width());
     SetPageInfo(1);
-    audioBG.play();
 });
