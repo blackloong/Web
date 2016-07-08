@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="bannerMapper">
+	<select id="bannerList" resultType="Map">
+		select id,imgsource from tb_banner
+	</select>
+	<insert id="insertBanner" parameterType="Map">
+		INSERT INTO tb_banner( imgsource, createid) 
+					VALUES( #{imgsource},  #{uid})
+	</insert>
+	<delete id="delBanner" parameterType="formData">
+		delete from tb_banner where id = #{id}
+	</delete>
+	 
+	<insert id="sqInsert" parameterType="Map">
+		INSERT INTO tb_loan
+		    <trim prefix="(" suffix=")" suffixOverrides="," >
+		
+		<if test="uid!=null and uid!='' ">
+		 uid,
+		 </if>
+		 <if test="pro_name!=null and pro_name!='' ">
+		 pro_name,
+		 </if>
+		 
+		 <if test="pro_id!=null and pro_id!='' ">
+		 pro_id,
+		 </if>
+		<if test="sq_code!=null and sq_code!='' ">
+		sq_code,
+		</if>
+		<if test="loan_code!=null and loan_code!='' ">
+		 loan_code,
+		 </if>
+		 <if test="loan_use!=null and loan_use!='' ">
+		 loan_use,
+		 </if>
+		 <if test="loan_num!=null and loan_num!='' ">
+		 loan_num,
+		 </if>
+		 <if test="loan_amount!=null and loan_amount!='' ">
+		 loan_amount,
+		 </if>
+		 <if test="loan_method!=null and loan_method!='' ">
+		 loan_method,
+		 </if>
+		  <if test="loan_name!=null and loan_name!='' ">
+		 loan_name,
+		 </if>
+		  <if test="gender!=null and gender!='' ">
+		 gender,
+		 </if>
+		  <if test=" telephone!=null and  telephone!='' ">
+		 telephone,
+		 </if>
+		  <if test="city!=null and city!='' ">
+		 city,
+		 </if>
+		  <if test=" code_no!=null and  code_no!='' ">
+		 code_no,
+		  </if>
+		  <if test="state!=null and state!='' ">
+		 state,
+		  </if>
+		  <if test="m_income!=null and m_income!='' ">
+		 m_income,
+		  </if>
+		  <if test="sq_date!=null and sq_date!='' ">
+		 sq_date,
+		  </if>
+		  <if test="shopId!=null and shopId!='' ">
+		 shopId,
+		  </if>
+		  <if test="shopName!=null and shopName!='' ">
+		 shopName,
+		  </if>
+		  <if test="remark!=null and remark!='' ">
+		 remark
+		  </if>
+		 
+		   </trim>
+		    <trim prefix="values (" suffix=")" suffixOverrides="," >
+
+			<if test="uid!=null and uid!='' ">
+		     #{uid},
+		 </if>
+		 <if test="pro_name!=null and pro_name!='' ">
+		  #{pro_name},
+		 </if>
+		 
+		 <if test="pro_id!=null and pro_id!='' ">
+		 #{pro_id},
+		 </if>
+		<if test="sq_code!=null and sq_code!='' ">
+		#{sq_code},
+		</if>
+		<if test="loan_code!=null and loan_code!='' ">
+		 #{loan_code},
+		 </if>
+		 <if test="loan_use!=null and loan_use!='' ">
+		 #{loan_use},
+		 </if>
+		 <if test="loan_num!=null and loan_num!='' ">
+		 #{loan_num},
+		 </if>
+		 <if test="loan_amount!=null and loan_amount!='' ">
+		  #{loan_amount},
+		 </if>
+		 <if test="loan_method!=null and loan_method!='' ">
+		 #{loan_method},
+		 </if>
+		  <if test="loan_name!=null and loan_name!='' ">
+		#{loan_name},
+		 </if>
+		  <if test="gender!=null and gender!='' ">
+		 #{gender},
+		 </if>
+		  <if test=" telephone!=null and  telephone!='' ">
+		 #{telephone},
+		 </if>
+		  <if test="city!=null and city!='' ">
+		#{city},
+		 </if>
+		  <if test=" code_no!=null and  code_no!='' ">
+		 #{code_no},
+		  </if>
+		  <if test="state!=null and state!='' ">
+		 #{state},
+		  </if>
+		  <if test="m_income!=null and m_income!='' ">
+		 #{m_income},
+		 
+		  </if>
+		  <if test="sq_date!=null and sq_date!='' ">
+		 #{sq_date},
+		  </if>
+		  <if test="shopId!=null and shopId!='' ">
+		 #{shopId},
+		  </if>
+		  <if test="shopName!=null and shopName!='' ">
+		 #{shopName},
+		  </if>
+		  <if test="remark!=null and remark!='' ">
+	    	#{remark}
+		  </if>
+		 
+		 
+		</trim>
+		 
+		 
+	</insert>
+	
+	<!-- 添加申请流水表 -->
+	<insert id="sqInsertCopy" parameterType="Map">
+		INSERT INTO tb_loan_copy
+		    <trim prefix="(" suffix=")" suffixOverrides="," >
+		
+			<if test="uid!=null and uid!='' ">
+		 uid,
+		 </if>
+		 <if test="pro_name!=null and pro_name!='' ">
+		 pro_name,
+		 </if>
+		 
+		 <if test="pro_id!=null and pro_id!='' ">
+		 pro_id,
+		 </if>
+		<if test="sq_code!=null and sq_code!='' ">
+		sq_code,
+		</if>
+		<if test="loan_code!=null and loan_code!='' ">
+		 loan_code,
+		 </if>
+		 <if test="loan_use!=null and loan_use!='' ">
+		 loan_use,
+		 </if>
+		 <if test="loan_num!=null and loan_num!='' ">
+		 loan_num,
+		 </if>
+		 <if test="loan_amount!=null and loan_amount!='' ">
+		 loan_amount,
+		 </if>
+		 <if test="loan_method!=null and loan_method!='' ">
+		 loan_method,
+		 </if>
+		  <if test="loan_name!=null and loan_name!='' ">
+		 loan_name,
+		 </if>
+		  <if test="gender!=null and gender!='' ">
+		 gender,
+		 </if>
+		  <if test=" telephone!=null and  telephone!='' ">
+		 telephone,
+		 </if>
+		  <if test="city!=null and city!='' ">
+		 city,
+		 </if>
+		  <if test=" code_no!=null and  code_no!='' ">
+		 code_no,
+		  </if>
+		  <if test="state!=null and state!='' ">
+		 state,
+		  </if>
+		  <if test="m_income!=null and m_income!='' ">
+		 m_income,
+		  </if>
+		  <if test="sq_date!=null and sq_date!='' ">
+		 sq_date,
+		  </if>
+		  <if test="shopId!=null and shopId!='' ">
+		 shopId,
+		  </if>
+		  <if test="shopName!=null and shopName!='' ">
+		 shopName,
+		  </if>
+		  <if test="remark!=null and remark!='' ">
+		 remark
+		  </if>
+		 
+		</trim>
+		    <trim prefix="values (" suffix=")" suffixOverrides="," >
+
+		
+			<if test="uid!=null and uid!='' ">
+		     #{uid},
+		 </if>
+		 <if test="pro_name!=null and pro_name!='' ">
+		  #{pro_name},
+		 </if>
+		 
+		 <if test="pro_id!=null and pro_id!='' ">
+		 #{pro_id},
+		 </if>
+		<if test="sq_code!=null and sq_code!='' ">
+		#{sq_code},
+		</if>
+		<if test="loan_code!=null and loan_code!='' ">
+		 #{loan_code},
+		 </if>
+		 <if test="loan_use!=null and loan_use!='' ">
+		 #{loan_use},
+		 </if>
+		 <if test="loan_num!=null and loan_num!='' ">
+		 #{loan_num},
+		 </if>
+		 <if test="loan_amount!=null and loan_amount!='' ">
+		  #{loan_amount},
+		 </if>
+		 <if test="loan_method!=null and loan_method!='' ">
+		 #{loan_method},
+		 </if>
+		  <if test="loan_name!=null and loan_name!='' ">
+		#{loan_name},
+		 </if>
+		  <if test="gender!=null and gender!='' ">
+		 #{gender},
+		 </if>
+		  <if test=" telephone!=null and  telephone!='' ">
+		 #{telephone},
+		 </if>
+		  <if test="city!=null and city!='' ">
+		#{city},
+		 </if>
+		  <if test=" code_no!=null and  code_no!='' ">
+		 #{code_no},
+		  </if>
+		  <if test="state!=null and state!='' ">
+		 #{state},
+		  </if>
+		  <if test="m_income!=null and m_income!='' ">
+		 #{m_income},
+		 
+		  </if>
+		  <if test="sq_date!=null and sq_date!='' ">
+		 #{sq_date},
+		  </if>
+		  <if test="shopId!=null and shopId!='' ">
+		 #{shopId},
+		  </if>
+		  <if test="shopName!=null and shopName!='' ">
+		 #{shopName},
+		  </if>
+		  <if test="remark!=null and remark!='' ">
+	    	#{remark}
+		  </if>
+		 
+		</trim>
+	</insert>
+	
+		<insert id="sqInsertCopys" parameterType="Map">
+		INSERT INTO tb_loan_copy
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+		
+		<if test="uid!=null and uid!='' ">
+		 uid,
+		 </if>
+		 <if test="pro_name!=null and pro_name!='' ">
+		 pro_name,
+		 </if>
+		 
+		 <if test="pro_id!=null and pro_id!='' ">
+		 pro_id,
+		 </if>
+		<if test="sq_code!=null and sq_code!='' ">
+		sq_code,
+		</if>
+		<if test="loan_code!=null and loan_code!='' ">
+		 loan_code,
+		 </if>
+		 <if test="loan_use!=null and loan_use!='' ">
+		 loan_use,
+		 </if>
+		 <if test="loan_num!=null and loan_num!='' ">
+		 loan_num,
+		 </if>
+		 <if test="loan_amount!=null and loan_amount!='' ">
+		 loan_amount,
+		 </if>
+		 <if test="loan_method!=null and loan_method!='' ">
+		 loan_method,
+		 </if>
+		  <if test="loan_name!=null and loan_name!='' ">
+		 loan_name,
+		 </if>
+		  <if test="gender!=null and gender!='' ">
+		 gender,
+		 </if>
+		  <if test=" telephone!=null and  telephone!='' ">
+		 telephone,
+		 </if>
+		  <if test="city!=null and city!='' ">
+		 city,
+		 </if>
+		  <if test=" code_no!=null and  code_no!='' ">
+		 code_no,
+		  </if>
+		  <if test="state!=null and state!='' ">
+		 state,
+		  </if>
+		  <if test="m_income!=null and m_income!='' ">
+		  m_income,
+		  </if>
+		  <if test="sq_date!=null and sq_date!='' ">
+		  sq_date,
+		  </if>
+		  <if test="shopId!=null and shopId!='' ">
+		  shopId,
+		  </if>
+		  <if test="shopName!=null and shopName!='' ">
+		  shopName,
+		  </if>
+		  <if test="remark!=null and remark!='' ">
+		  remark,
+		  </if>
+		   <if test="sp_amount!=null and sp_amount!='' ">
+		  sp_amount,
+		  </if>
+		  <if test="yhk_amount!=null and yhk_amount!='' ">
+		  yhk_amount,
+		  </if>
+		  <if test="yly!=null and yly!='' ">
+		   yly,
+		  </if>
+		   <if test="bank!=null and bank!='' ">
+		  bank,
+		  </if>
+		  <if test="bank_crand!=null and bank_crand!='' ">
+		   bank_crand,
+		  </if>
+		  <if test="yhdate!=null and yhdate!='' ">
+		    yhdate,
+		  </if>
+		   <if test="shdate!=null and shdate!='' ">
+		     shdate,
+		  </if>
+		   <if test="shremark!=null and shremark!='' ">
+		     shremark,
+		  </if>
+		    <if test="yxqydate!=null and yxqydate!='' ">
+		      yxqydate,
+		  </if>
+		  <if test="yxfkdate!=null and yxfkdate!='' ">
+		      yxfkdate,
+		  </if>
+		  <if test="yxshopid!=null and yxshopid!='' ">
+		      yxshopid,
+		  </if>
+		  <if test="yxshopname!=null and yxshopname!='' ">
+		      yxshopname,
+		  </if>
+		  <if test="yxshopadd!=null and yxshopadd!='' ">
+		      yxshopadd,
+		  </if>
+		   <if test="yxshqs!=null and yxshqs!='' ">
+		      yxshqs
+		  </if>
+		 
+		 
+		</trim>
+		    <trim prefix="values (" suffix=")" suffixOverrides="," >
+
+			<if test="uid!=null and uid!='' ">
+		     #{uid},
+		 </if>
+		 <if test="pro_name!=null and pro_name!='' ">
+		  #{pro_name},
+		 </if>
+		 
+		 <if test="pro_id!=null and pro_id!='' ">
+		 #{pro_id},
+		 </if>
+		<if test="sq_code!=null and sq_code!='' ">
+		#{sq_code},
+		</if>
+		<if test="loan_code!=null and loan_code!='' ">
+		 #{loan_code},
+		 </if>
+		 <if test="loan_use!=null and loan_use!='' ">
+		 #{loan_use},
+		 </if>
+		 <if test="loan_num!=null and loan_num!='' ">
+		 #{loan_num},
+		 </if>
+		 <if test="loan_amount!=null and loan_amount!='' ">
+		  #{loan_amount},
+		 </if>
+		 <if test="loan_method!=null and loan_method!='' ">
+		 #{loan_method},
+		 </if>
+		  <if test="loan_name!=null and loan_name!='' ">
+		#{loan_name},
+		 </if>
+		  <if test="gender!=null and gender!='' ">
+		 #{gender},
+		 </if>
+		  <if test=" telephone!=null and  telephone!='' ">
+		 #{telephone},
+		 </if>
+		  <if test="city!=null and city!='' ">
+		#{city},
+		 </if>
+		  <if test="code_no!=null and  code_no!='' ">
+		 #{code_no},
+		  </if>
+		  <if test="state!=null and state!='' ">
+		 #{state},
+		  </if>
+		  <if test="m_income!=null and m_income!='' ">
+		 #{m_income},
+		 
+		  </if>
+		  <if test="sq_date!=null and sq_date!='' ">
+		 #{sq_date},
+		  </if>
+		  <if test="shopId!=null and shopId!='' ">
+		 #{shopId},
+		  </if>
+		  <if test="shopName!=null and shopName!='' ">
+		 #{shopName},
+		  </if>
+		  <if test="remark!=null and remark!='' ">
+	    	#{remark},
+		  </if>
+		   <if test="sp_amount!=null and sp_amount!='' ">
+		    #{sp_amount},
+		  </if>
+		  <if test="yhk_amount!=null and yhk_amount!='' ">
+		    #{yhk_amount},
+		  </if>
+		  <if test="yly!=null and yly!='' ">
+		    #{yly},
+		  </if>
+		   <if test="bank!=null and bank!='' ">
+		   #{bank},
+		  </if>
+		  <if test="bank_crand!=null and bank_crand!='' ">
+		    #{bank_crand},
+		  </if>
+		   <if test="yhdate!=null and yhdate!='' ">
+		      #{yhdate},
+		  </if>
+		   <if test="shdate!=null and shdate!='' ">
+		      #{shdate},
+		  </if>
+		   <if test="shremark!=null and shremark!='' ">
+		      #{shremark},
+		  </if>
+
+		  <if test="yxqydate!=null and yxqydate!='' ">
+		      #{yxqydate},
+		  </if>
+		  <if test="yxfkdate!=null and yxfkdate!='' ">
+		      #{yxfkdate},
+		  </if>
+		  <if test="yxshopid!=null and yxshopid!='' ">
+		      #{yxshopid},
+		  </if>
+		  <if test="yxshopname!=null and yxshopname!='' ">
+		      #{yxshopname},
+		  </if>
+		  <if test="yxshopadd!=null and yxshopadd!='' ">
+		      #{yxshopadd},
+		  </if>
+		    <if test="yxshqs!=null and yxshqs!='' ">
+		      #{yxshqs}
+		  </if>
+		</trim>
+	</insert>
+	
+	
+	
+	<update id="squpdatastate" parameterType="formData">
+	update tb_loan set state=#{state},sq_date=#{sq_date},remark=#{remark}
+	  <if test="sp_amount!=null and sp_amount!='' ">
+		       ,sp_amount=#{sp_amount}
+		  </if>
+		  <if test="yhk_amount!=null and yhk_amount!='' ">
+		       ,yhk_amount=#{yhk_amount}
+		  </if>
+		  <if test="yly!=null and yly!='' ">
+		       ,yly=#{yly}
+		  </if>
+		   <if test="bank!=null and bank!='' ">
+		       ,bank=#{bank}
+		  </if>
+		  <if test="bank_crand!=null and bank_crand!='' ">
+		      ,bank_crand=#{bank_crand}
+		  </if>
+		  <if test="yhdate!=null and yhdate!='' ">
+		      ,yhdate=#{yhdate}
+		  </if>
+		   <if test="shdate!=null and shdate!='' ">
+		      ,shdate=#{shdate}
+		  </if>
+		   <if test="shremark!=null and shremark!='' ">
+		      ,shremark=#{shremark}
+		  </if>
+		   <if test="yxqydate!=null and yxqydate!='' ">
+		      ,yxqydate=#{yxqydate}
+		  </if>
+		  <if test="yxfkdate!=null and yxfkdate!='' ">
+		      ,yxfkdate=#{yxfkdate}
+		  </if>
+		  <if test="yxshopid!=null and yxshopid!='' ">
+		      ,yxshopid=#{yxshopid}
+		  </if>
+		  <if test="yxshopname!=null and yxshopname!='' ">
+		      ,yxshopname=#{yxshopname}
+		  </if>
+		  <if test="yxshopadd!=null and yxshopadd!='' ">
+		      ,yxshopadd=#{yxshopadd}
+		  </if>
+		   <if test="yxshqs!=null and yxshqs!='' ">
+		      ,yxshqs=#{yxshqs}
+		  </if>
+	   where sq_code=#{sq_code}
+  </update>
+  
+   <update id="squpdataSqcode" parameterType="formData">
+	update tb_loan 
+	<set>
+	<if test="sq_code!=null and sq_code!='' ">
+	sq_code=#{sq_code},
+	</if>
+	<if test="loan_num!=null and loan_num!='' ">
+	loan_num=#{loan_num},
+	</if>
+	<if test="code_no!=null and code_no!='' ">
+	code_no=#{code_no},
+	</if>
+	<if test="m_income!=null and m_income!='' ">
+	m_income=#{m_income},
+	</if>
+	<if test="state!=null and state!='' ">
+	 state=#{state}
+	</if>
+	</set>
+	where loan_code=#{loan_code}
+  </update>
+  
+  
+	<select id="sqcodeList" parameterType="formData" resultType="Map">
+		select * from tb_loan where sq_code=#{sq_code}
+	</select>
+	
+	<select id="sqList" parameterType="formData" resultType="Map">
+		 select t.*,
+		  t1.details,
+		  t1.longitude,
+		  t1.latitude
+	    from tb_loan t 
+	    LEFT JOIN tb_dot t1 on  t.shopId=t1.id
+		 <where> 
+		     1=1
+		    <if test="uid!=null and uid!='' ">
+		     and  uid=#{uid}
+		    </if>
+		    <if test="loan_name!=null and loan_name!='' ">
+		     and  loan_name=#{loan_name}
+		    </if>
+		 
+		 </where>		 
+		   ORDER BY sq_date desc
+	</select>
+	
+	<select id="sqDesList" parameterType="formData" resultType="Map">
+		select * from tb_loan_copy 
+		 <where> 
+		     1=1
+		    <if test="sq_code!=null and sq_code!='' ">
+		     and  sq_code=#{sq_code} 
+		    </if>
+		    <if test="loan_code!=null and loan_code!='' ">
+		     and  loan_code=#{loan_code}
+		    </if>
+		 
+		 </where>		
+	</select>
+	<!-- 状态查询 -->
+	<select id="StateList" parameterType="formData" resultType="Map">
+		select * from tb_help where title=#{state} 
+	</select>
+	
+	<select id="indexCount" resultType="Map">
+		select count(id) as zxcount ,(SELECT count(id) from tb_loan where state="放款完成" )as dkcount from tb_loan  
+	</select>
+ 
+	
+	<!-- -授信申请添加 -->
+	
+	<insert id="creditInsert" parameterType="Map">
+		INSERT INTO credit
+		    <trim prefix="(" suffix=")" suffixOverrides="," >
+		
+		<if test="mobile!=null and mobile!='' ">
+		 mobile,
+		 </if>
+		 <if test="number!=null and number!='' ">
+		 number,
+		 </if>
+		 
+		 <if test="state!=null and state!='' ">
+		 state,
+		 </if>
+		<if test="applyMoney!=null and applyMoney!='' ">
+		applyMoney,
+		</if>
+		<if test="applyDate!=null and applyDate!='' ">
+		applyDate,
+		</if>
+		<if test="money!=null and money!='' ">
+		 money,
+		 </if>
+		 <if test="startDate!=null and startDate!='' ">
+		 startDate,
+		 </if>
+		 <if test="endDate!=null and endDate!='' ">
+		 endDate
+		 </if>
+		 
+		 
+		   </trim>
+		    <trim prefix="values (" suffix=")" suffixOverrides="," >
+
+			<if test="mobile!=null and mobile!='' ">
+		 #{mobile},
+		 </if>
+		 <if test="number!=null and number!='' ">
+		 #{number},
+		 </if>
+		 
+		 <if test="state!=null and state!='' ">
+		 #{state},
+		 </if>
+		<if test="applyMoney!=null and applyMoney!='' ">
+		#{applyMoney},
+		</if>
+			 
+		 <if test="applyDate!=null and applyDate!='' ">
+		#{applyDate},
+		</if>
+		<if test="money!=null and money!='' ">
+		#{ money},
+		 </if>
+		 <if test="startDate!=null and startDate!='' ">
+		 #{startDate},
+		 </if>
+		 <if test="endDate!=null and endDate!='' ">
+		 #{endDate}
+		 </if>
+	
+		</trim>
+		 
+		 
+	</insert>
+	
+
+	
+	
+	<!--更新授信状态 -->
+	<update id="creditupdataSqcode" parameterType="formData">
+	update credit 
+	<set>
+	 
+	<if test="state!=null and state!='' ">
+	state=#{state},
+	</if>
+	<if test="code_no!=null and code_no!='' ">
+	code_no=#{code_no},
+	</if>
+	<if test="applyMoney!=null and applyMoney!='' ">
+	applyMoney=#{applyMoney},
+	</if>
+	<if test="applyDate!=null and applyDate!='' ">
+	 applyDate=#{applyDate},
+	</if>
+	<if test="money!=null and money!='' ">
+	money=#{money},
+	</if>
+	<if test="startDate!=null and startDate!='' ">
+	 startDate=#{startDate},
+	</if>
+	<if test="endDate!=null and endDate!='' ">
+	 endDate=#{endDate}
+	</if>
+	
+	</set>
+	where number=#{number}
+  </update>
+   
+ <select id="creditList" parameterType="formData" resultType="Map">
+		select * from credit
+		<where>
+		<if test="mobile!=null and mobile!='' ">
+	      mobile=#{mobile}
+	   </if>
+		</where>
+		    ORDER BY id desc
+	</select>
+	
+			<!--添加图片-->
+	<insert id="insertImg" useGeneratedKeys="true" keyProperty="id" parameterType="formData">
+		INSERT INTO tb_pdf(uid,mobile, number,pdf1,pdf2,pdf3) 
+						VALUES(#{uid},#{mobile},#{number},#{pdf1},#{pdf2},#{pdf3})
+	</insert>
+	
+	 <select id="pdfList" parameterType="formData" resultType="Map">
+		select * from tb_pdf
+		<where>
+		<if test="number!=null and number!='' ">
+	      number=#{number}
+	   </if>
+		</where>
+		    ORDER BY id desc
+	</select>
+	
+	
+</mapper>
+
+
+

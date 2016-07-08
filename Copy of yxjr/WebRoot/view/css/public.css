@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+/*MS 2015-5.8*/
+
+body{font-family:'Microsoft YaHei',arial,helvetica,sans-serif;}
+
+.container-fluid{width:100%; margin:0px; padding:0px;}
+
+/*头部*/
+.header{ background:#ff9f9e; height:45px; line-height:45px;}
+.header-limg img{width:25px; height:auto; margin:0 0 7px 10px;}
+.header center{font-size:18px; font-weight:bold; color:#FFFFFF;}
+
+
+/*孕期周数*/
+.yunzhou{width:100%; margin-top:20px;}
+.yunzhou li{width:50%; text-align:center; float:left; padding:7px 5px;}
+.yunzhou a{padding:7px 10px;}
+
+.yunzhou .btn-default{border:1px #e3e3e3 solid; background:#e3e3e3;}
+.yunzhou .btn-danger{border:1px #d03d57 solid; background:#d03d57;}
+.yunzhou .btn-primary{border:1px #328ecb solid; background:#328ecb;}
+
+
+/*孕期报告*/
+.yunqibaogao{background:#f3f3f3; margin-top:20px; padding:20px;}
+.yunqibaogao span{height:30px; line-height:30px; display:block;}
+.yunqibaogao .rightbian{border:1px #ccc solid; border-left:none; background:#FFFFFF; padding:0 5px; margin:0px;}
+.yunqibaogao .aleftbian{border:0px;background:none; color:#333333; padding:0 5px 0 0;}
+.yunqibaogao .bleftbian{border:0px;background:none; color:#333333; padding:0 5px 0 5px;}
+.yunqibaogao .form-group{padding:0; margin:0px;}
+.yunqibaogao .input-group{padding:0px; margin:0px;}
+.zpshangchuan{width:100%; border-bottom:1px #fff solid; padding-bottom:10px;}
+.zpshangchuan span{float:left; margin-right:10px; height:45px; line-height:45px; width:150px;}
+.zpshangchuan .btn-primary{border:1px #328ecb solid; background:#328ecb; margin-top:10px; width:80px; height:30px; line-height:15px;}
+
+.yunqibaogaogo .btn-danger{background:#d03d57; font-weight:bold; margin:20px 0;}

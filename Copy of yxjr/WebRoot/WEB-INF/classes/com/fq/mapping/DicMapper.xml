@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="DictionaryMapper">
+
+		
+	<select id="findDictionaryPage" parameterType="Page" resultType="Map">
+		SELECT * FROM tb_dictionary WHERE pid=0
+	</select>
+	
+	
+		<select id="findDictionaryId" parameterType="formData" resultType="Map">
+		SELECT * FROM tb_dictionary WHERE id=#{id}
+	</select>
+	
+	
+	<insert id="insertDictionary" parameterType="formData">
+	INSERT INTO tb_dictionary(pid,TYPE,VALUE,orderby,py)
+	 VALUE(#{pid},#{type},#{value},#{orderby},#{py})
+	</insert>
+	
+	
+	<update id="updateDictionary" parameterType="formData">
+	update tb_dictionary set type=#{type},value=#{value},orderby=#{orderby},py=#{py}
+	where id=#{id}
+</update>
+	
+	
+	<select id="findDictionaryPid" parameterType="formData" resultType="Map">
+		SELECT * FROM tb_dictionary WHERE pid=#{id}
+	</select>
+	
+	 <delete id="deleteDictionary" parameterType="List" >
+		delete from tb_dictionary where id in 
+		<foreach collection="list" item="item"  open="(" separator="," close=")">#{item}</foreach>
+	</delete>
+	
+	<!-- 一级分类查询  现在特殊控制  现金类 不启用-->
+    <select id="findtypePage" parameterType="Page" resultType="Map">
+		SELECT * FROM tb_type WHERE pid=0 
+	</select>
+	
+    <select id="findtypeId" parameterType="formData" resultType="Map">
+		SELECT * FROM tb_type WHERE id=#{id}
+	</select>
+	
+	
+	<insert id="inserttype" parameterType="formData">
+	INSERT INTO tb_type(pid,TYPE,VALUE,orderby,py,instruction)
+	 VALUE(#{pid},#{type},#{value},#{orderby},#{py},#{instruction})
+	</insert>
+	
+	
+	<update id="updatetype" parameterType="formData">
+	update tb_type set type=#{type},value=#{value},orderby=#{orderby},py=#{py},instruction=#{instruction}
+	where id=#{id}
+</update>
+	
+	
+	<select id="findtypePid" parameterType="formData" resultType="Map">
+		SELECT * FROM tb_type 
+		WHERE pid=#{id}
+	</select>
+	
+	 <delete id="deletetype" parameterType="List" >
+		delete from tb_type where id in 
+		<foreach collection="list" item="item"  open="(" separator="," close=")">#{item}</foreach>
+	</delete>
+	
+</mapper>

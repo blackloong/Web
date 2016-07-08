@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="TeamMapper">
+	<select id="getAllProgramTeamByPage" parameterType="Page" resultType="Map">
+		select * from tb_program_team
+		
+	</select>
+	<insert id="insertProgramTeam" parameterType="String">
+			insert into tb_program_team (team_name) values(#{name}) 
+	</insert>
+	<update id="updateProgramTeamById" parameterType="formData">
+			update tb_program_team set team_name=#{name} where id = #{id}
+	 </update>
+	<select id="getAllProgramItem" resultType="Map">
+		select *from tb_program_item
+	</select>
+	<insert id="insertProgramItemByTeamId" parameterType="formData">
+		insert into tb_program_item (teamid,item_name,item_url)values(#{teamid},#{name},#{url})
+	</insert>
+	<update id="updateProgramItemById" parameterType="formData">
+			update tb_program_item set item_name=#{name} ,item_url = #{url} where id = #{id}
+	 </update>
+	 <select id="getALLDetailByItemId" resultType="Map" parameterType="formData">
+	 	select * from tb_program_detail where item_id = #{id}
+	 </select>
+	 <insert id="insertProgramDetailByItemId" parameterType="formData">
+	 	insert into tb_program_detail (item_id,detail_name,detail_url) values(#{itemid},#{detail_name},#{detail_url})
+	 </insert>
+	 <update id="updateDetailById" parameterType="formData">
+	 	update tb_program_detail set detail_name = #{detail_name} ,detail_url = #{detail_url} where id = #{id}
+	 </update>
+	 <delete id="deleteDetailById" parameterType="List" >
+		delete from tb_program_detail where id in 
+		<foreach collection="list" item="item"  open="(" separator="," close=")">#{item}</foreach>
+	</delete>
+</mapper>

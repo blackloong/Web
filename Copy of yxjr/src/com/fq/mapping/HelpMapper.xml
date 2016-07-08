@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="helpMapper">
+	<select id="helpList"  parameterType="Page" resultType="Map">
+			select * from tb_help  
+			<where>
+			  1=1
+			   <if test="formData.id!=null  and formData.id!=''">
+			     and  id=#{formData.id}
+			   </if>
+			   
+			    <if test="formData.type!=null  and formData.type!=''">
+			     and  type=#{formData.type}
+			   </if>
+			  			   
+			</where>
+ 
+              ORDER BY  creatime desc
+                
+	</select>
+
+	<insert id="inserthelp" parameterType="Map">
+		INSERT INTO tb_help( title, content,creatime,type) 
+					VALUES( #{title}, #{content},now(),#{type})
+	</insert>
+	<delete id="delhelp" parameterType="Map">
+		delete from tb_help  where id = #{id}
+	</delete>
+	
+	<update id="updatehelp" parameterType="Map">
+		update tb_help set title = #{title},content=#{content},creatime=now(),type=#{type} where id =#{id}
+	</update>
+	
+		<select id="byIdBrand" resultType="Map">
+			select * from tb_help  where  id=#{id}
+			   
+	</select>
+	
+	<select id="brandList" parameterType="FormData" resultType="Map">
+          SELECT * from tb_help 		
+          <where>
+            <if test="type!=null  and type!=''">
+			     and  type=#{type}
+			   </if>	
+		 </where>   
+	</select>
+	
+	<!-- 所有的意见反馈 -->
+	<select id="feedbackList" parameterType="FormData" resultType="Map">
+          SELECT * from feedback         ORDER BY  time desc  
+	</select>
+	
+	
+	<!-- 所有的员工的交通工具选择 -->
+	<select id="mediaList" parameterType="FormData" resultType="Map">
+       SELECT t.*,t1.uname  from media  t
+          LEFT JOIN tb_login  t1 on t.uid=t1.id
+       ORDER BY  t.time desc  
+	</select>
+	
+	
+	
+	
+	
+</mapper>

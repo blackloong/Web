@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="TokenMapper">
+	<select id="getTokenByUidAndToken" parameterType="formData" resultType="Map">
+		<![CDATA[ select * from tb_token where uid = #{uid} and token = #{token} and timestampdiff(day,createtime,now() ) <=60 ]]> 
+	</select>
+	<delete id="deleteTokenByUid" parameterType="formData">
+		delete from tb_token where uid=#{uid}
+	</delete>
+	<insert id="createTokenByUid" parameterType="formData">
+		insert into tb_token(uid,token) values(#{uid},#{token})
+	</insert>
+</mapper>

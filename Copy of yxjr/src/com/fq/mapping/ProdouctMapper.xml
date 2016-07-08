@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ProdouctMapper">
+
+		
+	<select id="findProdouctPage" parameterType="Page" resultType="Map">
+		SELECT * FROM tb_prodouct 
+	</select>
+	
+	
+	 <select id="findProdouctId" parameterType="formData" resultType="Map">
+		SELECT * FROM tb_prodouct WHERE id=#{id}
+	 </select>
+	
+	
+	<insert id="insertProdouct" parameterType="formData">
+	INSERT INTO tb_prodouct(title,procode,pro_rate,pro_cycle,pro_max_amount,pro_min_amount,pro_logo,pro_logo_value,description,STATUS,credate,joinnum,sort,ptype1,ptype2,ptype3)
+	 VALUE(#{title},#{procode},#{pro_rate},#{pro_cycle},#{pro_max_amount},#{pro_min_amount},#{pro_logo},#{pro_logo_value},#{description},#{status},now(),#{joinnum},#{sort},#{ptype1},#{ptype2},#{ptype3})
+	</insert>
+	
+	
+	<update id="updateProdouct" parameterType="formData">
+	update tb_prodouct set title= #{title},procode=#{procode},pro_rate=#{pro_rate},pro_cycle=#{pro_cycle},pro_max_amount=#{pro_max_amount},
+	pro_min_amount=#{pro_min_amount},ptype1=#{ptype1},ptype2=#{ptype2},ptype3=#{ptype3},
+	<if test="pro_logo_value!=null and pro_logo_value!=''">
+	pro_logo=#{pro_logo},pro_logo_value=#{pro_logo_value},
+	</if>
+      description=#{description},
+	 sort=#{sort}
+	where id=#{id}
+</update>
+	
+	
+	 <delete id="deleteProdouctIds" parameterType="List" >
+		delete from tb_prodouct where id in 
+		<foreach collection="list" item="item"  open="(" separator="," close=")">#{item}</foreach>
+	</delete>
+	
+	
+	
+	<!-- 发布，下架 -->
+		<update id="prodouctFbXj" parameterType="formData">
+	update tb_prodouct set status=#{status} where id=#{id}
+	</update>
+	
+	
+	<!-- field 扩展字段 -->
+	<insert id="insertField" parameterType="formData">
+	 INSERT INTO tb_field(fieldname,fieldvalue,fieldtype,retype,proid,datas,value,value_text,value_blod,value_blod_name,sort)
+	  VALUE(#{fieldname},#{fieldvalue},#{fieldtype},#{retype},#{proid},#{datas},#{value},#{value_text},#{value_blod},#{value_blod_name},#{sort})
+	</insert>
+	<update id="updateField" parameterType="formData">
+	update tb_field set fieldname=#{fieldname},fieldvalue=#{fieldvalue},fieldtype=#{fieldtype},retype=#{retype},proid=#{proid},datas=#{datas},value=#{value},
+	value_text=#{value_text},value_blod=#{value_blod},value_blod_name=#{value_blod_name},sort=#{sort} where id=#{id}
+	</update>
+	<select id="findField" parameterType="formData" resultType="Map">
+	SELECT * FROM tb_field where proid=#{proid} and retype=#{retype}  order by sort
+	</select>
+	<select id="findFieldId" parameterType="formData" resultType="Map">
+	SELECT * FROM tb_field where id=#{id} 
+	</select>
+	 <delete id="deleteFieldIds" parameterType="List" >
+		delete from tb_field where id in 
+		<foreach collection="list" item="item"  open="(" separator="," close=")">#{item}</foreach>
+	</delete>
+	<!-- 分类下商品 -->
+	<select id="prodouctlist" parameterType="formData" resultType="Map">
+		SELECT * FROM tb_prodouct WHERE ptype2=#{id}
+	</select>
+	
+</mapper>

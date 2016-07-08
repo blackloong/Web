@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="UserMapper">
+	<resultMap id="BaseResultMap" type="com.fq.model.EngCase">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="mobile" property="mobile" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+	</resultMap>
+		<select id="getUserByMobileAndPassword" resultType="Map" parameterType="Map">
+		select *from tb_user where mobile = #{mobile}  and password = #{password}
+	</select>
+		<select id="getRoleAuthByRoleId" parameterType="String" resultType="Map">
+		select a.team_name,a.id teamid,b.id itemid,b.item_name,c.id detailid,b.item_url
+							,c.detail_name,c.detail_url,d.program_detail_id from tb_program_team a
+							left join tb_program_item b on a.id = b.teamid left join
+							tb_program_detail c on b.id = c.item_id left join 
+							tb_role_program_detail	d on c.id = d.program_detail_id 
+							<if test="roleId !=null and roleId !='' ">
+								 where roleid = #{roleId}
+							</if>
+	</select>
+	
+		<select id="getAllowUrlByRoleId" parameterType="formData" resultType="Map">
+		select detail_url from tb_role_program_detail a left join tb_program_detail b on a.program_detail_id = b.id where roleid = #{roleId}
+	</select>
+	<select id="getAllLoginPage" resultType="Map" parameterType="Page">
+		select a.id,a.mobile,b.role_name,a.username ,a.name,a.regtime from tb_user a left join tb_role b on a.roleid = b.id 
+		where 1=1 <if test="formData.keyWord != null and formData.keyWord != '' ">
+							and (a.mobile LIKE CONCAT(CONCAT('%', #{formData.keyWord}),'%') or a.username LIKE CONCAT(CONCAT('%', #{formData.keyWord}),'%') or a.name LIKE CONCAT(CONCAT('%', #{formData.keyWord}),'%')  ) 
+						 </if>
+		 order by a.id desc
+	</select>
+	
+	<select id="getAllowDown" parameterType="formData" resultType="Map">
+		select a.id,a.mobile,b.role_name,a.username ,a.name,a.regtime from tb_user a left join tb_role b on a.roleid = b.id 
+		 order by a.id desc
+	</select>
+
+
+	<select id="getUserByMobileAndPassWord" parameterType="formData" resultType="Map">
+		select * from tb_user where mobile = #{mobile} and password = #{password}
+	</select>
+		<select id="getUserById" resultType="Map" parameterType="String">
+		select * from tb_user where id = #{id}
+	</select>
+	
+	
+	
+	
+	<insert id="saveUser" keyProperty="id" useGeneratedKeys="true" parameterType="formData" >
+		insert into tb_user (mobile,password,username,name,type,state,roleid,gender,degree,birthdate,xjz_address,fjxx_address,profile,code_no,regtime,wx,headimg) 
+		value(#{mobile},#{password},#{username},#{name},0,0,#{roleid},#{gender},#{degree},#{birthdate},#{xjz_address},#{fjxx_address},#{profile},#{code_no},#{regtime},#{wx},#{headimg})
+	</insert>
+	
+	
+		<update id="updateUserById" parameterType="formData">
+		 update tb_user set name=#{name},roleid=#{roleid},gender=#{gender},degree=#{degree},birthdate=#{birthdate},xjz_address=#{xjz_address},fjxx_address=#{fjxx_address},profile=#{profile},code_no=#{code_no}	where id = #{id}
+	    </update>
+	
+	<update id="updateUserByMob" parameterType="formData">
+		 update tb_user 
+		  set wx = #{wx},
+		      headimg=#{headimg},
+		      username=#{username}
+		      
+		    where  mobile=#{mobile}
+		    
+	</update>
+	
+		<update id="updateUserBywx" parameterType="formData">
+		 update tb_user 
+		  set wx = #{wx},
+		      mobile = #{mobile},
+		      password=#{password},
+		      roleid=#{roleid}
+ 		    where  wx=#{wx}
+		    
+	</update>
+	
+	
+		<update id="updateUser" parameterType="formData">
+		update tb_user set password =#{password} where id = #{id}
+	</update>
+		<delete id="deleteUserById" parameterType="List" >
+		delete from tb_user where id in 
+		<foreach collection="list" item="item"  open="(" separator="," close=")">#{item}</foreach>
+	</delete>
+	<update id="updateUserImg" parameterType="Map">
+		update tb_userinfo set headsrc=#{filesrc} where uid =#{id}
+	</update>
+		<select id="checkMobile" parameterType="formData" resultType="Map">
+		select * from tb_user where 1=1
+
+	    	<if test="mobile !=null and mobile !='' ">
+					and	 mobile = #{mobile}
+			</if>
+			
+			 <if test="wx !=null and wx !='' ">
+					and	wx = #{wx}
+			</if>
+	 
+ 	</select>
+	
+	<select id="getUserInfoById" resultType="Map" parameterType="String">
+		select a.id as logid,a.mobile,a.password,a.roleid,a.regtime,a.uname,b.sex,b.id as infoId,b.birthday,b.card,b.address,b.headsrc,c.id as crediId,c.totalcore from tb_user a left join tb_userinfo b on a.id= b.uid left join tb_credit c on a.id=c.uid where a.id = #{id}
+	</select>
+	<select id="getSelectUserByPage" parameterType="Page" resultType="Map">
+		select * from tb_user where roleid =#{formData.roleid}
+	</select>
+	
+	
+	<select id="Checksours" resultType="Map" parameterType="formData">
+		SELECT * FROM yzm  WHERE mobile=#{mobile} AND Verificationcode=#{sours}
+	</select>
+	<update id="UpdateUserPwd" parameterType="formData">
+		update tb_user set password=#{password} where mobile=#{mobile}
+	</update>
+		<delete id="deleteYzm" parameterType="formData" >
+		delete from yzm where mobile =#{mobile}
+	</delete>
+	<insert  id="AddYzm" keyProperty="id" useGeneratedKeys="true" parameterType="formData">
+		INSERT INTO `yzm`(mobile,Verificationcode) VALUE(#{mobile},#{Verificationcode})
+	</insert>
+	
+   <select id="getUserAll"  resultType="Map">
+		  select * from tb_user
+	</select>
+	
+	<insert  id="insertLat" keyProperty="id" useGeneratedKeys="true" parameterType="formData">
+		INSERT INTO `tb_user_point`(userid,acq_date,longitude,latitude) VALUE(#{userid},#{acq_date},#{longitude},#{latitude})
+	</insert>
+	
+	<select id="dotList" parameterType="formData" resultType="Map">
+		SELECT * from  tb_dictionary where pid=14 ORDER BY py 
+	</select>
+	
+	<select id="dotderList" parameterType="formData" resultType="Map">
+		SELECT * from  tb_dot t1
+		  JOIN  tb_dictionary t  on t.id=t1.lo_sh
+		  <where>
+		   <if test="id != null and id !='' ">
+			  and t.id=#{id}
+		    </if>
+		    
+		  </where>
+		  
+	</select>
+	
+		<!-- 活动轨迹-->
+	<select id="getAllEmp"  resultType="Map">
+		SELECT t.*,
+              t1.username,
+              t1.mobile 
+              from   tb_user_point t
+              LEFT JOIN tb_user  t1 on t.userid=t1.id 
+        <where>
+       <if test="uname != null and uname !='' ">
+			 and  t1.username = #{uname}
+		</if>
+		<if test="createtime != null and createtime !='' ">
+			 and   date_format(t.acq_date,'%Y-%m-%d')  &gt;= #{createtime}
+		</if>
+		<if test="endtime != null and endtime !='' ">
+			 and   date_format(t.acq_date,'%Y-%m-%d')  &lt;= #{endtime}
+		</if>
+		</where>
+	</select>
+	
+	<select id="cityList" parameterType="formData" resultType="Map">
+		SELECT * from  tb_dictionary where pid=#{pid} ORDER BY  orderby 
+	</select>
+	
+	 <delete id="deletewx" parameterType="formData" >
+		 delete from tb_user where wx = #{wx}
+	</delete>
+	
+</mapper>

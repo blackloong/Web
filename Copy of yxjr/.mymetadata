@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="Copy of yxjr"
+  id="myeclipse.1444731869427"
+  context-root="/yxjrs"
+  j2ee-spec="5.0"
+  archive="Copy of yxjr.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
