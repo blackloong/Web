@@ -2,3 +2,5 @@
 *.TMP
 *.suo
 *.user
+*.swp
+*.*~
