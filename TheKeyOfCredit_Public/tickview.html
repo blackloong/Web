@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>highstock </title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no,email=no" />
+    <link rel="stylesheet" href="/prd/yo/usage/export/yo-flex.css" />
+
+</head>
+<body>
+    <div class="flex" id="container">
+    <div class="yo-suggest yo-suggest-modal yo-suggest-on">
+         <select id="select1" style="font-size: x-large" onchange="draw(this.value)"></select>
+    <div class="cont">
+       <div class="yo-group yo-list">
+            
+        <div id="container1" style="height: 300px; min-width: 310px"></div>
+        <div id="container2" style="height: 300px; min-width: 310px"></div>
+        </div>
+
+    </div>
+</div></div>
+
+
+<script type="text/javascript" src="./dist/jquery.min.js"></script>
+<script src="./dist/highstock.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var select = $('#select1');
+
+        $.getJSON('http://cfd-webapi.chinacloudapp.cn/api/security/all?perPage=99999', function (result) {
+            $.each(result, function(i, sec) {
+                select.append($("<option></option>")
+                    .attr("value", sec.id)
+                    .text(sec.id + ' ' + sec.name));
+            });
+            select[0].selectedIndex = 32;
+        }).done(function () { draw($('#select1')[0].value); });
+
+        //select[0].selectedIndex = 0;
+
+        //alert($('#select1').value);
+        //window.setTimeout(function() { draw($('#select1')[0].value); }, 1000);
+    });
+
+    function draw(secId) {
+        //30776
+        $.getJSON('http://cfd-webapi.chinacloudapp.cn/api/quote/' + secId + '/tick', function (result) {
+            console.log(result);
+            data = new Array();
+            $.each(result, function (i, tick) {
+                var t = new Date(tick.time);
+                //t.setSeconds(0);
+                //t.setMilliseconds(0);
+                data.push([t.getTime(), tick.p]);
+            });
+            Highcharts.setOptions({
+                global : {
+                    useUTC : false
+                },
+                lang: {
+                    rangeSelectorFrom:"日期:",
+                    rangeSelectorTo:"至",
+                    rangeSelectorZoom:"范围",
+                    loading:'加载中...',
+                shortMonths:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+                 weekdays:['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+                },
+                colors: ['#d8d8d8', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'] 
+    });
+
+
+        $('#container1').highcharts('StockChart', {
+           
+           title: {
+               text: ''
+           },
+           scrollbar: {
+                enabled: false
+           },
+           navigator: {
+                enabled: false
+           },
+           subtitle: {
+               text: ''
+           },
+
+           // credits:{//右下角的文本  
+           //  enabled: true,  
+           //  position: {  
+           //      align: 'right',  
+           //      x: -10,  
+           //      y: -10  
+           //  },  
+           //  href: "",
+           //  style: {  
+           //      color:'blue'  
+           //  },  
+           //  text: "" 
+           //  },
+           chart: {
+            backgroundColor: '#1c5fd1',
+            //borderColor: "#4572A7",
+            //plotBorderColor: "#C0C0C0",
+            //selectionMarkerFill: "rgba(69114,167,0.25)"
+           },
+           plotOptions:{
+            arearange: {
+            //area: {
+                allowPointSelect: false,
+                animation: true,
+                animationLimit:100,
+                //上边线
+                color:'#d8d8d8',
+                compare: null,
+                connectNulls:null,
+                cropThreshold: 300,
+                cursor: "''",
+                dashStyle: "Solid",
+                // dataGrouping: : {
+                //     approximation:
+                //     dateTimeLabelFormats:
+                //     enabled: true,
+                //     forced: false,
+                //     groupPixelWidth: 2,
+                //     smoothed: false,
+                //     units:
+                //     },
+                dataLabels: {
+                    align: "center",
+                    allowOverlap: false,
+                    borderColor: null,
+                    borderRadius: 0,
+                    borderWidth: 0,
+                    color: null,
+                    crop: true,
+                    defer: true,
+                    enabled: false,
+                    format: "{y}",
+                    formatter: null,
+                    inside: null,
+                    overflow: "justify",
+                    padding: 5,
+                    rotation: 0,
+                    shadow: false,
+                    shape: "square",
+                    style: {"color": "contrast", "fontSize": "11px", "fontWeight": "bold","textShadow": "0 0 6px contrast, 0 0 3px contrast" },
+                    useHTML: false,
+                    verticalAlign: null,
+                    x: 0,
+                    y: -6,
+                    zIndex: 6,
+                },
+                enableMouseTracking: true,
+                //填充色
+                fillColor: null,
+                fillOpacity: .75,
+                gapSize: 0,
+                getExtremesFromAll: false,
+                //keys: undefined,
+                legendIndex: 0,
+                lineColor: null,
+                lineWidth: 1,
+                linecap: "round",
+                //linkedTo:
+                
+                pointInterval: 1,
+                //pointIntervalUnit: undefined,
+                pointPlacement: null,
+                pointRange: 0,
+                pointStart: 0,
+                selected: false,
+                shadow: false,
+                showCheckbox: false,
+                showInLegend: true,
+                softThreshold: false,
+                stacking: null,
+                //states: {…}
+                step: "false",
+                stickyTracking: true,
+                threshold: 0,
+                //tooltip: {…}
+                trackByArea: false,
+                turboThreshold: 1000,
+                visible: true,
+                zoneAxis: "y",
+                zones:  [{
+                color: null,
+                //dashStyle: undefined,
+                fillColor: "#000",
+                value: 1,
+                }]
+            }
+            },
+           // xAxis: {
+           //     breaks: [{
+           //         repeat: 24 * 36e5
+           //     }]
+           // },
+           rangeSelector : {
+               buttons : [{
+                   type : 'hour',
+                   count : 1,
+                   text : '1h'
+               }, {
+                   type : 'day',
+                   count : 1,
+                   text : '1D'
+               }],
+               enabled: true,
+               selected : 1,
+               inputEnabled : false
+           },
+           series : [{
+               name : 'AAPL',
+               type: 'area',
+               data : data,
+               gapSize: 1,
+               tooltip: {
+                   valueDecimals: 2
+               },
+               fillColor : {
+                   linearGradient : {
+                       x1: 0,
+                       y1: 0,
+                       x2: 0,
+                       y2: 0.9 //渐变区域阀值
+                   },
+                   stops : [
+                           // [0, "#123b80"],
+                           // [1, "#1c5fd1"]
+                        [0, Highcharts.getOptions().colors[0]],
+                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                       
+                   ]
+               },
+               yAxis: 0,
+               threshold: null
+           }]
+       });
+     // Create the chart
+     // $('#container2').highcharts('StockChart', {
+     //     rangeSelector : {
+     //           buttons : [{
+     //               type : 'hour',
+     //               count : 1,
+     //               text : '1h'
+     //           }, {
+     //               type : 'day',
+     //               count : 1,
+     //               text : '1D'
+     //           }, {
+     //               type : 'all',
+     //               count : 1,
+     //               text : 'All'
+     //           }],
+     //           selected : 1,
+     //           inputEnabled : false
+     //       },
+     //       scrollbar: {
+     //        enabled: false
+     //       },
+     //        navigator: {
+     //        enabled: false
+     //       },
+     //     title: {
+     //         text: ''
+     //     },
+     //     series: [{
+     //         name: 'AAPL Stock Price',
+     //         data: data,
+     //         type: 'spline',
+     //         tooltip: {
+     //             valueDecimals: 2
+     //         }
+     //         }]
+     //     });
+
+        });
+    }
+
+</script>
+</body>
+</html>

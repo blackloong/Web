@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+   
+
+    <link rel="stylesheet" href="./prd/yo/usage/export/yo-flex.css" />
+
+    <style type="text/css">
+        
+
+    .drag-handle {
+        margin-right: 10px;
+        font: bold 20px Sans-Serif;
+    }
+    </style>
+</head>
+<body>
+<div class="yo-flex">
+    <header class="yo-header m-header">
+        <h2 class="title">我要还款</h2>
+        <a href="index.html"  class="regret yo-ico" >&#xf07d;</a>
+         <a href="bindCard.html"  class="affirm bindCard yo-ico" >银行卡</a>
+    </header>
+    <div class="flex" id="tab-content" >
+    </div>
+</div>
+<script type="text/javascript" src="./dist/jquery.min.js"></script>
+<script type="text/javascript" src="./dist/jQuery.md5.js" ></script>
+<script type="text/javascript">
+Date.prototype.Format = function(fmt)   
+{ //author: meizz   
+  var o = {   
+    "M+" : this.getMonth()+1,                 //月份   
+    "d+" : this.getDate(),                    //日   
+    "h+" : this.getHours(),                   //小时   
+    "m+" : this.getMinutes(),                 //分   
+    "s+" : this.getSeconds(),                 //秒   
+    "q+" : Math.floor((this.getMonth()+3)/3), //季度   
+    "S"  : this.getMilliseconds()             //毫秒   
+  };
+  if(fmt!==null)
+  {   
+  if(/(y+)/.test(fmt))   
+    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
+  for(var k in o)   
+    if(new RegExp("("+ k +")").test(fmt))   
+  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length))); 
+  }  
+  return fmt;   
+};
+$(function(){
+var clickall=true;
+ //全选   
+ $(".checkall").click(function () {
+     if(event.target.type!="checkbox"){
+        $(this).find(":checkbox").click(function(){
+            event.stopPropagation();
+        })
+    }
+     if(clickall)
+     {
+        $("#handle-1 :checkbox").prop("checked", true);   
+        clickall=false;
+     }
+     else
+     {
+         $("#handle-1 :checkbox").prop("checked", false);   
+         clickall=true;
+     }
+     
+ });   
+
+ //获取选中选项的值 
+ $("#getValue").click(function(){ 
+     var valArr = new Array; 
+     $("#handle-1 :checkbox").each(function(i){ 
+         if ($(this).prop('checked') ==true) {
+            valArr[i] = $(this).val(); 
+            }
+     }); 
+      console.log(valArr);
+ }); 
+
+
+//  var email = 'email'; 
+// var pwd = 'password'; 
+
+// var postForm = document.createElement("form");//表单对象 
+// postForm.method="post" ; 
+// postForm.action = 'login.jspx' ; 
+
+// var emailInput = document.createElement("input") ; //email input 
+// emailInput.setAttribute("name", "email") ; 
+// emailInput.setAttribute("value", email); 
+// postForm.appendChild(emailInput) ; 
+// var pwdInput = document.createElement("input");// password input 
+// pwdInput.setAttribute("name","password"); 
+// pwdInput.setAttribute("value",pwd); 
+// postForm.appendChild(pwdInput); 
+
+// document.body.appendChild(postForm) ; 
+// postForm.submit() ; 
+// document.body.removeChild(postForm) ;
+});
+</script>
+<script type="text/javascript" src="./dist/myhaikTab.js"></script>
+</body>
+</html>

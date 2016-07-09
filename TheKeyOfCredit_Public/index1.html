@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品 </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+    <link href="./style/h5base.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="./prd/yo/usage/export/yo-flex.css" />
+
+    <style type="text/css">
+        #tab-content{ height: 85%; background-color: #fff; }
+    </style>
+</head>
+<body>
+<div class="yo-flex">
+    <header class="yo-header m-header ">
+         <h2>乐牙静安店</h2>
+         <span class="regret yo-ico">&#xf07d;</span>
+          <a href="detailslider.html" class="regret yo-ico" >&#xf07d;</a>
+        <!--  <span class="affirm yo-ico">&#xf07d;</span> -->
+    </header>
+     <div style="width:100%;height:5px;margin:0px auto;padding:0px;background-color:#F7EFF7;overflow:hidden;"></div>
+     <section class="m-list">
+    <ul class="yo-list" >
+            <li class="item  Grid " > 
+                    <div class="Grid-cell u-full1 "><span >联系人</span> <span style="font-size: .16rem;" class="ContactName"></span> </div> 
+                    
+            </li>
+            <li class="item  Grid " > 
+                    <div class="Grid-cell u-full1 "><span>联系电话</span> <span style="font-size: .16rem;" class="ContactPhone">巴厘岛七日游 上海出发</span> </div> 
+                    
+            </li>
+            <li class="item  Grid " > 
+                    <div class="Grid-cell u-full1 "><span class="">地址</span> <span style="font-size: .16rem;" class="LiaisonAddress"></span> </div> 
+                    
+            </li>
+    </ul>
+ </section>
+    <div class="flex">
+    <div id="tab-content">
+        <div class="slider" >
+<div class="slider-inner" >
+<div class="slider-item " >
+
+<section class="m-list scroll-in" >
+
+<ul class="yo-list" >
+  
+<li class="item item-active Grid" >
+                 
+                    <div class="mark">
+                        <img style=" width:130px; height:130px;" src="http://pic5.duowan.com/psp/1005/138297782616/138298560095.jpg" alt="美女"  />
+                    </div>
+                    <div class="flex"> 
+          <div class="ribbon">
+  <a href="#">● 推荐 ●</a>
+</div>
+                          <p class=" text">普罗旺斯4 天 2晚</p>
+                        <p class="pu">双飞 四星级酒店 周一出发</p>
+                         <p class="pu1">来源● 康尔办公广告</p>
+                          <p class="detail ">月供:¥276*36期</p>
+                        <p class="pu1">售价:¥4880</p>
+                    </div>
+                   
+               </li>
+
+<li class="item item-active Grid" >
+                    <div class="mark">
+                        <img style=" width:130px; height:130px;" src="http://pic5.duowan.com/psp/1005/138297782616/138298560095.jpg" alt="美女"  />
+                    </div>
+                    <div class="flex">
+                          <p class=" text">普罗旺斯 4 天 2 晚</p>
+                        <p class="pu">双飞 四星级酒店 周一出发</p>
+                         <p class="pu1">来源● 康尔办公广告</p>
+                          <p class="detail ">月供:¥276*36期</p>
+                        <p class="pu1">售价:¥4880</p>
+                    </div>
+                   
+               </li>
+
+<li class="item item-active Grid" >
+
+                    <div class="mark">
+                        <img style=" width:130px; height:130px;" src="http://pic5.duowan.com/psp/1005/138297782616/138298560095.jpg" alt="美女"  />
+                    </div>
+                    <div class="flex">
+                          <p class=" text">普罗旺斯 4 天 2 晚</p>
+                        <p class="pu">双飞 四星级酒店 周一出发</p>
+                         <p class="pu1">来源● 康尔办公广告</p>
+                          <p class="detail ">月供:¥276*36期</p>
+                        <p class="pu1">售价:¥4880</p>
+                    </div>
+                   
+               </li>
+
+
+</ul>
+</section>
+</div>
+</div></div>
+    </div>
+     </div>
+</div>
+<script type="text/javascript" src="./dist/jquery.min.js"></script>
+<script src="http://localhost:3000/webpack-dev-server.js"></script>
+    <script type="text/javascript">
+  $(function(){
+      var Goods = localStorage.getItem("@MyGoods");
+      var MyGoodsdetail =JSON.parse(Goods.substr(1, Goods.length));
+      //document.title=MyGoodsdetail.GoodsName;
+      
+       $('.yo-header h2').html(MyGoodsdetail.MerchantName);
+        console.log(JSON.parse(Goods.substr(1, Goods.length)));
+        $.ajax({
+            //url : 'http://121.40.185.130:8072/api/CreditKey/getMerchantByID',
+            url : 'http://120.55.161.84:8064/api/CreditKey/getMerchantByID',
+            data : {MerchantID: MyGoodsdetail.MerchantID},
+            type:'POST',
+            dataType : 'json',
+            async : false,
+            success : function(data) {
+                console.log(data);
+              $('.ContactName').html(data.Data.ContactName);
+              $('.ContactPhone').html(data.Data.ContactPhone);
+              $('.LiaisonAddress').html(data.Data.LiaisonAddress);
+            }.bind(this),
+            error : function(XMLHttpRequest,textStatus, errorThrown) {}
+        });
+       });
+        </script>
+</body>
+</html>

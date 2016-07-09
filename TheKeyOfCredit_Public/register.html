@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="./prd/yo/usage/export/yo-flex.css" />
+    <link rel="stylesheet" href="./prd/yo/usage/export/yo-checked.css" />
+    <script type="text/javascript" src="./dist/jquery.min.js"></script>
+       <script type="text/javascript" src="./dist/jQuery.md5.js" ></script>
+     <script type="text/javascript" src="./dist/util.js"></script>
+
+</head>
+<body>
+<div class="yo-flex content">
+    <header class="yo-header m-header">
+        <p class="title">注册</p>
+        <a href="index.html"  class="regret yo-ico" >&#xf07d;返回</a>
+        <!-- <span class="affirm login"   >登录</span> -->
+    </header>
+
+    <div class="flex F7EFF7">
+    <!-- 'handle' option -->
+         <section class="m-list">
+            <div class="yo-list yo-list-group">
+                <h2 class="label1">手机绑定交易更安全，查询更便捷</h2>
+                 <!-- <h2 class="openidshow"></h2> -->
+                <div class="item2">
+                    <input type="text" class="flex yo-input1" placeholder="请输入手机号" />
+                </div>
+                <div class="item2 cb">
+                  <input type="text" class="flex yo-input2" placeholder="请输入验证码" /><div class="fl la_bg tc"><label for="name" id="btnSendCode" class="lable" >发送验证码</label></div>  
+                </div>
+              <div class="item2">
+                    <input type="text" class="flex yo-input psw1" placeholder="请输入密码" />
+                </div>
+                <div class="item2">
+                    <input type="text" class="flex yo-input psw2" placeholder="请再次输入密码" />
+                </div>
+                <div class="item agreement">
+                   <div class="checkboxone">
+                    <input type="checkbox" value="1" id="checkboxFiveInput" name="chkItem" />
+                    <label for="checkboxFiveInput"></label>
+                  </div>
+                   <div class="last col c1  Grid-cell u-full2  ">
+                    <span >同意 <span class="xy1">《信用钥匙APP服务协议》 </span>,<span class="xy2">《锯宝盆服务协议》</span></span>
+                   
+                </div>
+                </div>
+               
+                   <h4 class="label1">  已注册用户请直接登录</h4>
+             
+            </div>
+        </section>
+<section  >
+            <div style="padding: 0.08rem 0 0.08rem 0; text-align: center"> <span style=" color:red;" class="errmsg" ></span>   <div>
+          </section>
+
+        <section class="m-list">
+            <ul class="yo-list   yo-list-group">
+            <li class="item2 tc  tc1" ><input type="button" value="下一步" class="yo-btn yo-btn-f   registration" ></li>
+                
+           </ul>
+        </section>
+    </div>
+</div>
+
+ <div class="yo-flex opinion" id="opinion">
+    <header class="yo-header m-header">
+        <p class="title">登录</p>
+         <span class="affirm register"   >注册</span>
+    </header>
+
+    <div class="flex F7EFF7">
+    <!-- 'handle' option -->
+         <section class="m-list">
+            <div class="yo-list yo-list-group">
+                <h2 class="label1">登录交易更安全，查询更便捷</h2>
+                <div class="item2">
+                    <input type="text" class="flex yo-input yo-mobi" placeholder="请输入手机号" />
+                </div>
+              
+              <div class="item2">
+                    <input type="text" class="flex yo-input password" placeholder="请输入密码" />
+                </div>
+            </div>
+        </section>
+<section  >
+            <div style="padding: 0.08rem 0 0.08rem 0; text-align: center"> <span style=" color:red;" class="errmsg1" ></span>   <div>
+          </section>
+        <section class="m-list">
+            <ul class="yo-list   yo-list-group">
+                <li class="item2 tc  tc1" ><input type="button" value="登录" class="yo-btn yo-btn-f logintion" ></li>
+                
+           </ul>
+        </section>
+    </div>
+</div>
+
+<div class="yo-flex agreementdiv" >
+    <header class="yo-header m-header">
+        <p class="title">注册协议</p>
+       <span class="regret yo-ico agreementregret"   >&#xf07d;</span>
+    </header>
+
+    <div class="flex F7EFF7">
+    <!-- 'handle' option -->
+         <section class="m-list">
+            <div class="yo-list yo-list-group">
+                <p></p>
+            </div>
+        </section>
+<section  >
+            <div style="padding: 0.08rem 0 0.08rem 0; text-align: center"> <span style=" color:red;" class="errmsg1" ></span>   <div>
+          </section>
+        <section class="m-footlayer" >
+         <!--    <a href="#" id="top"> 返 回 顶 部 </a> -->
+            <ul class="yo-tabfoot" >
+                <li class="item " >
+                    <input type="button" value="同意 并阅读下一份协议" class="yo-btn yo-btn-e1" id="selectAll" ><span > </span></li>
+     <li class="item " ><input type="button" value="不同意" class="yo-btn yo-btn-e2 " id="getValue" ></li>
+ </ul></section>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+ $(function(){
+$(".opinion").hide();
+
+var InterValObj; //timer变量，控制时间
+var count = 60; //间隔函数，1秒执行
+var curCount;//当前剩余秒数
+var code = ""; //验证码
+var codeLength = 6;//验证码长度
+var clickf = 1;
+$(".yo-input1").val(localStorage.getItem('Mobile'));
+
+
+ $("#btnSendCode").click(function(){
+  console.log(clickf);
+  localStorage.setItem('Mobile',$(".yo-input1").val());
+  if( $(".yo-input1").val() == '' ){
+            $(".errmsg").html('请输入手机号码！');
+            return false;
+        }
+  if(clickf===1){
+            clickf=2;
+            curCount = count;
+            $.ajax({
+                        //url :'http://keyofcredit.eifm.net/interface/interfaceorderyzm', 
+                        url :'http://Keyofcredit.eifm.net/interface/interfaceyzm',
+                        type: "POST",
+                        data :{'mobile':$(".yo-input1").val() } ,
+                        dataType : 'json',
+                        async : true,
+                        success : function(data) {
+                            console.log(data);
+                            if(data.code=='00')
+                            {
+                                $("#btnSendCode").addClass('F7EFF7');
+                                $("#btnSendCode").val("请在" + curCount + "秒内输入验证码");
+                                InterValObj = window.setInterval(SetRemainTime, 1000); 
+                                //启动计时器，1秒执行一次 
+                            }else{
+                                $(".errmsg").html(data.msg); 
+                            }
+                        }.bind(this),
+                        error : function(XMLHttpRequest,textStatus, errorThrown) {}
+                    }); 
+            }
+   }); 
+
+$(".psw2").on('input',function(e){  
+    if($(this).val().length>3){
+            if($(this).val()==$(".psw1").val()) {
+                $(".errmsg").html('');
+                $(".registration").removeClass('yo-btn-f');
+                $(".registration").addClass('yo-btn-f2');
+            } else {
+                $(".errmsg").html('两次密码不一致！');
+                $(this).focus();
+            }
+    }
+});
+
+$(".registration").click(function(){
+    if(clickf==2)
+    {
+        if( $(".yo-input1").val() == '' ){
+            $(".errmsg").html('请输入手机号码！');
+            return false;
+        }
+        if( $(".yo-input2").val() == '' ){
+            $(".errmsg").html('请输入验证码！');
+            return false;
+        }
+        if($(".psw1").val()==''){
+            $(".errmsg").html('请输入密码！');
+            return false;
+        }
+        if($(".psw1").val()!=$(".psw2").val()){
+            $(".errmsg").html('两次密码不一致！');
+            return false;
+        }
+        if(!$("#checkboxFiveInput").prop('checked')){
+            $(".errmsg").html('请同意并阅读协议！');
+            return false;
+        }
+        $.ajax({
+             url :'http://Keyofcredit.eifm.net/interface/wxregistration',
+             type: "POST",
+             data :{'mobile':$(".yo-input1").val(),'pwd':$(".psw1").val(),
+                        'sours':$(".yo-input2").val(),'wx':localStorage.getItem('openid') },
+             dataType : 'json',
+             async : true,
+             success : function(data) {
+                console.log(data);
+                if(data.code=='00')
+                {
+                    //$(".errmsg").html(data.msg);
+                    if(urlParse("target")==""){
+                        window.location.replace('index.html'); 
+                    }else{
+                        window.location.replace(urlParse('target')) ;
+                    }
+                }else{
+                    $(".errmsg").html(data.msg); 
+                }
+            },
+            error : function(XMLHttpRequest,textStatus, errorThrown) {}
+         }); 
+    }else{
+        $(".errmsg").html('请发送验证码！');
+    }
+});  
+
+$(".logintion").click(function(){
+    
+        if( $(".yo-mobi").val() == '' ){
+            $(".errmsg1").html('请输入手机号码！');
+            return false;
+        }
+        
+        if($(".password").val()==''){
+            $(".errmsg1").html('请输入密码！');
+            return false;
+        }
+        
+        $.ajax({
+            url :'http://Keyofcredit.eifm.net/interface/wxuserlogin',
+            dataType : 'json',
+            data :{'mobile':$(".yo-mobi").val(),
+                   'password':$(".password").val(),
+                   'wx':localStorage.getItem('openid') },
+            async : true,
+            success : function(data) {
+               console.log(data);
+               if(data.code=='002')
+                  {
+                 localStorage.setItem('Mobile',$(".yo-mobi").val());
+                //window.location.replace(urlParse('target')); 
+                 }else{
+                     $(".errmsg1").html(data.msg); 
+                 }
+                 //{"uid":3,"code":"002","msg":"登陆成功"}
+            },
+            error : function(XMLHttpRequest,textStatus, errorThrown) {}
+            }); 
+   
+}); 
+
+$(".password").on('input',function(e){  
+     if($(this).val().length>6){
+                $(".logintion").removeClass('yo-btn-f');
+                $(".logintion").addClass('yo-btn-f2');
+            }
+});
+
+
+        //timer处理函数
+function SetRemainTime() {
+           //console.log(curCount);
+            if (curCount == 0) {                
+                window.clearInterval(InterValObj);//停止计时器
+                $("#btnSendCode").removeAttr("disabled");//启用按钮
+                $("#btnSendCode").html("重新发送");
+                $("#btnSendCode").removeClass('F7EFF7')
+                clickf =1;
+                
+            }
+            else {
+                curCount--;
+                $("#btnSendCode").html("重新发送(" + curCount + ")");
+            }
+        }
+
+     $(".login").click(function(){ 
+         $(".opinion").show();
+        $(".content").hide();
+       });
+
+
+
+    $(".register").click(function(){
+       $(".content").show();
+       $(".opinion").hide();
+    });
+    var agreementck=1;
+    $(".agreement").click(function(){
+       $(".content").hide();
+       $(".agreementdiv").show();
+
+       $.ajax({
+            url :'http://keyofcredit.eifm.net/yxjr/interface/helpList?type=4',
+                        dataType : 'json',
+                        async : true,
+                        success : function(data) {
+                            console.log(data);
+                            //console.log(data.date[0].title);
+                            //console.log(data.date[1].title);
+                            //console.log(data.date[2].title);
+                            //$(".label2").html(data.date[0].title)
+                            $(".yo-list-group  p").html(data.date[0].content);
+                            agreementck=1;
+                        },
+                        error : function(XMLHttpRequest,textStatus, errorThrown) {}
+                    }); 
+       
+    });
+    $(".agreementregret").click(function(){
+       $(".content").show();
+       $(".agreementdiv").hide();
+        $("[name = chkItem]:checkbox").prop("checked", false);
+         
+    });
+
+    //同意并
+    $("#selectAll").click(function () {
+        if(agreementck===1){
+        agreementck=2;
+        $(this).val('同意');
+        $('html,body').animate({scrollTop: '0px'}, 1000);
+        $.ajax({
+            url :' http://keyofcredit.eifm.net/yxjr/interface/helpList?type=4',
+                        dataType : 'json',
+                        async : true,
+                        success : function(data) {
+                            console.log(data);
+                            //console.log(data.date[0].title);
+                            //console.log(data.date[1].title);
+                            //console.log(data.date[2].title);
+                            
+                            //$(".label2").html(data.date[2].title)
+                            $(".yo-list-group  p").html(data.date[2].content);
+
+                        },
+                        error : function(XMLHttpRequest,textStatus, errorThrown) {}
+                    });
+    }else{
+         $(".agreementdiv").hide();
+         $(".content").show();
+         $("[name = chkItem]:checkbox").prop("checked", true);
+    }
+    });   
+
+ //不同意
+    $("#getValue").click(function(){ 
+         $(".content").show();
+         $(".agreementdiv").hide();
+         $("[name = chkItem]:checkbox").prop("checked", false);
+     });
+
+ });
+
+   $('#top').click(function(){
+    $('html,body').animate({scrollTop: '0px'}, 1000);return false;
+    });
+    </script>
+</body>
+</html>

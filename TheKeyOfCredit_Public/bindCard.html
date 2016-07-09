@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="./prd/yo/usage/export/yo-flex.css" />
+    <link rel="stylesheet" href="./prd/yo/usage/export/yo-checked.css" />
+    <script type="text/javascript" src="./dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./dist/jQuery.md5.js" ></script>
+ <script type="text/javascript" src="./dist/util.js"></script>
+</head>
+<body>
+<div class="yo-flex content">
+     <header class="yo-header m-header">
+        <p class="title">我的银行卡</p>
+         <a href="myhaikuan.html"  class="regret yo-ico" >&#xf07d;</a>
+         <span class="affirm register"   >绑定</span>
+    </header>
+
+    <div class="flex F7EFF7">
+    <!-- 'handle' option -->
+         <section class="m-list">
+         
+           <div class="activity1">
+      <div class="activity">
+
+       <!-- <div class="activityheard1 yo-list" >
+          <div  class="item5 item-active">
+                    <div class="markimg">
+                        <img src="./images/123.png" alt="美女">
+                    </div>
+                    <div class="flex">
+                        <p class="bankname">中国银行</p>
+                        <p class="banktype">储蓄卡</p>
+                    </div>
+                </div>
+          
+          <div class="card">
+             <div>**** **** **** **** 780</div> 
+          </div>
+        </div> -->
+
+     <!--   <div class="activityheard2 yo-list" >
+           <div  class="item5 item-active">
+                    <div class="markimg">
+                        <img src="./images/123.png" alt="美女">
+                    </div>
+                    <div class="flex">
+                        <p class="bankname">中国银行</p>
+                        <p class="banktype">储蓄卡</p>
+                    </div>
+                </div>
+          
+          <div class="card">
+             <div>**** **** **** **** 780</div> 
+          </div>
+      </div>
+
+      <div class="activityheard3 yo-list" >
+          <div  class="item5 item-active">
+                    <div class="markimg">
+                        <img src="./images/123.png" alt="美女">
+                    </div>
+                    <div class="flex">
+                        <p class="bankname">中国银行</p>
+                        <p class="banktype">储蓄卡</p>
+                    </div>
+                </div>
+          
+          <div class="card">
+             <div>**** **** **** **** 780</div> 
+          </div>
+      </div>
+      <div class="activityheard4 yo-list" >
+           <div  class="item5 item-active">
+                    <div class="markimg">
+                        <img src="./images/123.png" alt="美女">
+                    </div>
+                    <div class="flex">
+                        <p class="bankname">中国银行</p>
+                        <p class="banktype">储蓄卡</p>
+                    </div>
+                </div>
+          
+          <div class="card">
+             <div>**** **** **** **** 780</div> 
+          </div>
+      </div> -->
+    </div >
+     </div >
+        </section>
+    </div>
+</div>
+
+
+
+ <div class="yo-flex opinion" id="opinion">
+<header class="yo-header m-header">
+        <p class="title">添加银行卡</p>
+        <span   class="regret yo-ico cardlist" >&#xf07d;返回</span>
+    </header>
+
+    <div class="flex F7EFF7">
+         <section class="m-list">
+            <div class="yo-list yo-list-group">
+                <h2 class="label1">请绑定持卡人本人的银行卡</h2>
+             
+                <div class="item2">
+                    <input type="text" class="flex yo-input ckr" placeholder="持卡人：" />
+                </div>
+                <div class="item2">
+                    <input type="text" class="flex yo-input cardnum" placeholder="卡号：" />
+                </div>
+                <div class="item2">
+                  <select  id="ownership_select" name="ownership" class="flex yo-input  form-control1 ">
+                      <option value="">请选择银行卡卡类型：</option>
+                      <option value="1">中国工商银行 储蓄卡</option>
+                      <option value="2">中国工商银行 储蓄卡</option>
+                      <option value="3">中国工商银行 储蓄卡</option>
+                      <option value="4">中国工商银行 储蓄卡</option>
+                      <option value="5">中国工商银行 储蓄卡</option>
+                      <option value="6">中国工商银行 储蓄卡</option>
+                   </select>
+                </div>
+                <div class="item2">
+                    <input type="text" class="flex yo-input yo-input1" placeholder="手机号：" />
+                </div>
+               <!--  <div class="item2 cb">
+                  <input type="text" class="flex yo-input2" placeholder="请输入验证码" /><div class="fl la_bg tc"><label for="name" id="btnSendCode" class="lable" >发送验证码</label></div>  
+                </div> -->
+              
+                <div class="item">
+                   <div class="checkboxone">
+                    <input type="checkbox" value="1" id="checkboxFiveInput" name="chkItem" />
+                    <label for="checkboxFiveInput"></label>
+                  </div>
+                   <div class="last col c1  Grid-cell u-full2  ">
+                    <span class="agreement">同意用户协议 </span>
+                   
+                </div>
+                </div>
+             
+            </div>
+        </section>
+<section  >
+            <div style="padding: 0.08rem 0 0.08rem 0; text-align: center"> <span style=" color:red;" class="errmsg" ></span>   <div>
+          </section>
+
+        <section class="m-list">
+            <ul class="yo-list   yo-list-group">
+            <li class="item2 tc  tc1" ><input type="button" value="下一步" class="yo-btn yo-btn-f   registration" ></li>
+                
+           </ul>
+        </section>
+    </div>
+
+   
+</div>
+
+<div class="yo-flex agreementdiv" >
+    <header class="yo-header m-header">
+        <p class="title">注册协议</p>
+       <span class="regret yo-ico agreementregret" >&#xf07d;</span>
+    </header>
+
+    <div class="flex F7EFF7">
+         <section class="m-list">
+            <div class="yo-list yo-list-group">
+                <p></p>
+            </div>
+        </section>
+<section  >
+            <div style="padding: 0.08rem 0 0.08rem 0; text-align: center"> <span style=" color:red;" class="errmsg1" ></span>   <div>
+          </section>
+        <section class="m-footlayer" >
+       
+            <ul class="yo-tabfoot" >
+                <li class="item " >
+                    <input type="button" value="同意 并阅读下一份协议" class="yo-btn yo-btn-e1" id="selectAll" ><span > </span></li>
+     <li class="item " ><input type="button" value="不同意" class="yo-btn yo-btn-e2 " id="getValue" ></li>
+ </ul></section>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+ $(function(){
+$(".opinion").hide();
+
+var InterValObj; //timer变量，控制时间
+var count = 60; //间隔函数，1秒执行
+var curCount;//当前剩余秒数
+var code = ""; //验证码
+var codeLength = 6;//验证码长度
+var clickf = 1;
+var Key = "KoeIy12Ay~oEuN3" + new Date().Format("yyyyMMdd");
+
+function plusXing (str,frontLen,endLen) { 
+    var len = str.length-frontLen-endLen;
+    var xing = '';
+    for (var i=0;i<len;i++) {
+        xing+='*';
+    }
+    return str.substr(0,frontLen)+xing+str.substr(str.length-endLen);
+}
+
+$.ajax({
+                  url : 'http://121.40.185.130:8072/api/CreditKey/GetBankCardInfo',
+                  //url : 'http://120.55.161.84:8064/api/CreditKey/userCreditCapitalHis',
+                  data : {'checkMsg':$.md5(Key),mobile:localStorage.getItem('Mobile')},
+                  type:'POST',
+                  dataType : 'json',
+                  async : false,
+                  success : function(data) {
+                    console.log(data);
+                    var cardnum= "";
+                    var cardhtml="";
+                    if(data.Data!=null){
+                    for (var i = 0;i <= data.Data.UserBanks.length - 1; i++) {
+                      cardnum=data.Data.UserBanks[i].ContractBankAccount
+                      cardnum =plusXing(data.Data.UserBanks[i].ContractBankAccount,0,3);
+                      cardhtml += '<div class="activityheard'+i+' yo-list" ><div  class="item5 item-active"><div class="markimg"><img src="./images/123.png" alt="美女"></div><div class="flex"><p class="bankname">'+data.Data.UserBanks[i].ContractBankName+'</p><p class="banktype">储蓄卡</p></div></div><div class="card"><div>'+cardnum+'</div></div></div>';
+                    };
+                    $(".activity").html(cardhtml);
+                    }
+                  },
+                  error : function(XMLHttpRequest,textStatus, errorThrown) {}
+                  });
+
+
+
+
+ // $("#btnSendCode").click(function(){
+ //  console.log(clickf);
+ //  if( $(".yo-input1").val() == '' ){
+ //            $(".errmsg").html('请输入手机号码！');
+ //            return false;
+ //        }
+ //  if(clickf===1){
+ //            clickf=2;
+ //            curCount = count;
+ //            $.ajax({
+ //                        //url :'http://keyofcredit.eifm.net/interface/interfaceorderyzm', 
+ //                        url :'http://Keyofcredit.eifm.net/interface/interfaceyzm',
+ //                        type: "POST",
+ //                        data :{'mobile':$(".yo-input1").val() } ,
+ //                        dataType : 'json',
+ //                        async : true,
+ //                        success : function(data) {
+ //                            console.log(data);
+ //                            if(data.code=='00')
+ //                            {
+ //                                $("#btnSendCode").addClass('F7EFF7');
+ //                                $("#btnSendCode").val("请在" + curCount + "秒内输入验证码");
+ //                                InterValObj = window.setInterval(SetRemainTime, 1000); 
+ //                                //启动计时器，1秒执行一次 
+ //                            }else{
+ //                                $(".errmsg").html(data.msg); 
+ //                            }
+ //                        }.bind(this),
+ //                        error : function(XMLHttpRequest,textStatus, errorThrown) {}
+ //                    }); 
+ //            }
+ //   }); 
+
+
+
+$(".registration").click(function(){
+
+        if($(".ckr").val()==''){
+            $(".errmsg").html('请输入持卡人！');
+            return false;
+        }
+        if($(".cardnum").val()==''){
+            $(".errmsg").html('请输入卡号！');
+            return false;
+        }
+        if($(".form-control1").val()==''){
+            $(".errmsg").html('请选择开户行！');
+            return false;
+        }
+        if(!$("#checkboxFiveInput").prop('checked')){
+            $(".errmsg").html('请同意并阅读协议！');
+            return false;
+        }
+        
+        console.log({'checkMsg':$.md5(Key),'applyCode':localStorage.getItem('applyCode'),
+             'mobile':$(".yo-input1").val(),
+             'ContractBankUserName':$(".ckr").val(),
+             'ContractBankName':$(".form-control1").val(),
+             'ContractBankAccount':$(".cardnum").val() });
+        $.ajax({
+             url :'http://121.40.185.130:8072/api/CreditKey/BindCapitalBankCard',
+             type: "POST",
+             data :{'checkMsg':$.md5(Key),'applyCode':localStorage.getItem('applyCode'),
+             'mobile':$(".yo-input1").val(),
+             'ContractBankUserName':$(".ckr").val(),
+             'ContractBankName':$(".form-control1").val(),
+             'ContractBankAccount':$(".cardnum").val() },
+             dataType : 'json',
+             async : true,
+             success : function(data) {
+                console.log(data);
+                if(data.code=='00')
+                {
+                    // //$(".errmsg").html(data.msg);
+                    // if(urlParse("target")==""){
+                    //     window.location.replace('index.html'); 
+                    // }else{
+                    //     window.location.replace(urlParse('target')) ;
+                    // }
+                    $(".errmsg").html(data.Message); 
+                }else{
+                    $(".errmsg").html(data.Message); 
+                }
+            },
+            error : function(XMLHttpRequest,textStatus, errorThrown) {}
+         }); 
+});  
+
+
+
+        //timer处理函数
+// function SetRemainTime() {
+//            //console.log(curCount);
+//             if (curCount == 0) {                
+//                 window.clearInterval(InterValObj);//停止计时器
+//                 $("#btnSendCode").removeAttr("disabled");//启用按钮
+//                 $("#btnSendCode").html("重新发送");
+//                 $("#btnSendCode").removeClass('F7EFF7')
+//                 clickf =1;
+//             }
+//             else {
+//                 curCount--;
+//                 $("#btnSendCode").html("重新发送(" + curCount + ")");
+//             }
+//         }
+
+     $(".register").click(function(){ 
+         $(".opinion").show();
+        $(".content").hide();
+       });
+
+
+
+    $(".cardlist").click(function(){
+       $(".content").show();
+       $(".opinion").hide();
+    });
+    var agreementck=1;
+    $(".agreement").click(function(){
+       $(".opinion").hide();
+       $(".agreementdiv").show();
+
+       $.ajax({
+            url :' http://keyofcredit.eifm.net/yxjr/interface/helpList?type=4',
+                        dataType : 'json',
+                        async : true,
+                        success : function(data) {
+                            console.log(data);
+                            $(".yo-list-group  p").html(data.date[0].content);
+                            agreementck=1;
+                        },
+                        error : function(XMLHttpRequest,textStatus, errorThrown) {}
+                    }); 
+       
+    });
+
+    //同意并
+    $("#selectAll").click(function () {
+        if(agreementck===1){
+        agreementck=2;
+        $(this).val('同意');
+        $('html,body').animate({scrollTop: '0px'}, 1000);
+        $.ajax({
+            url :' http://keyofcredit.eifm.net/yxjr/interface/helpList?type=4',
+                        dataType : 'json',
+                        async : true,
+                        success : function(data) {
+                            console.log(data);
+                            $(".yo-list-group  p").html(data.date[2].content);
+
+                        },
+                        error : function(XMLHttpRequest,textStatus, errorThrown) {}
+                    });
+    }else{
+         $(".agreementdiv").hide();
+         $(".opinion").show();
+         $("[name = chkItem]:checkbox").attr("checked", true);
+    }
+    });   
+
+
+
+ $(".agreementregret").click(function(){ 
+         $(".opinion").show();
+         $(".agreementdiv").hide();
+     });
+ //不同意
+    $("#getValue").click(function(){ 
+         $(".opinion").show();
+         $(".agreementdiv").hide();
+     });
+
+ });
+
+   $('#top').click(function(){
+    $('html,body').animate({scrollTop: '0px'}, 1000);return false;
+    });
+    </script>
+</body>
+</html>

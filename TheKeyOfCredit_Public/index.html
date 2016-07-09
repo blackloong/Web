@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>首页 </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+
+  <link rel="stylesheet" href="./prd/yo/usage/export/yo-flex.css" />
+    <script type="text/javascript" src="./dist/jquery.min.js"></script>
+      <script type="text/javascript" src="./dist/jQuery.md5.js" ></script>
+     <script type="text/javascript" src="./dist/util.js"></script>
+  <style type="text/css">
+  #tab-content{ height: 65%; background-color: #fff; }
+#tab-content .slider {
+       position: initial;
+}
+  #tab-content li { 
+    width: 50%; /*如果显示三列 则width改为70px*/ 
+    float: left; 
+    display: block; 
+  } 
+  </style>
+
+  <body>
+    <div class="yo-flex">
+<!--     <header class="yo-header m-header yo-header-normal1">
+         <h2>首页</h2>
+       </header> -->
+       <section class="">
+        <div class="yo-header1 " id="txt">
+         <div class=" name"> <img src="" id="userimg"></div><span class="tag">&nbsp;</span>
+         <p  class="regret yo-ico yypf-ico"  > <a href="myfavorites.html">我的收藏</a></p>
+         <a href="register.html?target=index.html" class="affirm yo-ico  yypf-ico"  > <b>绑定手机</b></a>
+       </div>
+     </section>
+     <section class="m-list">
+      <ul class="yo-list" >
+        <li class="yo-header m-header yo-header-normal2" > 
+         <span class="regret yo-ico " >
+          <img style=" width:0.38rem;height:0.30rem" src="./images/gth.png"></span> 
+          <a href="shenqing.html?Goodsnull=1" class="affirm yo-ico " style="font-size: .2rem; color: #918969;"  >&#xf07f;</a>
+          <div class="toptext" > 你还没有额度哦，快快申请吧</div>
+        </li>
+      </ul>
+    </section>
+    <section class="m-list">
+      <ul class="yo-list" >
+        <li class="listheader  Grid " > 
+          <div class="Grid-cell u-1of3 ">已用额度</div> 
+          <div class="Grid-cell u-1of3 ">我的额度</div> 
+          <div class="Grid-cell u-1of3 ">本月待还</div>
+        </li>
+        <li class="listheader1  Grid " > 
+          <div class="Grid-cell u-1of3 ">￥<span id="surplusAmount">0.00 </span></div> 
+          <div class="Grid-cell u-1of3 "><b>￥<span id="CreditAmount">0.00</span></b></div> 
+          <div class="Grid-cell u-1of3 ">￥0.00<span></span></div>
+        </li>
+      </ul>
+    </section>
+    <section class="yo-layertest">
+      <ul class="yo-tab yo-tab-test">
+        <li class="item item-1 " ><a href="myorderlist.html" > 查看借款</a></li>
+        <li class="item item-2 " ><a href="myhaikuan.html" > 我要还款</a></li>
+      </ul>
+    </section>
+    <div style="width:100%;height:10px;margin:0px auto;padding:0px;background-color:#fff;overflow:hidden;"></div>
+    <section class="yo-teat">
+
+     <div class="demo_line_3"><b class="b1"></b><span class="top1"></span><span class="span1"> 产品精选 </span><span class="top1"></span><b class="b2"></b></div>
+   </section>
+   <div class="flex ">
+     <div  id="tab-content">
+    </div>
+    </div>
+    <section class="yo-tab yo-tab-view m-tabview">
+      <a href="index.html" class="item item-y-ico item-on">
+        <i class="yo-ico"><img style=" width:24px;height:20px" src="./images/indexon.png"></i>
+        首页
+      </a>
+      <a href="indexp.html" class="item item-y-ico">
+        <i class="yo-ico"><img style=" width:31px;height:20px" src="./images/product.png"></i>
+        商品
+      </a>
+      <a href="activity.html" class="item item-y-ico">
+        <i class="yo-ico"><img style=" width:22px;height:20px" src="./images/activity.png"></i>
+        活动
+      </a>
+      <a href="about.html" class="item item-y-ico">
+        <i class="yo-ico"><img style=" width:22px;height:20px" src="./images/myinfo.png"></i>
+        关于
+      </a>
+    </section>
+  </div>
+
+   <script type="text/javascript" src="./dist/indextab.js"></script>
+</body>
+</html>

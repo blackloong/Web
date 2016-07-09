@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="./prd/yo/usage/export/yo-flex.css" />
+
+  <style type="text/css">
+  #tab-content{ height: 85%; background-color: #fff; }
+  .yo-list li {
+    width: 50%; /*如果显示三列 则width改为70px*/
+    float: left;
+    display: block;
+  }
+  </style>
+
+
+</head>
+<body>
+
+ <div class="yo-flex">
+   <section class="">
+    <div class="yo-header1 " id="txt">
+      <a class="Merchanturl " href="" >
+      <div class="mark" id="li2" >
+        <img src="./images/XYYS.png"   />
+        <span class="span3" ></span>
+      </div>
+      </a>
+      <p  class="regret yo-ico yypf-ico"  >&#xE802 <span class="ContactName" ></span></p>
+      <a  href="" id="telPhone" class="affirm yo-ico  yypf-ico"  >&#xE815 <span class="ContactPhone" ></span></a>
+
+    </div>
+  </section>
+  <section class="m-layer">
+    <ul class="yo-Htab">
+     <li class="item item-on" id="li0">商品精选<span class="bot1" ></span> </li>
+     <li class="item " id="li1">商户详情<span class="bot1" ></span> </li>
+   </ul>
+
+
+ </section>
+
+ <div class="flex" id="tab-content">
+
+ </div>
+
+</div>
+
+<script type="text/javascript" src="./dist/jquery.min.js"></script>
+<script type="text/javascript" src="./dist/PositionTab.js"></script>
+<script type="text/javascript" src="./dist/util.js"></script>
+<script type="text/javascript">
+$(function(){
+
+  // var Goods= localStorage.getItem("@MyGoods");
+  // var MyGoodsdetail =JSON.parse(Goods.substr(1, Goods.length));
+  var MerchantID = urlParse("MerchantID");
+  console.log(MerchantID);
+  var MerchantIDlist = ['3','2','1','4'];
+  var Merchantimaglist = ['./images/heyou.png','./images/ycpp.png','./images/leya.png','./images/kangdi.png'];
+  var Merchanturl = ['http://hy-health.cn/','http://www.ycpp.org/','http://www.leya920.com/',''];
+  var boolxsMerchant = jQuery.inArray(MerchantID, MerchantIDlist);
+  console.log(boolxsMerchant);
+  if(boolxsMerchant!=-1){
+    $(".Merchanturl").attr("href",Merchanturl[boolxsMerchant]);
+    $(".Merchanturl").attr("target","_Blank");
+    $("#li2 img").attr("src",Merchantimaglist[boolxsMerchant]);
+  }
+});
+</script>
+</body>
+</html>

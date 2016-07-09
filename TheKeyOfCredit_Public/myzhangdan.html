@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+   
+
+    <link rel="stylesheet" href="./prd/yo/usage/export/yo-flex.css" />
+
+
+</head>
+<body>
+<div class="yo-flex">
+<!--   <div class=" yo-suggest-modal ">
+        <div class="cont"> -->
+    <header class="yo-header m-header">
+        <h2 class="title">巴厘岛七日游还款订单</h2>
+        <a href="index.html"  class="regret yo-ico" >&#xf07d;</a>
+       
+    </header>
+ <section class="m-list">
+    <ul class="yo-list" >
+            <li class="item  Grid " > 
+                    <div class="Grid-cell u-full1 ">订单名称：<span style="font-size: .18rem;">巴厘岛七日游 上海出发</span> </div> 
+                    
+            </li>
+    </ul>
+ </section>
+  <div style="width:100%;height:2px;margin:0px auto;padding:0px;background-color:#f0eff5;overflow:hidden;"></div>
+    <div class="flex ">
+    <!-- 'handle' option -->
+    <section class="m-list">
+            <ul class="yo-list" id="handle-1">
+                <li class="listheader  Grid ">
+                <div class="Grid-cell u-1of6 ">选择</div> 
+                    <div class="Grid-cell u-1of41 ">应付款日</div> 
+                    <div class="Grid-cell u-1of41 ">付款期数</div> 
+                  <div class="Grid-cell u-1of41 ">是否逾期</div> 
+                  <div class="Grid-cell u-1of4 ">应付金额(元)*</div> 
+                </li>
+                <li class="item  Grid ">
+                <div class="checkboxFive ">
+                    <input type="checkbox" value="1" id="checkboxFiveInput" name="" />
+                    <label for="checkboxFiveInput"></label>
+                </div>
+               
+                <div class="Grid-cell u-1of4 name">2015/05/28</div> 
+                    <div class="Grid-cell u-1of41 name">3/12期</div> 
+                  <div class="Grid-cell u-1of41 "><b>逾期</b></div> 
+                  <div class="Grid-cell u-1of4 name"><b>1556.6</b></div> 
+                  
+                </li>
+                <li class="item  Grid ">
+                <div class="checkboxFive ">
+                    <input type="checkbox" value="1" id="checkboxFiveInput1" name="" />
+                    <label for="checkboxFiveInput1"></label>
+                </div>
+                <div class="Grid-cell u-1of4 name">2015/05/28</div> 
+                    <div class="Grid-cell u-1of41 name">3/12期</div> 
+                 <div class="Grid-cell u-1of41 name">正常</div> 
+                  <div class="Grid-cell u-1of4 name">1556.6</div> 
+                  
+                </li>
+                <li class="item  Grid ">
+                <div class="checkboxFive ">
+                    <input type="checkbox" value="1" id="checkboxFiveInput2" name="" />
+                    <label for="checkboxFiveInput2"></label>
+                </div>
+                <div class="Grid-cell u-1of4 name">2015/05/28</div> 
+                    <div class="Grid-cell u-1of41 name">3/12期</div> 
+                  <div class="Grid-cell u-1of41 name">正常</div> 
+                  <div class="Grid-cell u-1of4 name">1556.6</div> 
+                  
+                </li>
+                <li class="item  Grid ">
+                <div class="checkboxFive ">
+                    <input type="checkbox" value="1" id="checkboxFiveInput3" name="" />
+                    <label for="checkboxFiveInput3"></label>
+                </div>
+                <div class="Grid-cell u-1of4 name">2015/05/28</div> 
+                    <div class="Grid-cell u-1of41 name">3/12期</div> 
+                 <div class="Grid-cell u-1of41 name">正常</div> 
+                  <div class="Grid-cell u-1of4 name">1556.6</div> 
+                  
+                </li>
+                <li class="item  Grid ">
+                <div class="checkboxFive ">
+                    <input type="checkbox" value="1" id="checkboxFiveInput4" name="" />
+                    <label for="checkboxFiveInput4"></label>
+                </div>
+                <div class="Grid-cell u-1of4 name">2015/05/28</div> 
+                    <div class="Grid-cell u-1of41 name">3/12期</div> 
+                  <div class="Grid-cell u-1of41 name">正常</div> 
+                  <div class="Grid-cell u-1of4 name">1556.6</div> 
+                  
+                </li>
+                
+            </ul>
+
+        </section>
+
+        <section class="m-layer ">
+             <ul class="yo-list " >
+                <li class="item  Grid ">
+                <div class="checkboxFive checkall">
+                    <input type="checkbox" value="1" id="checkboxFiveInputall" name="" />
+                    <label for="checkboxFiveInputall"></label>
+                </div>
+                <div class="   Grid-cell u-full name">应付：<b>￥3594.2</b>  </div>
+                  
+                </li>
+           </ul>
+    </section>
+    <section class="m-list">
+            <ul class="yo-list   yo-list-group">
+                <li class="item2 tc  tc1" ><input type="button" value="立即还款" class="yo-btn yo-btn-e" ></li>
+                
+           </ul>
+        </section>
+</div>
+
+<!-- </div>
+</div> -->
+
+
+<script type="text/javascript" src="./dist/jquery.min.js"></script>
+<script>
+$(function(){
+var clickall=true;
+ $(".checkall").click(function () {
+     if(event.target.type!="checkbox"){
+        $(this).find(":checkbox").click(function(){
+            event.stopPropagation();
+        })
+    }
+     if(clickall)
+     {
+        $("#handle-1 :checkbox").prop("checked", true);   
+        clickall=false;
+     }
+     else
+     {
+         $("#handle-1 :checkbox").prop("checked", false);   
+         clickall=true;
+     }
+     
+ });  
+ //全选   
+ $("#selectAll").click(function () {
+     if($("#selectAll").val()=='全部')
+     {
+     $("#handle-1 :checkbox").prop("checked", true);   
+     $("#selectAll").val('不选');
+     }
+     else
+     {
+         $("#handle-1 :checkbox").prop("checked", false);   
+         $("#selectAll").val('全部');
+     }
+     
+ });   
+
+ //获取选中选项的值 
+ $("#getValue").click(function(){ 
+     var valArr = new Array; 
+     $("#handle-1 :checkbox").each(function(i){ 
+         if ($(this).prop('checked') ==true) {
+            valArr[i] = $(this).val(); 
+            }
+     }); 
+      console.log(valArr);
+ }); 
+});
+</script>
+
+</body>
+</html>

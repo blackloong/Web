@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=yes">
+  <link rel="stylesheet" href="./prd/yo/usage/export/yo-flex.css" />
+
+  <style type="text/css">
+  #tab-content{ height: 85%; background-color: #fff; }
+  .yo-list li { 
+    width: 50%; /*如果显示三列 则width改为70px*/ 
+    float: left; 
+    display: block; 
+  } 
+  </style>
+</head>
+<body>
+    <div class="yo-flex tab-content">
+       <header class="yo-header m-header">
+        <h2 class="title">借款</h2>
+        <a href="index.html"  class="regret yo-ico" >&#xf07d;</a>
+    </header>
+    <section class="m-layer">
+      <ul class="yo-Htab">
+       <li class="item item-on" id="li0">正在等待<span class="bot1" ></span> </li>
+       <li class="item " id="li1">已经完成<span class="bot1" ></span> </li> 
+   </ul>
+
+
+</section>
+
+ <div class="flex" id="tab-content">
+
+ </div>
+
+</div>
+<div class="yo-flex agreementdiv" >
+    <header class="yo-header m-header">
+        <p class="title">借款协议</p>
+       <span class="regret yo-ico agreementregret"   >&#xf07d;</span>
+    </header>
+
+    <div class="flex F7EFF7">
+    <!-- 'handle' option -->
+         <section class="m-list">
+            <div class="yo-list yo-list-group applyCodeXIEYI">
+                <p></p>
+            </div>
+        </section>
+<section  >
+            <div style="padding: 0.08rem 0 0.08rem 0; text-align: center"> <span style=" color:red;" class="errmsg1" ></span>   <div>
+          </section>
+        <section class="m-footlayer" >
+         <!--    <a href="#" id="top"> 返 回 顶 部 </a> -->
+            <ul class="yo-tabfoot" >
+                <li class="item " >
+                    <input type="button" value="同意 并阅读下一份协议" class="yo-btn yo-btn-e1" id="selectAll" ><span > </span></li>
+     <li class="item " ><input type="button" value="不同意" class="yo-btn yo-btn-e2 " id="getValue" ></li>
+ </ul></section>
+    </div>
+</div>
+<!-- <div  class="pop"> 
+            <div class="yo-tip1" >
+                <p> <i class=" yo-ico  yypf-ico fontsize04" >&#xE830; </i></p>
+                <p><div class="fontsize14paddingtop">您的授信正在审批中</div>
+                    <div class="fontsize13paddingbottom">请耐心等待哦</div></p>
+                    <input type="button" value="           取消           " class="yo-btn-h" />   
+                    <a href="index.html"  ><input type="button" value="           首页           " class="yo-btn-h1" />   </a>
+            </div>
+            </div>
+             <div  class="pop1"> 
+            <div class="yo-tip1" >
+                <p> <i class=" yo-ico  yypf-ico fontsize04" >&#xE830; </i></p>
+                <p><div class="fontsize14paddingtop">授信正在人工审批</div>
+                    <div class="fontsize13paddingbottom"><a href=""></a> </div></p>
+                    <input type="button" value="           取消           " class="yo-btn-h" />   
+                    <a href="index.html"  ><input type="button" value="           首页           " class="yo-btn-h1" />   </a>
+            </div>
+            </div>
+            <div  class="pop2"> 
+            <div class="yo-tip1" >
+                <p> <i class=" yo-ico  yypf-ico fontsize04" >&#xE82E; </i></p>
+                <p><div class="fontsize14paddingtop">订单签约成功！</div></p>
+                <p> <div class="fontsize13paddingbottom">  </div></p>
+                    <input type="button" value="           取消           " class="yo-btn-h" />   
+                    <a href="index.html"  ><input type="button" value="           首页           " class="yo-btn-h1" />   </a>  
+            </div>
+            </div> -->
+<script type="text/javascript" src="./dist/jquery.min.js"></script>
+<script type="text/javascript" src="./dist/jQuery.md5.js" ></script>
+<script type="text/javascript">
+Date.prototype.Format = function(fmt)   
+{ //author: meizz   
+  var o = {   
+    "M+" : this.getMonth()+1,                 //月份   
+    "d+" : this.getDate(),                    //日   
+    "h+" : this.getHours(),                   //小时   
+    "m+" : this.getMinutes(),                 //分   
+    "s+" : this.getSeconds(),                 //秒   
+    "q+" : Math.floor((this.getMonth()+3)/3), //季度   
+    "S"  : this.getMilliseconds()             //毫秒   
+  };
+  if(fmt!==null)
+  {   
+  if(/(y+)/.test(fmt))   
+    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
+  for(var k in o)   
+    if(new RegExp("("+ k +")").test(fmt))   
+  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length))); 
+  }  
+  return fmt;   
+};
+  $(function(){
+    //localStorage.setItem('Mobile','13761318288');
+    var Key = "KoeIy12Ay~oEuN3" + new Date().Format("yyyyMMdd");
+    var rowStockInfoData;
+    var agreementck=1;
+        $(".pop").hide();
+        $(".pop2").hide();
+
+        $(".agreementdiv").hide();
+
+        $.ajax({
+                  url : 'http://120.55.161.84:8064/api/CreditKey/costRepaymentPlan',
+                  //url : 'http://121.40.185.130:8072/api/CreditKey/costRepaymentPlan',
+                  data : {'checkMsg':$.md5(Key),applyCode:localStorage.getItem('applyCode'),
+                  mobile:localStorage.getItem('Mobile')},
+                  type:'POST',
+                  dataType : 'json',
+                  async : false,
+                  success : function(data) {
+                    rowStockInfoData=data.Data;
+                  },
+                  error : function(XMLHttpRequest,textStatus, errorThrown) {}
+                  });
+            $(".agreementregret").click(function(){
+               $(".tab-content").show();
+               $(".agreementdiv").hide();
+            });
+
+            
+            //同意并
+            $("#selectAll").click(function () {
+                if(agreementck===1){
+                agreementck=2;
+                $(this).val('同意');
+                $('html,body').animate({scrollTop: '0px'}, 1000);
+                $.ajax({
+                    url :'http://keyofcredit.eifm.net/yxjr/interface/helpList?type=7',
+                    //url :'http://m.w3capp.cn/yxjrs/interface/helpList?type=7',
+                    
+                                dataType : 'json',
+                                async : true,
+                                success : function(data) {
+                                    console.log(data.date[1].content);
+                                    var content=data.date[1].content;
+                                    content=content.replace('a018', rowStockInfoData.ContractNo); 
+                                    content=content.replace('a019', rowStockInfoData.CustomerName); 
+                                    content=content.replace('a022', rowStockInfoData.CustomerName); 
+                                    content=content.replace('a023', rowStockInfoData.CustomerName); 
+                                    content=content.replace('a024', rowStockInfoData.IdCard); 
+
+                                    content=content.replace('a048', rowStockInfoData.LoanBankName); 
+                                    content=content.replace('a049', rowStockInfoData.LoanUserName); 
+                                    content=content.replace('a050', rowStockInfoData.LoanBankAccount);
+
+                                    content=content.replace('a026', rowStockInfoData.LoanUse); 
+                                    content=content.replace('a027', rowStockInfoData.MoveAccountUpper); 
+                                    //content=content.replace('a028', rowStockInfoData.LoanBankName); 
+                                    content=content.replace('a029', rowStockInfoData.YearRate);
+                              content=content.replace('a030', rowStockInfoData.RepaymentMethod);
+                              content=content.replace('a031', rowStockInfoData.TotalPrincipalInterest);
+                                    content=content.replace('a032', rowStockInfoData.LoanDualMonth );
+
+                                    content=content.replace('a051', (rowStockInfoData.TotalPrincipalInterest- rowStockInfoData.surplusAmount).toFixed(2)) ;
+                                    var a052=0;
+                                    if(rowStockInfoData.InterestPaymentModel===1){
+                                      a052=rowStockInfoData.TotalPrincipalInterest;
+                                      
+                                    }else{
+                                      a052=0
+                                    }
+                                    content=content.replace('a052', a052);
+                                    
+                                    content=content.replace('a053', rowStockInfoData.LoanUserName);
+
+
+                                    content=content.replace('a054',rowStockInfoData.TotalPrincipalInterest-a052);
+                                    //content=content.replace('a055', rowStockInfoData.LoanBankAccount);
+
+                                    content=content.replace('a033', rowStockInfoData.TotalServiceFee);
+                                    content=content.replace('a034', rowStockInfoData.ConsultFee);
+                                    content=content.replace('a035', rowStockInfoData.Assessment );
+                                    //content=content.replace('a036', rowStockInfoData.Assessment );
+                                    content=content.replace('a056', rowStockInfoData.Management);
+                                    //content=content.replace('a057', rowStockInfoData.LoanBankAccount);
+                                    content=content.replace('a058', rowStockInfoData.LoanUserName);
+                                    var obj=rowStockInfoData.MoveAmount.replace(/(.)(?=[^$])/g,"$1,").split(","); 
+
+                                    if(obj.length===6){
+                                    content=content.replace('b0128',obj[0]);
+                                    content=content.replace('b0228', obj[1]);
+                                    content=content.replace('b0328', obj[2]);
+                                    content=content.replace('b0428', obj[3]);
+                                    content=content.replace('b0528', obj[4]);
+                                    content=content.replace('b0628',obj[5]);
+                                  }else if(obj.length===5){
+                                    //content=content.replace('b0128', rowStockInfoData.LoanUserName);
+                                    content=content.replace('b0228', obj[0]);
+                                    content=content.replace('b0328', obj[1]);
+                                    content=content.replace('b0428', obj[2]);
+                                    content=content.replace('b0528', obj[3]);
+                                    content=content.replace('b0628', obj[4]);
+                                  }else{
+                                    //content=content.replace('b0128', rowStockInfoData.LoanUserName);
+                                    //content=content.replace('b0228', obj[0]);
+                                    content=content.replace('b0328', obj[0]);
+                                    content=content.replace('b0428', obj[1]);
+                                    content=content.replace('b0528', obj[2]);
+                                    content=content.replace('b0628', obj[3]);
+                                  }
+                                    
+                                    $(".applyCodeXIEYI  p").html(content);
+                                },
+                                error : function(XMLHttpRequest,textStatus, errorThrown) {}
+                            });
+            }else if(agreementck===2){
+                agreementck=3;
+                $(this).val('同意');
+                $('html,body').animate({scrollTop: '0px'}, 1000);
+                $.ajax({
+                    url :'http://keyofcredit.eifm.net/yxjr/interface/helpList?type=7',
+                    //url :'http://m.w3capp.cn/yxjrs/interface/helpList?type=7',
+                                dataType : 'json',
+                                async : true,
+                                success : function(data) {
+                                  console.log(data.date[2].content);
+                                    var content=data.date[2].content;
+                                    content=content.replace('a037', rowStockInfoData.ContractNo);
+                                    content=content.replace('a038', rowStockInfoData.CustomerName ); 
+                                    content=content.replace('a039', rowStockInfoData.IdCard); 
+                                    content=content.replace('a040', rowStockInfoData.Email); 
+                                    content=content.replace('a041', rowStockInfoData.Address); 
+
+                                    content=content.replace('a042', rowStockInfoData.effectiveStartTime); 
+                                    content=content.replace('a043', rowStockInfoData.ContractNo); 
+                                    content=content.replace('a044', rowStockInfoData.MoveAmount); 
+
+                                    content=content.replace('a045', '0.5'); 
+                                    content=content.replace('a046', rowStockInfoData.RiskFundFee); 
+                                    content=content.replace('a047', '0.5'); 
+                                   
+                                    $(".applyCodeXIEYI  p").html(content);
+                                },
+                                error : function(XMLHttpRequest,textStatus, errorThrown) {}
+                            });
+            }
+            else{
+                 $(".agreementdiv").hide();
+                  $(".tab-content").show();
+                 $("[name = chkItem]:checkbox").attr("checked", true);
+            }
+            });   
+
+         //不同意
+            $("#getValue").click(function(){ 
+                 $(".tab-content").show();
+                 $(".agreementdiv").hide();
+             });
+
+            $(".button1 ").click(function(){ 
+              console.log('button1');
+                 $(".pop").show();
+                 
+             });
+            $(".pophide").click(function(){ 
+                 $(".pop").hide();
+                 
+             });
+            
+
+            $(".button2").click(function(){ 
+                 $(".pop2").show();
+             });
+
+            $(".pop2hide").click(function(){ 
+                 $(".pop2").hide();
+             });
+
+
+       $(".pop2").click(function(){
+                $(".pop2").hide();
+            });
+         $(".yo-btn-h   ").click(function(){
+                $(".pop2").hide();
+            });
+
+        })
+
+</script>
+<script type="text/javascript" src="./dist/myorderTab.js"></script>
+</body>
+</html>

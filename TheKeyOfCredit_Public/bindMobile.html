@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="./prd/yo/usage/export/yo-flex.css" />
+
+
+</head>
+<body>
+<div class="yo-flex">
+<!--   <div class=" yo-suggest-modal ">
+        <div class="cont"> -->
+    <header class="yo-header m-header">
+        <p class="title">绑定手机</p>
+        <a href="index.html"  class="regret yo-ico" >&#xf07d;返回</a>
+        <span class="affirm ">跳过</span>
+    </header>
+
+    <div class="flex F7EFF7">
+    <!-- 'handle' option -->
+         <section class="m-list">
+            <div class="yo-list yo-list-group">
+                <h2 class="label1">手机绑定交易更安全，查询更便捷</h2>
+                <div class="item2">
+                    <input type="text" class="flex yo-input1" placeholder="请输入手机号" />
+                </div>
+                <div class="item2 cb">
+                  <input type="text" class="flex yo-input2" placeholder="请输入验证码" /><div class="fl la_bg tc"><label for="name" id="btnSendCode" class="lable" >发送验证码</label></div>  
+                </div>
+              
+            </div>
+        </section>
+
+
+        <section class="m-list">
+            <ul class="yo-list   yo-list-group">
+                <li class="item2 tc  tc1" ><input type="button" value="下一步" class="yo-btn yo-btn-f" ></li>
+                
+           </ul>
+        </section>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="./dist/jquery.min.js"></script>
+<script type="text/javascript">
+var InterValObj; //timer变量，控制时间
+var count = 60; //间隔函数，1秒执行
+var curCount;//当前剩余秒数
+var code = ""; //验证码
+var codeLength = 6;//验证码长度
+var clickf = 1;
+$(".yo-input1").val(localStorage.getItem('Mobile'));
+ $("#btnSendCode").click(function(){
+  console.log(clickf);
+  localStorage.setItem('Mobile',$(".yo-input1").val());
+  if(clickf===1){
+   
+            clickf=2;
+            curCount = count;
+            //产生验证码
+            //设置button效果，开始计时
+                $("#btnSendCode").addClass('F7EFF7')
+                $("#btnSendCode").val("请在" + curCount + "秒内输入验证码");
+                InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+//向后台发送处理数据
+                
+                // $.ajax({
+                //         url :'http://114.215.168.111:8081/yxjr/interface/interfaceorderyzm',
+                //         type: "POST",
+                //         data :{'mobile':$(".yo-input1").val() } ,
+                //         dataType : 'json',
+                //         async : true,
+                //         success : function(data) {
+                //             console.log(data);
+                //         }.bind(this),
+                //         error : function(XMLHttpRequest,textStatus, errorThrown) {}
+                //     }); 
+            }
+   }); 
+$(".yo-btn-f").click(function(){
+
+    $.ajax({
+                        url :'http://114.215.168.111:8081/yxjr/interface/registration',
+                        type: "POST",
+                        data :{'mobile':$(".yo-input1").val(),'pwd':$(".yo-input1").val(),'sours':$(".yo-input1").val() } ,
+                        dataType : 'json',
+                        async : true,
+                        success : function(data) {
+                            console.log(data);
+                        }.bind(this),
+                        error : function(XMLHttpRequest,textStatus, errorThrown) {}
+                    }); 
+}); 
+        //timer处理函数
+function SetRemainTime() {
+           //console.log(curCount);
+            if (curCount == 0) {                
+                window.clearInterval(InterValObj);//停止计时器
+                $("#btnSendCode").removeAttr("disabled");//启用按钮
+                $("#btnSendCode").html("重新发送");
+                $("#btnSendCode").removeClass('F7EFF7')
+                clickf =1;
+                
+            }
+            else {
+                curCount--;
+                $("#btnSendCode").html("重新发送(" + curCount + ")");
+            }
+        }
+    </script>
+</body>
+</html>

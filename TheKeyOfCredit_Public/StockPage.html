@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="/prd/yo/usage/export/yo-flex.css" />
+    <link rel="stylesheet" href="style/h5base.css" />
+    <style type="text/css">
+        #tab-content{ height: 85%; background-color: #fff; }
+        #Suggest{  z-index: 1000; }
+
+        .bookmark{ height: 100%; 
+            z-index:2501;
+        }
+        .bookmark>.cont{
+            display:block;
+            position:relative;
+            top:0;
+            -webkit-box-flex:1;
+            -webkit-flex:1;
+            flex:1
+        }
+
+        .drag-handle {
+        margin-right: 10px;
+        font: bold 20px Sans-Serif;
+        }
+    </style>
+
+</head>
+<body>
+<div  class="none bookmark" id="bookmark">
+
+</div>
+    <div  class="none Suggest">
+        <div class=" yo-flex " id="Suggest"></div>
+    </div>
+<div class="yo-flex">
+    <header class="yo-header m-header">
+        <h2 class="title">行情</h2>
+        <span class="regret bianji">编辑</span>
+        <span class="affirm yo-ico">&#xf067;</span>
+    </header>
+    <section class="m-layer">
+            <ul class="yo-Htab">
+                <li class="item item-on" id="li0">自选<span class="bot"></span><span class="top"></span></li>
+                <li class="item " id="li1">美股 <span class="bot"></span><span class="top"></span></li>
+                <li class="item " id="li2">指数 <span class="bot"></span><span class="top"></span></li>
+                <li class="item " id="li3">外汇 <span class="bot"></span><span class="top"></span></li>
+                <li class="item " id="li4">商品 <span class="bot"></span><span class="top"></span></li>
+           </ul>
+    </section>
+    <div class="flex">
+        <div id="tab-content">
+            
+        </div>
+     </div>
+    <section class="yo-tab yo-tab-view m-tabview">
+        <a href="#" class="item item-y-ico">
+            <i class="yo-ico">&#xf04f;</i>
+            首页
+        </a>
+        <a href="#" class="item item-y-ico item-on">
+            <i class="yo-ico">&#xf04e;</i>
+            行情
+        </a>
+        <a href="#" class="item item-y-ico">
+            <i class="yo-ico">&#xf050;</i>
+            交易
+        </a>
+        <a href="#" class="item item-y-ico">
+            <i class="yo-ico"></i>
+            榜单
+        </a>
+        <a href="#" class="item item-y-ico">
+            <i class="yo-ico"></i>
+            问答
+        </a>
+    </section>
+</div>
+<script src="http://localhost:3000/webpack-dev-server.js"></script>
+<script type="text/javascript" src="./dist/jquery.min.js"></script>
+<script type="text/javascript" src="./dist/jquery.signalR.core.js"></script>
+<script src="./dist/hubs.js"></script>
+<script type="text/javascript" src="./dist/SliderTab.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+    // $.ajax({
+    //         url : 'http://121.40.185.130:8062/api/CreditKey/getMerchantByID',
+    //         data : {MerchantID:'B201604010003'},
+    //         type:'POST'
+    //         dataType : 'json',
+    //         async : false,
+    //         success : function(data) {
+    //             //this.props.datas=data;
+    //             console.log(data);
+    //         },
+    //         error : function(XMLHttpRequest,textStatus, errorThrown) {}
+    //     });
+
+    $(".bookmark").hide();
+    $(".Suggest").hide();
+    $(".yo-header .affirm").click(function(){
+        $(".Suggest").show();
+    });
+    $(".yo-header .bianji").click(function(){
+        $(".bookmark").show();
+    });
+
+
+     //置顶
+     var $top = $(".top");
+     $top.click(function(){
+      var $tr = $(this).parents("li");
+      $tr.fadeOut().fadeIn();
+      $("#handle-1").prepend($tr);
+     });
+
+     // //全选   
+     // $("#selectAll").click(function () {
+     //     if($("#selectAll").val()=='全部')
+     //     {
+     //     $("#handle-1 :checkbox").prop("checked", true);   
+     //     $("#selectAll").val('不选');
+     //     }
+     //     else
+     //     {
+     //         $("#handle-1 :checkbox").prop("checked", false);   
+     //         $("#selectAll").val('全部');
+     //     }
+         
+     // });   
+
+     // //获取选中选项的值 
+     // $("#getValue").click(function(){ 
+     //     var valArr = new Array; 
+     //     $("#handle-1 :checkbox").each(function(i){ 
+     //         // if ($(this).prop('checked') ==true) {
+     //            valArr[i] = $(this).val(); 
+     //            // }
+     //     }); 
+     //      console.log(valArr);
+     // }); 
+});
+</script>
+    <script src="./dist/Sortable.js"></script>
+      <script >
+      Sortable.create(document.getElementById('handle-1'), {
+            // group: "localStorage-example",
+            // store: {
+            //     get: function (sortable) {
+            //         var order = localStorage.getItem(sortable.options.group);
+            //         console.log(order);
+            //         return order ? order.split('|') : [];
+            //     },
+            //     set: function (sortable) {
+            //         var order = sortable.toArray();
+            //         console.log(order);
+            //         localStorage.setItem(sortable.options.group, order.join('|'));
+            //     }
+            // },
+            handle: '.drag-handle',
+            animation: 150
+            //,filter: '.js-remove',
+            // onFilter: function (evt) {
+            //     console.log(evt.item);
+            //     evt.item.parentNode.removeChild(evt.item);
+            // }
+      });
+      </script>
+</body>
+</html>

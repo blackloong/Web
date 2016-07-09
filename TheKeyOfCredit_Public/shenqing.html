@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+   <title>预授信申请</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <link href="./accountcenter.console.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="./prd/yo/usage/export/yo-flex.css" />
+  <link href="./style/mobiscroll.custom-2.5.0.min.css" rel="stylesheet" type="text/css" />
+  <link media="all" rel="stylesheet" href="./style/common.css" />
+      <script type="text/javascript" src="./dist/jquery.min.js"></script>
+       <script type="text/javascript" src="./dist/jQuery.md5.js" ></script>
+     <script type="text/javascript" src="./dist/util.js"></script>
+  <style type="text/css">
+  #tab-content{ height: 85%; background-color: #fff; }
+
+.demo{width:80%; margin:20px auto}
+.demo h3{height:32px; line-height:32px}
+.demo p{line-height:24px}
+pre{margin-top:10px; padding:6px; background:#f7f7f7}
+
+@keyframes spin{from{-webkit-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@-webkit-keyframes spin{from{-webkit-transform:rotate(0)}to{-webkit-transform:rotate(360deg)}}
+    .spinner{border:4px solid #eee;font-size:40px;width:1em;height:1em;border-radius:.5em;-webkit-animation:spin 1s linear infinite;animation:spin 1s linear infinite;border-top-color:#1789d5;position:absolute;top:50%;left:50%;z-index:99999;margin-left:-.5em;margin-top:-.5em;display:none}
+    .spinner.active{display:block}
+</style>
+</head>
+<body>
+   <div class="spinner "></div>
+  <div class="yo-flex ">
+   
+    <div class="flex scroll-in">
+      <section class="m-list text-hread" >
+    <p> • 您正在向信用钥匙申请<span id="GoodsName"></span>信用评估，请务必如实填写资料。</p>
+ </section> 
+  
+   <section class="yo-SQHtab ">
+    <a  class="item item-y-ico item-on">
+      <i class="yo-ico yypf-ico"></i>
+      基本信息
+    </a>
+    <a  class="item item-y-ico ">
+      <i class="yo-ico">&#xf07a;</i>
+      资料上传
+    </a>
+    <a  class="item item-y-ico">
+      <i class="yo-ico">&#xf078;</i>
+      申请成功
+    </a>
+  </section> 
+  <section class="m-list " >
+    <div class="content-wrap"> 
+      <div class="user-info"> 
+        <div class="spec-axis ng-scope"  >
+
+          <div class="spec-axis-done bounceInLeft" id="J-spec-axis-done" style="width: 100%;">
+            <div class="icon-spec-mid-status" ></div>
+<!-- icon-spec-point-current -->
+            <div class="icon L0 icon-spec-point-undone" >1</div>
+            <div class="icon L1 icon-spec-point-undone" >2</div>
+            <div class="icon L2 icon-spec-point-undone" >3</div>
+            <div class="icon L3 icon-spec-point-undone" >4</div>
+            <div class="icon L4 icon-spec-point-undone" >5</div>
+          </div>
+        </div>
+      </div></div>
+    </section>
+      <section class="m-list " >
+        <div class="box-body">
+           <form id="wizForm1"  >
+         <div class="panel  ">
+          
+            <div class=" yo-listinput " >
+                <label class="item item-input">
+                  <span class="mark">姓名</span>
+                  <input type="text" class="yo-input flex" name="name" placeholder="请输入您的姓名" />
+                  <span class="error-span"></span>
+                </label>
+               
+                <label class="item item-input hide type1">
+                  <span class="mark">次数</span>
+                  <input type="text" class="yo-input flex" name="hisTourLeaveCount"  placeholder="请输入您过往旅游出境次数（三年内）" />
+                   <span class="error-span"></span>
+                </label>
+                <label class="item item-input hide type1">
+                  <span class="mark">出境地区</span>
+                  <input type="text" class="yo-input flex" name="hisLeaveCity" placeholder="请选择您出境游中级别最高的地区"/>
+                   <span class="error-span"></span>
+                </label>
+
+                <label class="item item-input hide type2">
+                  <span class="mark">首次治疗</span>
+                  <select  id="gender_select" name="scyl" class="form-control">
+                      <option value="0">是</option>
+                      <option value="1">否</option>
+                   </select> 
+                   <span class="error-span"></span>
+                </label>
+                 <label class="item item-input hide type2">
+                  <span class="mark">医疗保险</span>
+                  <select  id="gender_select" name="ylbx" class="form-control">
+                      <option value="0">有</option>
+                      <option value="1">无</option>
+                   </select> 
+                   <span class="error-span"></span>
+                </label>
+
+                <label class="item item-input hide type3">
+                  <span class="mark">培训经历</span>
+                  <select  id="gender_select" name="pxjl" class="form-control">
+                      <option value="0">有</option>
+                      <option value="1">无</option>
+                   </select> 
+                   <span class="error-span"></span>
+                </label>
+                <label class="item item-input hide type3">
+                  <span class="mark">关系</span>
+                   <select  id="gender_select" name="sqgx" class="form-control">
+                      <option value="">请选择申请人与培训人关系</option>
+                      <option value="0">本人</option>
+                      <option value="1">直系亲属</option>
+                      <option value="2">同事或朋友</option>
+                      <option value="3">其他亲戚</option>
+                   </select> 
+                   <span class="error-span"></span>
+                </label>
+                
+
+                <label class="item item-input hide type4">
+                  <span class="mark">建筑面积</span>
+                  <input type="text" class="yo-input flex" name="jzmj" placeholder="请您填写建筑面积"/>
+                   <span class="error-span"></span>
+                </label>
+                <label class="item item-input hide type4">
+                  <span class="mark">是否按揭</span>
+                  <select  id="gender_select" name="sfmj" class="form-control">
+                      <option value="1">按揭未还清</option>
+                      <option value="2">其它</option>
+                   </select> 
+                   <span class="error-span "></span>
+                </label>
+                <label class="item item-input hide type4">
+                  <span class="mark">房屋类型</span>
+                  <select  id="gender_select" name="fwlx" class="form-control">
+                      <option value="1">一手房</option>
+                      <option value="2">二手房</option>
+                   </select> 
+                   <span class="error-span"></span>
+                </label>
+                
+                <label class="item item-input">
+                  <span class="mark">性别</span>
+                  <select  id="gender_select" name="gender" class="form-control">
+                      <option value="">请选择性别</option>  
+                      <option value="0">男</option>
+                      <option value="1">女</option>
+                   </select> 
+                   <span class="error-span"></span>
+                </label>
+                <label class="item item-input">
+                  <span class="mark">身份证</span>
+                  <input type="text" class="yo-input flex" name="idCard" placeholder="请输入您的身份证" />
+                   <span class="error-span"></span>
+                </label>
+                <label class="item item-input">
+                  <span class="mark">邮箱地址</span>
+          <input type="text" class="yo-input flex" name="email" placeholder="必须为邮箱" />  
+                 
+                   <span class="error-span"></span>
+                </label>
+                <!-- <label class="item item-input">
+                  <span class="mark">银行卡号</span>
+                  <input type="text" class="yo-input flex" name="name" placeholder="必须为本人银行卡" />
+                   <span class="error-span"></span>
+                </label> -->
+
+                <label class="item item-input">
+                  <span class="mark">学历</span>
+                  <select  id="degree_select" name="degree" class="form-control ">
+                      <option value="">请选择学历</option>
+                      <option value="1">硕士及以上</option>
+                      <option value="2">本科</option>
+                      <option value="3">专科</option>
+                      <option value="4">高中</option>
+                      <option value="5">初中及以下</option>
+                   </select> 
+                   <span class="error-span"></span>
+                </label>
+
+                <label class="item item-input">
+                  <span class="mark">婚姻状况</span>
+                <select  id="marriage_select" name="marriage" class="form-control ">
+                      <option value="">请选择婚姻状况</option>
+                      <option value="1">已婚</option>
+                      <option value="2">离异</option>
+                      <option value="3">未婚</option>
+                      <option value="4">丧偶</option>
+                   </select> 
+                   <span class="error-span"></span>
+                </label>
+                <label class="item item-input">
+                  <span class="mark">有无子女</span>
+                  <select  id="children_select" name="children" class="form-control ">
+                      <option value="0">无</option>
+                      <option value="1">有</option>
+                   </select> 
+                
+                </label>
+               </div> 
+          
+           </div> 
+          </form>
+ <!--  <i class="yo-ico">&#xf050;</i> -->
+          <form id="wizForm2"  >
+          <div class="panel display-none">
+            <div class=" yo-listinput " >
+                
+                 <label class="item item-input">
+                     <span class="mark">房产状况</span>        
+                     <select  id="ownership_select" name="ownership" class="form-control ">
+                      <option value="">请选择房产状况</option>
+                      <option value="1">有房无贷</option>
+                      <option value="2">有房有贷</option>
+                      <option value="3">租房</option>
+                      <option value="4">亲属住房</option>
+                      <option value="5">自建</option>
+                      <option value="6">其他</option>
+                   </select>
+                  </label> 
+                  <label class="item item-input row ">
+                    <span class="mark">所在省</span>
+                    <select  id="country_select" name="province" class="form-control prov">
+                      
+                    </select>
+                     
+                  </label>
+                  <label class="item item-input">
+                    <span class="mark">所在市</span>
+                    <select  id="city_select" name="city" class="form-control city" disabled="disabled">
+                      <option value="">请选择所在市</option>
+                   </select>
+                  </label>
+                  <label class="item item-input">
+                    <span class="mark">详细地址</span>
+                    <input type="text" class="yo-input flex" name="liveAddress"  />
+                  </label>
+                  <label class="item item-input">
+                    <span class="mark">工资卡</span>
+                    <input type="text" class="yo-input flex" name="debitCard" placeholder="请输入持卡人为本人的的16~19位借记卡卡号" />
+                  
+                  </label>
+                  <label class="item item-input">
+                    <span class="mark">信用卡</span>
+                    <input type="text" class="yo-input flex" name="creditCard" placeholder="请输入本人最常用的信用卡卡号" />
+                  </label>
+                  <label class="item item-input">
+                    <span class="mark">卡额度</span>
+                    <input type="text" class="yo-input flex" name="creditCardAmount" placeholder="您填写的信用卡对应额度" />
+                  </label>
+                  <label class="item item-input">
+                    <span class="mark">借款金额</span>
+                    <input type="text" class="yo-input flex" name="jkje" placeholder="请输入您希望借款的金额" />
+                  </label>    
+                </div> 
+          
+           </div> 
+         </form>
+         <form id="wizForm3" >
+          <div class="panel  display-none">
+          
+            <div class=" yo-listinput " >
+
+              <label class="item item-input">
+                <span class="mark">工作单位</span>
+                <input type="text" class="yo-input flex" name="companyName" placeholder="请输入您的工作单位全称" />
+              </label>
+
+              <label class="item item-input">
+                <span class="mark">单位电话</span>
+                <input type="text" class="yo-input flex" name="companyPhone" placeholder="需为:区号-电话号码 如021-66666666" />
+              </label>
+              <label class="item item-input">
+                <span class="mark">进入时间</span>
+                <input type="text" class="yo-input flex" id="joinDate" name="joinDate" placeholder="请输入您进入该单位时间年月" />
+              </label>
+              <label class="item item-input">
+                <span class="mark">担任职务</span>
+                <select  id="jobTitle_select" name="jobTitle" class="form-control">
+                      <option value="">请选择您担任职务</option>
+                      <option value="1">企业法人/股东</option>
+                      <option value="2">高级管理者</option>
+                      <option value="3">中层管理者</option>
+                      <option value="4">普通员工</option>
+                      <option value="5">其他</option>
+                   </select>
+              </label>
+              <label class="item item-input">
+                <span class="mark">单位性质</span>
+                <select  id="unitProperty_select" name="unitProperty" class=" form-control">
+                      <option value="">请选择您单位性质</option>
+                      <option value="1">国有</option>
+                      <option value="2">政府机关</option>
+                      <option value="3">事业单位</option>
+                      <option value="4">外资/合资</option>
+                      <option value="5">股份制</option>
+                      <option value="6">民营</option>
+                      <option value="7">社会组织</option>
+                      <option value="8">其他</option>
+                   </select>
+              </label>
+              <label class="item item-input">
+                <span class="mark">行业</span>
+               
+                <select  id="industry_select" name="industry" class="form-control">
+                      <option value="">请选择您的行业</option>
+                      <option value="1">IT丨互联网</option>
+                      <option value="2">金融业</option>
+                      <option value="3">房地产丨建筑业</option>
+                      <option value="4">服务业</option>
+                      <option value="5">零售贸易</option>
+                      <option value="6">文体教育</option>
+                      <option value="7">生产制造业</option>
+                      <option value="8">物流业</option>
+                      <option value="9">政府丨公共事业</option>
+                      <option value="10">其他</option>
+                   </select>
+              </label>
+              <label class="item item-input">
+                <span class="mark">税后收入</span>
+                <input type="text" class="yo-input flex" name="monthlyIncome" placeholder="请输入您个人税后月收入" />
+              </label>
+              <label class="item item-input">
+                <span class="mark">发薪方式</span>
+                <select  id="payWay_select" name="payWay" class="form-control">
+                      <option value="">请选择您的发薪方式</option>
+                      <option value="1">网银</option>
+                      <option value="2">现金</option>
+                      
+                   </select>
+              </label>
+          </div> 
+           </div> 
+            </form>
+
+         <form id="wizForm4"  >
+          <div class="panel  display-none">
+          
+            <div class=" yo-listinput " >
+            <label class="item item-input">
+              <span class="mark">工作证明人</span>
+              <input type="text" class="yo-input flex" name="workCertificateName" />
+            </label>
+            <label class="item item-input">
+              <span class="mark">联系手机</span>
+              <input type="text" class="yo-input flex" name="workCertificatePhone" placeholder="" />
+            </label>
+            <label class="item item-input">
+              <span class="mark">家庭联系人</span>
+              <input type="text" class="yo-input flex" name="familyContactName" placeholder="" />
+            </label>
+            <label class="item item-input">
+              <span class="mark">联系手机</span>
+              <input type="text" class="yo-input flex" name="familyContactPhone" placeholder="" />
+            </label>
+
+            <label class="item item-input">
+              <span class="mark">紧急联系人</span>
+              <input type="text" class="yo-input flex" name="emergencyContactName" placeholder="" />
+            </label>
+
+            <label class="item item-input">
+              <span class="mark">联系手机</span>
+              <input type="text" class="yo-input flex" name="emergencyContactPhone" placeholder="" />
+            </label>
+           </div> 
+             </div> 
+          </form>
+
+    <div class="panel  display-none" id="wizForm5">
+    <section class="m-list " >
+      <div class="hreadtile">身份证认证</div>
+      <ul class="yo-list imglist" >
+        <li class="item item-active Grid" >
+          <div class="mark">
+            <div  class="start">
+            <div class="imgBox">
+              <div class="img"> 
+                <div class="scd" id="ShadeSurface"></div>
+                <div class="div_hd">
+                  <canvas id="canvas" style="background-image:url(images/sfz2.png)"></canvas>
+                </div>
+              </div>
+              <div  class="btn_camera"> </div>
+              <!--accept="image/*" capture="camera" -->
+              <div  class="btn_camera"><input id="takePictureField" type="file" name="file" multiple="multiple" class="uploadfile"></div>
+            </div>
+            <div class="txtBox">
+            </div>
+            <canvas id="copySurface1" class="div_hd" style="display:none;"></canvas>
+          </div>
+            
+            <span>身份证正面照</span>
+          </div>
+          <div class="mark">
+            <div  class="start">
+            <div class="imgBox">
+              <div class="img"> 
+                <div class="scd" id="ShadeSurface1"></div>
+                <div class="div_hd">
+                  <canvas id="canvas1" style="background-image:url(images/sfz2.png)"></canvas>
+                </div>
+              </div>
+              <div  class="btn_camera"> </div>
+              <!-- accept="image/*"  capture="camera" -->
+              <div  class="btn_camera"><input id="takePictureField1"  type="file" name="file" multiple="multiple" class="uploadfile"></div>
+            </div>
+            <div class="txtBox">
+            </div>
+            <canvas id="copySurface11" class="div_hd" style="display:none;"></canvas>
+          </div>
+            <span>身份证反面照</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <section class="m-layer" style="text-align: center; ">
+       <div class="copySurface1msg"></div>
+      <div class="hreadtile">头像认证</div>
+      <div id="wrap" style="text-align: center; ">
+        <section>
+          <div  class="start">
+            <div class="imgBox">
+              <div class="img"> 
+                <div class="scd1" id="ShadeSurface2"></div>
+                <div class="div_hd1">
+                  <canvas id="canvas2" style="background-image:url(images/touxiang.png); border-radius: 50%;"></canvas>
+                </div>
+              </div>
+              <div  class="btn_camera1"> </div>
+              <!-- capture="camera" accept="image/*" -->
+              <div  class="btn_camera1 btn_usertoux"><input id="takePictureField2"   type="file" multiple="multiple" name="file" class="uploadfile1"></div>
+            </div>
+            <div class="txtBox">
+            </div>
+            <canvas id="copySurface12" class="div_hd" style="display:none;"></canvas>
+          </div>
+          
+        </section>
+        
+         
+      </div>
+    </section>
+      </div> 
+      <div class="panel  display-none" id="wizForm6">
+        <section class="m-list hreadtile" >
+            <!-- <img style=" width:150px; height:150px;" src="images/touxiang.png" alt="美女"  /> -->
+
+            <span class="Message">恭喜你申请成功</span>
+            <br>
+            <br>
+            <br>
+            <span>授信编号：<b class="Data"></b></span>
+    </section>
+    <section class="m-list">
+            <ul class="yo-list   yo-list-group">
+                <li class="item2 tc  tc1" ><input type="button" value="查看借款" class="yo-btn yo-btn-f2" ></li>
+                
+           </ul>
+        </section>
+        </div> 
+
+</div>
+</div>
+<section class="m-layer">
+  <div class="wizard-buttons" id="formWizard">
+    <ul class="yo-tabfrom">
+        <li class="item ">
+          <a href="javascript:;" class="yo-btn btn btn-default prevBtn yo-btn-f1">
+            上一步
+          </a><a href="javascript:;" class="yo-btn btn btn-default goback yo-btn-f1">
+            返回
+          </a></li>
+        <li class="item " ><a href="javascript:;" class="yo-btn btn btn-primary nextBtn yo-btn-f1">
+            下一步
+          </a></li>
+  </ul>
+  </div> 
+</section>
+<div  class="pop"> 
+    <div class="yo-tip" >
+        <p> 请上传图片</p>
+        </div>
+</div>
+<script type="text/javascript" src="./dist/select2/select2.min.js"></script>
+<script src="./dist/jquery-validate/jquery.validate.js"></script>
+<script src="./dist/jquery-validate/additional-methods.js"></script>
+<script src="./dist/bootstrap-wizard/form-wizard.js"></script>
+<script type="text/javascript" src="./dist/wg/edit.js"></script>
+<script type="text/javascript" src="./dist/wg/SurfaceImage3.0.1.js"></script>
+<script type="text/javascript" src="./dist/wg/megapix-image.js"></script>
+<script type="text/javascript" src="./dist/wg/ExifReader.js"></script>
+<script type="text/javascript" src="./dist/wg/hammer.min.1.1.js"></script>
+<script type="text/javascript" src="./dist/jquery.cityselect.js"></script>
+<script type="text/javascript" src="./dist/mobiscroll.custom-2.5.0.min.js" ></script>
+
+
+<script type="text/javascript">
+$(function () {
+ var IsLocalStorage = false;
+ var formindex = localStorage.getItem('formindex') === null ? 0: localStorage.getItem('formindex');
+ IsLocalStorage  = localStorage.getItem('IsLocalStorage') === null; 
+
+if(IsLocalStorage&&formindex===0)
+{
+  var   email =  IsLocalStorage ?  localStorage.getItem('email') : null,
+  name=  IsLocalStorage ?  localStorage.getItem('name') : null,
+  gender=  IsLocalStorage ?  localStorage.getItem('gender') : null,
+  hisTourLeaveCount=  IsLocalStorage ?  localStorage.getItem('hisTourLeaveCount') : null,
+  hisLeaveCity=  IsLocalStorage ?  localStorage.getItem('hisLeaveCity') : null,
+
+scyl=  IsLocalStorage ?  localStorage.getItem('scyl') : null,
+ylbx=  IsLocalStorage ?  localStorage.getItem('ylbx') : null,
+
+pxjl=  IsLocalStorage ?  localStorage.getItem('pxjl') : null,
+sqgx=  IsLocalStorage ?  localStorage.getItem('sqgx') : null,
+
+jzmj=  IsLocalStorage ?  localStorage.getItem('jzmj') : null,
+sfmj=  IsLocalStorage ?  localStorage.getItem('sfmj') : null,
+fwlx=  IsLocalStorage ?  localStorage.getItem('fwlx') : null,
+
+  idCard=  IsLocalStorage ?  localStorage.getItem('idCard') : null,
+  degree=  IsLocalStorage ?  localStorage.getItem('degree') : null,
+  marriage=  IsLocalStorage ?  localStorage.getItem('marriage') : null,
+  children=  IsLocalStorage ?  localStorage.getItem('children') : null;
+  $("[name='name']").val(name);
+  $("[name='email']").val(email);
+  $("[name='gender']").val(gender);
+
+  $("[name='hisTourLeaveCount']").val(hisTourLeaveCount)  ;
+  $("[name='hisLeaveCity']").val(hisLeaveCity) ;
+
+  $("[name='scyl']").val(scyl) ;
+  $("[name='ylbx']").val(ylbx) ;
+
+  $("[name='pxjl']").val(pxjl) ;
+  $("[name='sqgx']").val(sqgx) ;
+
+  $("[name='jzmj']").val(jzmj) ;
+  $("[name='sfmj']").val(sfmj) ;
+  $("[name='fwlx']").val(fwlx) ;
+
+  $("[name='idCard']").val(idCard)  ;
+  $("[name='degree']").val(degree)  ;
+  $("[name='marriage']").val(marriage)  ;
+  $("[name='children']").val(children)  ;
+}
+// if(IsLocalStorage&&formindex===1)
+// {
+  var ownership=  IsLocalStorage ?  localStorage.getItem('ownership') : null,
+  province=  IsLocalStorage ?  localStorage.getItem('province') : null,
+  city=  IsLocalStorage ?  localStorage.getItem('city') : null,
+  liveAddress=  IsLocalStorage ?  localStorage.getItem('liveAddress') : null,
+  
+  debitCard=  IsLocalStorage ?  localStorage.getItem('debitCard') : null,
+  creditCard=  IsLocalStorage ?  localStorage.getItem('creditCard') : null,
+  creditCardAmount=  IsLocalStorage ?  localStorage.getItem('creditCardAmount') : null,
+  jkje=  IsLocalStorage ?  localStorage.getItem('jkje') : null;
+
+  $("[name='ownership']").val(ownership);
+  $("[name='province']").val(province);
+  $("[name='city']").val(city)  ;
+  $("[name='liveAddress']").val(liveAddress)  ;
+  
+  $("[name='debitCard']").val(debitCard)  ;
+
+  $("[name='creditCard']").val(creditCard) ;
+  $("[name='creditCardAmount']").val(creditCardAmount)  ;
+  $("[name='jkje']").val(jkje)  ;
+//}
+
+// if(IsLocalStorage&&formindex===2)
+// {
+  var companyName=  IsLocalStorage ?  localStorage.getItem('companyName') : null,
+  companyPhone=  IsLocalStorage ?  localStorage.getItem('companyPhone') : null,
+  joinDate=  IsLocalStorage ?  localStorage.getItem('joinDate') : null,
+  jobTitle=  IsLocalStorage ?  localStorage.getItem('jobTitle') : null,
+  unitProperty=  IsLocalStorage ?  localStorage.getItem('unitProperty') : null,
+  industry=  IsLocalStorage ?  localStorage.getItem('industry') : null,
+  monthlyIncome=  IsLocalStorage ?  localStorage.getItem('monthlyIncome') : null,
+  payWay=  IsLocalStorage ?  localStorage.getItem('payWay') : null;
+
+  $("[name='companyName']").val(companyName);
+  $("[name='companyPhone']").val(companyPhone);
+  $("[name='joinDate']").val(joinDate);
+  $("[name='jobTitle']").val(jobTitle);
+  $("[name='unitProperty']").val(unitProperty);
+  $("[name='industry']").val(industry);
+  $("[name='monthlyIncome']").val(monthlyIncome);
+  $("[name='payWay']").val(payWay);
+// }
+
+// if(IsLocalStorage&&formindex===3)
+// {
+   var workCertificateName=  IsLocalStorage ?  localStorage.getItem('workCertificateName') : null,
+  workCertificatePhone=  IsLocalStorage ?  localStorage.getItem('workCertificatePhone') : null,
+  familyContactName=  IsLocalStorage ?  localStorage.getItem('familyContactName') : null,
+  familyContactPhone=  IsLocalStorage ?  localStorage.getItem('familyContactPhone') : null,
+  emergencyContactName=  IsLocalStorage ?  localStorage.getItem('emergencyContactName') : null,
+  emergencyContactPhone=  IsLocalStorage ?  localStorage.getItem('emergencyContactPhone') : null;
+
+  $("[name='workCertificateName']").val(workCertificateName);
+  $("[name='workCertificatePhone']").val(workCertificatePhone);
+  $("[name='familyContactName']").val(familyContactName);
+  $("[name='familyContactPhone']").val(familyContactPhone);
+  $("[name='emergencyContactName']").val(emergencyContactName) ;
+  $("[name='emergencyContactPhone']").val(emergencyContactPhone);
+//}
+  //basetml
+  $("#wizForm2").citySelect({
+    prov:"上海",
+    //nodata:"none",
+    required:false
+  }); 
+  // $("#city_2").citySelect({
+  //   prov:"北京",
+  //   nodata:"none"
+  // });
+  
+  // $("#city_3").citySelect({
+  //     prov:"湖南", 
+  //     city:"长沙"
+  // });
+  // var s1 = CreatSurface();
+  // start1();
+
+  // var s2 = CreatSurface();
+  // start2();
+
+  // var s3 = CreatSurface();
+  // start3();
+
+  FormWizard.init();
+
+  
+
+  $("#joinDate").mobiscroll().date();
+      
+      var currYear = (new Date('1986')).getFullYear();  
+      
+          //初始化日期控件
+      var opt = {
+        preset: 'date', //日期，可选：date\datetime\time\tree_list\image_text\select
+        theme: 'default', //皮肤样式，可选：default\android\android-ics light\android-ics\ios\jqm\sense-ui\wp light\wp
+        display: 'modal', //显示方式 ，可选：modal\inline\bubble\top\bottom
+        mode: 'scroller', //日期选择模式，可选：scroller\clickpick\mixed
+        lang:'zh',
+        dateFormat: 'yyyy-mm-dd', // 日期格式
+        setText: '确定', //确认按钮名称
+        cancelText: '取消',//取消按钮名籍我
+        dateOrder: 'yyyymmdd', //面板中日期排列格式
+        dayText: '日', monthText: '月', yearText: '年', //面板中年月日文字
+        showNow: false,  
+              nowText: "今",  
+              startYear:currYear, //开始年份  
+              endYear:currYear + 30 //结束年份  
+              //endYear:2099 //结束年份
+      };
+          
+      $("#joinDate").mobiscroll(opt);
+
+
+      $(".yo-btn-f2").click(function(){
+            if(location.search === '')
+            {
+               window.location.replace('detailslider.html');
+            }else{
+               window.location.replace('index.html');
+            }
+            
+          });
+
+      $('#formWizard .goback').click(function () {
+               
+            if(location.search === '')
+            {
+               window.location.replace('detailslider.html');
+            }else{
+               window.location.replace('index.html');
+            }
+                
+            });
+
+      $(".pop").click(function(){
+                $(".pop").hide();
+            });
+
+});
+</script>
+
+</body>
+</html>

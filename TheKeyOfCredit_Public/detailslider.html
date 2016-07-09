@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="./prd/yo/usage/export/yo-flex.css" />
+    <link rel="stylesheet" href="./themes/default/default.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="./style/nivo-slider.css" type="text/css" media="screen" />
+</head>
+<body>
+<div class="yo-flex" style=" background-color:#F7EFF7;">
+    <header class="yo-header m-header  detail-header " >
+        <p>购买产品</p>
+        <a href="indexp.html" class="regret yo-ico" >&#xf07d;</a>
+    </header>
+
+    <div class="flex">
+            <section class="m-list " >
+       <div class="slider-wrapper theme-default">
+            <div id="slider" class="nivoSlider">
+               <!--  <img src="images/20160402004245.jpg"  data-thumb="images/20160402004245.jpg" alt="" data-transition="slideInLeft"/>
+                <a href=""><img src="images/20160402004245.jpg"   data-thumb="images/20160402004245.jpg" alt=""  data-transition="slideInLeft"/></a>
+                <img src="images/20160402004245.jpg"   data-thumb="images/20160402004245.jpg" alt="" data-transition="slideInLeft" />
+                <img src="images/20160402004245.jpg"   data-thumb="images/20160402004245.jpg" alt=""  data-transition="slideInLeft" /> -->
+            </div>
+        </div>
+      </section>
+    <section class="m-list " >
+<!-- <span class="Price1">￥2500.0</span> <p class="titles"> 携程是一个在线票务服务公司，创立于1999年，总部设在中国上海。</p> -->
+
+        <ul class="yo-list" >
+         <li class="item Grid" >
+                    <div class="last Grid-cell u-1of1">
+                        <p class="">可借款金额：<span class="name1"></span></p>
+                        <p class="name"></p>
+                        <p class="Price" >商品总价：<span class="Price2"></span> </p>
+                    </div>
+                   <span class="yypf-ico circle  yypf1-ico" style="font-size:.2rem; "></span> <div class=" " style="font-size:.14rem;text-overflow:ellipsis; margin-left: 0.1rem"></div>
+                </li>
+                 <div style="width:100%;height:5px;margin:0px auto;padding:0px;background-color:#f0eff5;overflow:hidden;"></div>
+                 <li class="item2 Grid" >
+                    <div class=" Grid-cell u-1of7   "> <div class="yypf-ico circle1"></div>
+                </div>
+                    <div class=" Grid-cell u-full ">
+                      <div class="name"><span class="titles">商品特性</span>
+                         <p class="Extended10"> </p>
+                      </div>
+                    </div>
+                </li>
+
+
+                 <!-- <div style="width:100%;height:2px;margin:0px auto;padding:0px;background-color:#f0eff5;overflow:hidden;"></div>     -->
+                 <li class="item2 Grid" >
+               <div class=" Grid-cell u-1of7   "> <div class="yypf-ico circle2"></div></div>
+                 <div class=" Grid-cell u-full "><span class="titles">来源：</span>
+
+                  <a  class="MerchantName MerchantNamehref"></a>
+
+                    <p class="YCPP1 ">此商品由<span  class="MerchantName"></span>销售并提供服务，<span  style="color:#D62431;">信用钥匙仅提供您与出借人的信用借款撮合服务</span>  </p>
+                    </div>
+                </li>
+                <li class="item2 Grid" >
+                  <div class=" Grid-cell u-1of7   "> <div class="yypf-ico circle3"></div></div>
+                 <div class=" Grid-cell u-full "> <span class="titles">商品介绍</span>
+                       <p class="Extended7"> </p>
+                  </div>
+                </li>
+           </ul>
+           </section>
+</div>
+<section class="m-layer">
+            <ul class="yo-tabfoot1">
+              <a  class="item item-y-ico quane" style="width: 25%;">
+        <i class="yo-ico yypf-ico " ></i>
+        联系商户
+      </a>
+                <li class="item fenqik" style="width: 40%;"></li>
+                <li  class="item goumai" style="background-color:#212021; color:#fff;width: 35%;">申请分期</li>
+           </ul>
+    </section>
+  </div>
+<script src="http://localhost:3000/webpack-dev-server.js"></script>
+<script type="text/javascript" src="./dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./dist/jquery.nivo.slider.js"></script>
+    <script type="text/javascript">
+        function urlParse (e) {
+            e = e.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var t = new RegExp("[\\?&]" + e + "=([^&#]*)"), n = t.exec(location.search);
+            return null == n ? "" : decodeURIComponent(n[1])
+         }
+         function del_html_tags(str,reallyDo,replaceWith) {
+          var e=new RegExp(reallyDo,"g");
+          return str.replace(e, replaceWith);
+          }
+    $(function(){
+      var isHistoryGoods=false;
+      var GoodsNos= urlParse("GoodsNos");
+      var Goods ='';
+      var MyGoodsdetail =null,GoodsNo=null;
+      if(GoodsNos==="")
+        {
+        Goods= localStorage.getItem("@MyGoods");
+        MyGoodsdetail =JSON.parse(Goods.substr(1, Goods.length));
+        console.log(JSON.parse(Goods.substr(1, Goods.length)));
+        GoodsNo =MyGoodsdetail.GoodsNo;
+        console.log(MyGoodsdetail.MerchantID)
+        }else{
+         //http://120.55.161.84:8064/api/CreditKey/getGoodsByIndustry
+         console.log({GoodsNo:GoodsNos });
+          $.ajax({
+            //
+            //url : 'http://121.40.185.130:8072/api/CreditKey/getGoodsByIndustry',
+            url : ' http://120.55.161.84:8064/api/CreditKey/getGoodsByIndustry',
+            data : {GoodsNo:GoodsNos },
+            type:'POST',
+            dataType : 'json',
+            async : false,
+            success : function(data) {
+              console.log(data);
+               console.log(data.Data.GoodsAPIItem[0]);
+               MyGoodsdetail=data.Data.GoodsAPIItem[0];
+               localStorage.setItem("@MyGoods","'" + JSON.stringify(MyGoodsdetail));
+            },
+            error : function(XMLHttpRequest,textStatus, errorThrown) {}
+        });
+          Goods = localStorage.getItem(GoodsNos);
+        }
+          if(localStorage.getItem("HistoryGoods")!==null){
+         var hGoods= localStorage.getItem("HistoryGoods");
+         var historystock = JSON.parse(hGoods.substr(1, hGoods.length));
+
+            var result = false;
+            for (var i in historystock) {
+                if (historystock[i].GoodsNo == GoodsNo) {
+                    result = true;
+                    isHistoryGoods=true;
+                }
+            }
+            if (result) {
+              $(".yypf1-ico ").removeClass("circle");
+              $(".yypf1-ico ").addClass("circlered");
+            }
+            }
+
+      var cptxhtml=MyGoodsdetail.Extended10 === null ? '':  del_html_tags(MyGoodsdetail.Extended10,"→","<br>");
+         var fqhtml ='分期:￥<span style="color:#DEA221;font-size: .18rem; ">'+ MyGoodsdetail.Extended8 +'</span>';   
+
+
+         var Extended7=MyGoodsdetail.Extended7 ===null ? '': del_html_tags(MyGoodsdetail.Extended7,"→","<br>");
+
+
+
+        var sliderhtml=
+        '<img src="http://120.55.161.84/GoodsImg/'+MyGoodsdetail.Extended9+'"  data-thumb="http://120.55.161.84/GoodsImg/'+MyGoodsdetail.Extended9+'"alt="" data-transition="slideInLeft"/> ';
+        // sliderhtml += '<a href=""><img src="'+MyGoodsdetail.GoodsImgName+'"   data-thumb="'+MyGoodsdetail.GoodsImgName+'" alt=""  data-transition="slideInLeft"/></a>';
+        // sliderhtml += '<img src="'+MyGoodsdetail.GoodsImgName+'"   data-thumb="'+MyGoodsdetail.GoodsImgName+'" alt="" data-transition="slideInLeft" />';
+        // sliderhtml += '<img src="'+MyGoodsdetail.GoodsImgName+'"   data-thumb="'+MyGoodsdetail.GoodsImgName+'" alt=""  data-transition="slideInLeft" />';
+
+         $('#slider').html(sliderhtml);
+
+         $('.name1').html((MyGoodsdetail.Balance-MyGoodsdetail.SFBalance).toFixed(2));
+         //$('.last >.name').html(MyGoodsdetail.ProductName);
+         $('.last >.Price >.Price2').html('￥'+ MyGoodsdetail.Balance);
+         $('.last >.Price >.Price1').html('￥'+ MyGoodsdetail.Balance);
+         $('.productdetail').html(MyGoodsdetail.Description);
+         $('.MerchantName').html(MyGoodsdetail.MerchantName);
+
+         $(".MerchantNamehref").attr("href",'PositionPage.html?MerchantID='+MyGoodsdetail.MerchantID);
+
+          $('.Extended10').html(cptxhtml);
+          $('.yo-tabfoot1 > .fenqik').html(fqhtml);
+           $('.Extended7').html(Extended7);
+
+
+          $(".goumai").click(function(){
+            if(localStorage.getItem('Mobile')==null){
+              window.location.replace('register.html?target=detailslider.html');
+            }else{
+              window.location.replace('shenqing.html');
+             }
+          });
+
+          // $(".regret").click(function(){
+          //   var rpage= urlParse("page");
+          //   if(rpage=='index'){
+          //     window.location.replace('index.html');
+          //   }else{
+          //     window.location.replace('indexp.html');
+          //    }
+          // });
+
+          $(".quane").click(function(){
+             window.location.replace('PositionPage.html?MerchantID='+MyGoodsdetail.MerchantID);
+          });
+
+        $(".yypf1-ico ").click(function(){
+            var historystock=[];
+            var hGoods= localStorage.getItem("HistoryGoods");
+            if(localStorage.getItem("HistoryGoods")!==null){
+              historystock = JSON.parse(hGoods.substr(1, hGoods.length));
+            }
+            var result = false;
+         if(!isHistoryGoods){
+            for (var i in historystock) {
+                if (historystock[i].GoodsNo == GoodsNo) {
+                    result = true;
+                }
+            }
+            if (!result) {
+                  isHistoryGoods=true;
+                  historystock.push(MyGoodsdetail);
+            }
+            localStorage.setItem("HistoryGoods","'" + JSON.stringify(historystock));
+            $(".yypf1-ico ").removeClass("circle");
+            $(".yypf1-ico ").addClass("circlered");
+
+          }else{
+
+            var result = false;
+            var index = 0;
+            for (var i in historystock) {
+                if (historystock[i].GoodsNo == GoodsNo) {
+                    result = true;
+                    index=i;
+                }
+            }
+            if (!result) {
+                  historystock.splice(index,1);
+                  isHistoryGoods=false;
+            }
+            localStorage.setItem("HistoryGoods","'" + JSON.stringify(historystock));
+            $(".yypf1-ico ").removeClass("circlered");
+            $(".yypf1-ico ").addClass("circle");
+          }
+          var HistoryGoods= localStorage.getItem("HistoryGoods");
+            console.log( JSON.parse(HistoryGoods.substr(1, HistoryGoods.length)))
+
+          });
+
+
+    });
+
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+    </script>
+</body>
+</html>

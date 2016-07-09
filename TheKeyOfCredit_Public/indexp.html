@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <title>商品 </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" href="./prd/yo/usage/export/yo-flex.css" />
+
+    <style type="text/css">
+        #tab-content{ height: 95%; background-color: #fff; }
+        #tab-content .slider { position: initial;}
+        .back-to-top {
+    text-align: center;
+    background: #08A6A5;
+    color: #fff;
+    display: none;
+    width: 0.4rem;
+    height: 0.4rem;
+    line-height: 0.4rem;
+    font-size: 0.3rem;
+    position: fixed;
+    right: 0.2rem;
+    bottom: 0.5rem;
+    opacity: 0.8;
+    border-radius: 50%;
+
+    filter: alpha(opacity=40);
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+.yo-list li { 
+width: 50%; /*如果显示三列 则width改为70px*/ 
+float: left; 
+display: block; 
+} 
+    </style>
+</head>
+<body>
+<div class="yo-flex">
+
+    <header class="yo-suggest yo-suggest-modal yo-suggest-on">
+        <div class="operate yo-header">
+                    <div class="action" >
+                        <input type="search"  placeholder="搜索产品" class="input" ref="key" />
+                        <label class="label" htmlFor="yo-search-input"><i class="yo-ico yo-ico-search"></i></label>
+                    </div>
+                    <span class="cancel" >搜索</span>
+             
+    </header>
+    <section class="m-layer">
+      <ul class="yo-Htab">
+         <li class="item item-on" id="li0">推荐<span class="bot" ></span> </li>
+         <li class="item " id="li1">旅游<span class="bot" ></span> </li>
+         <li class="item " id="li2">装修 <span class="bot"></span></li>
+         <li class="item " id="li3">医疗 <span class="bot"></span></li>
+         <li class="item " id="li4">培训 <span class="bot"></span></li>    
+       </ul>
+       <div style="width:100%;height:10px;margin:0px auto;padding:0px;background-color:#f0eff5;overflow:hidden;"></div>
+      
+    </section>
+
+    <div class="flex">
+                                 
+
+      <div id="tab-content">
+        
+      </div>
+     <!--  <div class="back-to-top" style="display: block;"><i class=" yo-ico">&#xf027;
+</i></div> -->
+    </div>
+    <!-- style=" width:20px;height:20px" -->
+  <section class="yo-tab yo-tab-view m-tabview">
+        <a href="index.html" class="item item-y-ico ">
+            <i class="yo-ico"><img style=" width:24px;height:20px" src="./images/index.png"></i>
+            首页
+        </a>
+        <a href="indexp.html" class="item item-y-ico item-on">
+            <i class="yo-ico"><img style=" width:31px;height:20px" src="./images/producton.png"></i>
+            商品
+        </a>
+         <a href="activity.html" class="item item-y-ico">
+            <i class="yo-ico"><img style=" width:22px;height:20px" src="./images/activity.png"></i>
+            活动
+        </a>
+        <a href="about.html" class="item item-y-ico">
+            <i class="yo-ico"><img style=" width:22px;height:20px" src="./images/myinfo.png"></i>
+            关于
+        </a>
+    </section>
+</div>
+<script type="text/javascript" src="./dist/jquery.min.js"></script>
+<script type="text/javascript" src="./dist/SliderTab.js"></script>
+<script type="text/javascript">
+$(function () {
+    // $("#tab-content").scroll(function(){
+    //             if ($("#tab-content").scrollTop()>100){
+    //                 $(".back-to-top").fadeIn(1500);
+    //             }
+    //             else
+    //             {
+    //                 $(".back-to-top").fadeOut(1500);
+    //             }
+    //         });
+    //         //当点击跳转链接后，回到页面顶部位置
+    //         $(".back-to-top").click(function(){
+              
+    //             $("#tab-content").scrollTop(0);
+    //             return false;
+    //         });
+});
+
+    </script>
+</body>
+</html>

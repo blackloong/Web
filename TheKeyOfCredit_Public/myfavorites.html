@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" href="./prd/yo/usage/export/yo-flex.css" />
+      <style type="text/css">
+  /*#tab-content{ height: 85%; background-color: #fff; }*/
+
+  #tab-content li { 
+    width: 50%; /*如果显示三列 则width改为70px*/ 
+    float: left; 
+    display: block; 
+  } 
+  </style>
+<body>
+<div class="yo-flex">
+   <header class="yo-header m-header">
+        <h2 class="title">我的收藏</h2>
+        <a href="index.html"  class="regret yo-ico" >&#xf07d;</a>
+       
+    </header>
+ <div class="flex" id="tab-content" >
+    </div>
+
+</div>
+
+<script src="http://localhost:3000/webpack-dev-server.js"></script>
+<script type="text/javascript" src="./dist/myfavoritesTab.js"></script>
+
+
+</body>
+</html>

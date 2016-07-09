@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <link href="./accountcenter.console.css" rel="stylesheet"/>
+  <link href="./style/h5base.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="./prd/yo/usage/export/yo-flex.css" />
+  <link media="all" rel="stylesheet" href="./style/common.css" />
+  <style type="text/css">
+  #tab-content{ height: 85%; background-color: #fff; }
+  </style>
+</head>
+<body>
+  <div class="yo-flex">
+    <header class="yo-header m-header ">
+     <h2>预授信申请</h2>
+     <span class="regret yo-ico">&#xf07d;</span>
+
+   </header>
+   <section class="yo-SQHtab ">
+    <a  class="item item-y-ico item-on">
+      <i class="yo-ico">&#xf04f;</i>
+      基本信息
+    </a>
+    <a  class="item item-y-ico item-on">
+      <i class="yo-ico">&#xf04e;</i>
+      资料上传
+    </a>
+    <a  class="item item-y-ico">
+      <i class="yo-ico">&#xf050;</i>
+      申请成功
+    </a>
+  </section> 
+
+  <div class="flex">
+
+    <section class="m-list " >
+      <div class="hreadtile">身份证认证</div>
+      <ul class="yo-list imglist" >
+        <li class="item item-active Grid" >
+          <div class="mark">
+            <!-- <img style=" width:150px; height:120px;" src="images/sfz2.png" alt="美女"  /> -->
+            <div  class="start">
+            <div class="imgBox">
+              <div class="img"> 
+                <div class="scd" id="ShadeSurface"></div>
+                <div class="div_hd">
+                  <canvas id="canvas" style="background-image:url(images/sfz2.png)"></canvas>
+                </div>
+              </div>
+              <div  class="btn_camera"> </div>
+              <div  class="btn_camera"><input id="takePictureField" accept="image/*"  capture="camera" type="file" name="uploadfile" class="uploadfile"></div>
+            </div>
+            <div class="txtBox">
+            </div>
+            <canvas id="copySurface1" class="div_hd" style="display:none;"></canvas>
+          </div>
+            <span>身份证正面照</span>
+          </div>
+          <div class="mark">
+            <!-- <img style=" width:155px; height:120px;" src="images/sfz1.png" alt="美女"  /> -->
+          <div  class="start">
+            <div class="imgBox">
+              <div class="img"> 
+                <div class="scd" id="ShadeSurface1"></div>
+                <div class="div_hd">
+                  <canvas id="canvas1" style="background-image:url(images/sfz2.png)"></canvas>
+                </div>
+              </div>
+              <div  class="btn_camera"> </div>
+              <div  class="btn_camera"><input id="takePictureField1" accept="image/*"  capture="camera" type="file" name="uploadfile" class="uploadfile"></div>
+            </div>
+            <div class="txtBox">
+            </div>
+            <canvas id="copySurface11" class="div_hd" style="display:none;"></canvas>
+          </div>
+            <span>身份证反面照</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <section class="m-layer">
+      <div class="hreadtile">头像认证</div>
+      <div id="wrap" style="text-align: center; ">
+        <section>
+          <div  class="start">
+            <div class="imgBox">
+              <div class="img"> 
+                <div class="scd" id="ShadeSurface2"></div>
+                <div class="div_hd">
+                  <canvas id="canvas2" style="background-image:url(images/touxiang.png)"></canvas>
+                </div>
+              </div>
+              <div  class="btn_camera1"> </div>
+              <div  class="btn_camera1"><input id="takePictureField2" accept="image/*"  capture="camera" type="file" name="uploadfile" class="uploadfile"></div>
+            </div>
+            <div class="txtBox">
+            </div>
+            <canvas id="copySurface12" class="div_hd" style="display:none;"></canvas>
+          </div>
+          
+        </section>
+        
+
+      </div>
+      <ul class="yo-tabclear">
+        <li class="item " ><input type="button" value="提交" class="yo-btn yo-btn-d" ></li>
+
+      </ul>
+    </section>
+  </div>
+</div>
+
+<script type="text/javascript" src="./dist/jquery.min.js"></script>
+<script src="http://localhost:3000/webpack-dev-server.js"></script>
+<script type="text/javascript" src="./dist/bootstrap.js"></script>
+<script type="text/javascript" src="./dist/wg/edit.js"></script>
+<script type="text/javascript" src="./dist/wg/SurfaceImage3.0.1.js"></script>
+<script type="text/javascript" src="./dist/wg/megapix-image.js"></script>
+<script type="text/javascript" src="./dist/wg/ExifReader.js"></script>
+<script type="text/javascript" src="./dist/wg/hammer.min.1.1.js"></script>
+<script type="text/javascript">
+
+$(function () {
+  //base
+  var s1 = CreatSurface();
+  start1();
+
+  var s2 = CreatSurface();
+  start2();
+
+  var s3 = CreatSurface();
+  start3();
+
+  function start1() {
+    s1.drawSurface = "canvas";
+    s1.copySurface = "copySurface1";
+    s1.shadeSurface = "ShadeSurface";
+
+    s1.init();
+    $("#takePictureField").on("change", function (event) {
+      var tempObj = new Object();
+      tempObj = s1;
+      
+      if (event.target.files.length == 1) {
+
+        var reader = new FileReader();
+        reader.onload = function (event) {
+          try {
+            var exif = new ExifReader();
+            exif.load(event.target.result);
+            var tags = exif.getAllTags();
+            tempObj.TagO = tags;
+          }
+          catch (error) {
+            tempObj.exif_error = true;
+          }
+        };
+
+        reader.readAsArrayBuffer(event.target.files[0]);
+
+        reader.onloadend = function () {
+          var f = document.getElementById("takePictureField").files[0];
+          var url = window.URL || window.webkitURL;
+
+          var src = url.createObjectURL(f);
+          
+          tempObj.url = src;
+          tempObj.drawInitImage();
+          tempObj.dragImage();
+          uploadStatus = true;
+          SelectImage = true;
+          runCheck = false;
+        }
+      }
+    });
+    $('.arrows_down').click(function () {
+      if(!$("#takePictureField").val()){
+       alert("请上传图片")
+     }else{
+         //执行的代码
+         postFile1(s1.toImage(), "canvas1.php");
+
+       }
+
+     });
+  }
+
+  function start2() {
+    s2.drawSurface = "canvas1";
+    s2.copySurface = "copySurface11";
+    s2.shadeSurface = "ShadeSurface1";
+
+    s2.init();
+    $("#takePictureField1").on("change", function (event) {
+      var tempObj = new Object();
+      tempObj = s2;
+      
+      if (event.target.files.length == 1) {
+
+        var reader = new FileReader();
+        reader.onload = function (event) {
+          try {
+            var exif = new ExifReader();
+            exif.load(event.target.result);
+            var tags = exif.getAllTags();
+            tempObj.TagO = tags;
+          }
+          catch (error) {
+            tempObj.exif_error = true;
+          }
+        };
+
+        reader.readAsArrayBuffer(event.target.files[0]);
+
+        reader.onloadend = function () {
+          var f = document.getElementById("takePictureField1").files[0];
+          var url = window.URL || window.webkitURL;
+
+          var src = url.createObjectURL(f);
+          
+          tempObj.url = src;
+          tempObj.drawInitImage();
+          tempObj.dragImage();
+          uploadStatus = true;
+          SelectImage = true;
+          runCheck = false;
+        }
+      }
+    });
+    $('.arrows_down').click(function () {
+      if(!$("#takePictureField1").val()){
+       alert("请上传图片")
+     }else{
+         //执行的代码
+         postFile1(s1.toImage(), "canvas1.php");
+
+       }
+
+     });
+  }
+
+function start3() {
+    s3.drawSurface = "canvas2";
+    s3.copySurface = "copySurface12";
+    s3.shadeSurface = "ShadeSurface2";
+
+    s3.init();
+    $("#takePictureField2").on("change", function (event) {
+      var tempObj = new Object();
+      tempObj = s3;
+      
+      if (event.target.files.length == 1) {
+
+        var reader = new FileReader();
+        reader.onload = function (event) {
+          try {
+            var exif = new ExifReader();
+            exif.load(event.target.result);
+            var tags = exif.getAllTags();
+            tempObj.TagO = tags;
+          }
+          catch (error) {
+            tempObj.exif_error = true;
+          }
+        };
+
+        reader.readAsArrayBuffer(event.target.files[0]);
+
+        reader.onloadend = function () {
+          var f = document.getElementById("takePictureField2").files[0];
+          var url = window.URL || window.webkitURL;
+
+          var src = url.createObjectURL(f);
+          
+          tempObj.url = src;
+          tempObj.drawInitImage();
+          tempObj.dragImage();
+          uploadStatus = true;
+          SelectImage = true;
+          runCheck = false;
+        }
+      }
+    });
+    $('.arrows_down').click(function () {
+      if(!$("#takePictureField2").val()){
+       alert("请上传图片")
+     }else{
+         //执行的代码
+         postFile1(s1.toImage(), "canvas1.php");
+
+       }
+
+     });
+  }
+});
+</script>
+</body>
+</html>
