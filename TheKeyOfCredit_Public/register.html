@@ -17,7 +17,7 @@
     <header class="yo-header m-header">
         <p class="title">注册</p>
         <a href="index.html"  class="regret yo-ico" >&#xf07d;返回</a>
-        <!-- <span class="affirm login"   >登录</span> -->
+        <span class="affirm login"   >登录</span> 
     </header>
 
     <div class="flex F7EFF7">
@@ -125,11 +125,31 @@
 </div>
 
 
+<div  class="popforlogin"> 
+    <div class="yo-tip1" >
+        <p> <i class=" yo-ico  yypf-ico" style="font-size: 0.4rem; padding-top:0.05rem;" >&#xE82E; </i></p>
+        <p><div style="font-size: 0.14rem; padding-top: 0.05rem; font-weight:bolder;">登录成功</div>
+            <div style="font-size: 0.13rem; padding-bottom: 0.1rem;">请放心申请信用服务</div></p>
+            <a href="index.html"  ><input type="button" value="           确定           " class="yo-btn-h1" />   </a>
+        </div>
+</div>
 
+
+<div  class="popforregister"> 
+    <div class="yo-tip1" >
+        <p> <i class=" yo-ico  yypf-ico" style="font-size: 0.4rem; padding-top:0.05rem;" >&#xE82E; </i></p>
+        <p><div style="font-size: 0.14rem; padding-top: 0.05rem; font-weight:bolder;">恭喜您注册成功</div>
+            <div style="font-size: 0.13rem; padding-bottom: 0.1rem;">请赶快申请信用额度</div></p>
+            <a href="index.html"  ><input type="button" value="           确定           " class="yo-btn-h1" />   </a>
+        </div>
+</div>
 <script type="text/javascript">
 
  $(function(){
-$(".opinion").hide();
+//$(".opinion").hide();
+$(".content").hide();
+$(".popforlogin").hide();
+$(".popforregister").hide();
 
 var InterValObj; //timer变量，控制时间
 var count = 60; //间隔函数，1秒执行
@@ -142,7 +162,7 @@ $(".yo-input1").val(localStorage.getItem('Mobile'));
 
  $("#btnSendCode").click(function(){
   console.log(clickf);
-  localStorage.setItem('Mobile',$(".yo-input1").val());
+  //localStorage.setItem('Mobile',$(".yo-input1").val());
   if( $(".yo-input1").val() == '' ){
             $(".errmsg").html('请输入手机号码！');
             return false;
@@ -211,7 +231,8 @@ $(".registration").click(function(){
             return false;
         }
         $.ajax({
-             url :'http://Keyofcredit.eifm.net/interface/wxregistration',
+             //url :'http://Keyofcredit.eifm.net/interface/wxregistration',
+             url :'http://4n6x1kiaop.proxy.qqbrowser.cc/yxjrs/interface/wxregistration',
              type: "POST",
              data :{'mobile':$(".yo-input1").val(),'pwd':$(".psw1").val(),
                         'sours':$(".yo-input2").val(),'wx':localStorage.getItem('openid') },
@@ -222,11 +243,12 @@ $(".registration").click(function(){
                 if(data.code=='00')
                 {
                     //$(".errmsg").html(data.msg);
-                    if(urlParse("target")==""){
+            		$(".popforregister").show();
+                    /*if(urlParse("target")==""){
                         window.location.replace('index.html'); 
                     }else{
                         window.location.replace(urlParse('target')) ;
-                    }
+                    }*/
                 }else{
                     $(".errmsg").html(data.msg); 
                 }
@@ -251,7 +273,8 @@ $(".logintion").click(function(){
         }
         
         $.ajax({
-            url :'http://Keyofcredit.eifm.net/interface/wxuserlogin',
+            //url :'http://Keyofcredit.eifm.net/interface/wxuserlogin',
+            url :'http://4n6x1kiaop.proxy.qqbrowser.cc/yxjrs/interface/wxuserlogin',
             dataType : 'json',
             data :{'mobile':$(".yo-mobi").val(),
                    'password':$(".password").val(),
@@ -261,9 +284,14 @@ $(".logintion").click(function(){
                console.log(data);
                if(data.code=='002')
                   {
-                 localStorage.setItem('Mobile',$(".yo-mobi").val());
-                //window.location.replace(urlParse('target')); 
-                 }else{
+                 	localStorage.setItem('Mobile',$(".yo-mobi").val());
+            		$(".popforlogin").show();
+                	//window.location.replace(urlParse('target')); 
+                 }
+				 else if(data.code=='101')
+				 {
+                     $(".errmsg1").html("此手机号已绑定到"+data.msg); 
+				 }else{
                      $(".errmsg1").html(data.msg); 
                  }
                  //{"uid":3,"code":"002","msg":"登陆成功"}
@@ -274,7 +302,7 @@ $(".logintion").click(function(){
 }); 
 
 $(".password").on('input',function(e){  
-     if($(this).val().length>6){
+     if($(this).val().length>=6){
                 $(".logintion").removeClass('yo-btn-f');
                 $(".logintion").addClass('yo-btn-f2');
             }

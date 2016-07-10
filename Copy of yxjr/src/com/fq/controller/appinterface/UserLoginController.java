@@ -149,78 +149,65 @@ public class UserLoginController extends ResponseBaseController {
 	@RequestMapping(value="wxuserlogin")
 	@ResponseBody
 	@InterfaceValidate(vliadateRequestData={"mobile","password","wx"})
-	public Map<String, Object> wxuserLogin() throws Exception{
+	public Map<String, Object> wxuserLogin() throws Exception
+	{
+		
 		Map<String, Object> res=new HashMap<String, Object>();
 		
-		
 		FormData form=this.getFormData();
-		String mobile=form.getString("mobile");
-		String password=form.getString("password");
+		FormData mobform = new FormData();
+		mobform.put("mobile", form.getString("mobile"));
 		
-		FormData mobform1=new FormData();
-		mobform1.put("mobile", form.getString("mobile"));
-		
- 		 List<FormData> list=userservice.checkMobile(mobform1);
- 		 if(list.size()==0){
+ 		List<FormData> list = userservice.checkMobile(mobform);
+ 		if(list.size()==0)
+ 		{
  			res.put("code", "003");
-			res.put("msg", "用户不存在");
+			res.put("msg", "用户不存在");//该手机号未注册，请先注册
 			return res;
- 		 }
-			 
- 		 String password1= PassWordUtil.MD5(form.getString("password"));
-		Map<String, Object> u = userservice.getUserByMobileAndPassword(mobile, password1);
-		if(u == null || u.isEmpty() ){
-			res.put("code", "001");
-			res.put("msg", "密码与用户名不符");
-			return res;
-		}
-	
-	    int id=0;//测试
-		FormData wxform=new FormData();
-		wxform.put("wx", form.getString("wx"));	
-     	List<FormData>  user= userservice.checkMobile(wxform);//检测微信号是否已授权
-	 if(user.size()>0){	
-		
-		 JSONObject json=JSONObject.fromObject(user.get(0));
-		 String wx=form.getString("wx");
- 
-		//根据手机号 绑定 微信号
-
-			FormData mobform=new FormData();
-			mobform.put("mobile", form.getString("mobile"));
-			List<FormData>  users= userservice.checkMobile(mobform);//检测手机号是否存在
-			
-		  if(users.size()>0){
-			  JSONObject ujson=JSONObject.fromObject(users.get(0));
-			  form.put("headimg", json.get("headimg"));//头像
-			  form.put("username", json.get("username"));//昵称
-			  form.put("password",""); 
-			  form.put("wx", wx);
-		      form.put("mobile", ujson.get("mobile"));//手机号
-
-			  userservice.delwx(form);//删除多余微信号
-		      id=userservice.updateMobUser(form);
-			  
-		  }
-	    
-	  	if(id>0){			
-			res.put("code", "002");
-			res.put("msg", "登陆成功");
-			res.put("uid", u.get("id"));
-			res.put("uid", u.get("id"));
-
-			return res;
-		}
-	  	else{ 
-	  		
-			res.put("code", "80");
-			res.put("msg", "绑定失败");
-	  	}
-		
-	
-
  		}
+		
+ 		String password1= PassWordUtil.MD5(form.getString("password"));
+ 		JSONObject mobleUserJson = JSONObject.fromObject(list.get(0));
+ 		if(!password1.equals(mobleUserJson.get("password")))
+ 		{
+ 			res.put("code", "001");
+ 			res.put("msg", "密码与用户名不符");//密码错误，请重新输入密码
+ 			return res;
+ 		}
+ 		
+ 		int id = 0;//数据库操作id，标识是否成功绑定
+ 		if(mobleUserJson.containsKey("wx"))
+ 		{
+			//该手机号已绑定过微信，重复绑定，返回已绑定的微信昵称
+			res.put("code", "101");
+			res.put("msg", mobleUserJson.get("username"));
+			return res;
+ 		}
+		//未绑定微信的手机号,缓存从access_token存储的微信数据，删除access_token保存的数据，把缓存的数据存储到手机号对应的字段上
+		FormData wxform = new FormData();
+		wxform.put("wx", form.getString("wx"));
+		List<FormData> wxlist = userservice.checkMobile(wxform);
+		if(wxlist.size() <= 0)
+		{
+	 		res.put("code", "100");
+	 		res.put("msg", "invalid_openid");//数据异常，未找到access_token保存的数据
+	 		return res;
+		}
+		userservice.delwx(wxform);
+		JSONObject wxUserJson = JSONObject.fromObject(wxlist.get(0));
+		mobform.put("wx", wxUserJson.get("wx"));
+		mobform.put("username", wxUserJson.get("username"));
+		mobform.put("headimg", wxUserJson.get("headimg"));
+		id = userservice.updateMobUser(mobform);
+		
+	  	if(id <= 0)
+	  	{			
+			res.put("code", "80");
+			res.put("msg", "登陆失败");//数据更新失败
+			return res;
+		}
+		res.put("code", "002");
+		res.put("msg", "登陆成功");
 		return res;
-
 	}
 }

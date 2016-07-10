@@ -327,98 +327,73 @@ public class Registration extends ResponseBaseController {
 	@RequestMapping(value="wxregistration")
 	@ResponseBody
 	@InterfaceValidate(vliadateRequestData={"mobile","pwd","sours","wx"})
-	public Map<String, Object> wxregistration() throws Exception{
+	public Map<String, Object> wxregistration() throws Exception
+	{
+		
 		Map<String, Object> res=new HashMap<String, Object>();
 		FormData form=this.getFormData();
 		//这里 暂时 不加密  ,以后根据需求 在进行加密 
 		//form.put("password", PassWordUtil.MD5(form.getString("password")));
-		 String mobile=form.getString("mobile");
+		//String mobile=form.getString("mobile");
 		 
-		 form.put("password", PassWordUtil.MD5(form.getString("pwd")));
+		form.put("password", PassWordUtil.MD5(form.getString("pwd")));
          //form.put("password",form.get("pwd"));
 	
-		String sours=(String) form.get("sours");
-
+		//String sours=(String) form.get("sours");
 		Map<String, Object> soursMap=userservice.MChecksours(form);
-	 
-		if(soursMap==null || soursMap.equals("") ){
+		if(soursMap==null || soursMap.equals("") )
+		{
 			res.put("code", "20");
 			res.put("msg", "验证码不正确");
 			return res;
 		}
-	 
-		else{
+	 	else
+	 	{
 			 //验证码失效
-			 if(StringUtils.timeOut(soursMap.get("SendTime").toString(), 1200000)){
-				    res.put("code", "20");
-					res.put("msg", "验证码失效");
-					return res;
-			  }
-					
+			 if(StringUtils.timeOut(soursMap.get("SendTime").toString(), 1200000))
+			 {
+				 res.put("code", "20");
+				 res.put("msg", "验证码失效");
+				 return res;
+			 }					
 		}
-		
-		  
-	    int id=0;//测试
+				  
+	    int id = 0;//数据库操作id，标识是否成功绑定
 		 
-			FormData wxform=new FormData();
-			wxform.put("wx", form.getString("wx"));
-			
-		List<FormData>  user= userservice.checkMobile(wxform);//检测微信号是否已授权
-		
-		if(user.size()>0){
-			
-			
-			 JSONObject json=JSONObject.fromObject(user.get(0));
-			 String wx=form.getString("wx");
-
-			/*res.put("code", "10");
-			res.put("msg", "此用户已存在");*/
-			
-			//根据手机号 绑定 微信号
-
-				FormData mobform=new FormData();
-				mobform.put("mobile", form.getString("mobile"));
-				
-				List<FormData>  users= userservice.checkMobile(mobform);//检测手机号是否存在
-				
-			  if(users.size()>0){
-				  JSONObject ujson=JSONObject.fromObject(users.get(0));
-				  form.put("headimg", json.get("headimg"));//头像
-				  form.put("username", json.get("username"));//昵称
-				  form.put("password",""); 
-				  form.put("wx", wx);
-			      form.put("mobile", ujson.get("mobile"));//手机号
-
-				  userservice.delwx(form);//删除多余微信号
-			      id=userservice.updateMobUser(form);
-				  
-			  }
-			  else{
-			 		 form.put("roleid", 2);
-					 form.put("wx", wx);
-
-				   id=userservice.updatewxUser(form);
-				   
-				  
-			  }
-			
-		    
-		  	if(id>0){
-				res.put("code", "00");
-				res.put("msg", "绑定成功");
-				return res;
-			}
-		  	else{ 
-		  		
-				res.put("code", "80");
-				res.put("msg", "绑定失败");
-		  	}
-		  	
+		//获得手机号的数据
+		FormData mobform = new FormData();
+		mobform.put("mobile", form.getString("mobile"));			
+		List<FormData> mobileUser = userservice.checkMobile(mobform);//检测手机号是否存在
+		if(mobileUser.size() > 0)
+		{
+			//该手机号注册，请登录
+			res.put("code", "90");
+			res.put("msg", "invalid mobile");
 			return res;
 		}
-		
-
-
+		//不存在该手机号，则把手机号绑定到微信数据上
+		FormData wxform = new FormData();
+		wxform.put("wx", form.getString("wx"));			
+		List<FormData> wxUser = userservice.checkMobile(wxform);//检测微信号是否已授权
+		if(wxUser.size() <= 0)
+		{
+			 res.put("code", "21");
+			 res.put("msg", "invalid openid");//内部错误，未找到对应的微信数据（在用户访问页面时应该通过access_token保存过微信数据)
+			 return res;
+		}
+		JSONObject wxUserJson = JSONObject.fromObject(wxUser.get(0));
+		wxform.put("mobile", form.getString("mobile"));
+		wxform.put("password", form.getString("password"));
+		wxform.put("roleid", 2);
+		id = userservice.updatewxUser(wxform);
+	  	if(id>0)
+	  	{
+			res.put("code", "00");
+			res.put("msg", "绑定成功");
+			return res;
+		}
+		res.put("code", "80");
+		res.put("msg", "绑定失败");
 		return res;
 	}
 	

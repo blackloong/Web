@@ -27,30 +27,64 @@ function urlParse (name) { // 获取url参数
 }
 $(function () {
 //localStorage.removeItem("openid"); 
-var page = location.href.split('/').pop();
+
+//modify begin 2016.7.10 更改查找page的代码（因为微信头像的网址数据中包含'/')
+/*var page = location.href.split('/').pop();
 if (page.indexOf('?') > -1) {
  page = page.split('?')[0];
-}
+}*/
+var page = location.href.split('?')[0];
+page = page.split('/').pop();
+//modify end
+
 console.log(page);
+
+var tStrUserMapInfo = urlParse('map');
+if(tStrUserMapInfo !== "")
+{
+	var tUserData = JSON.parse(tStrUserMapInfo);
+	if(tUserData !== null)
+	{
+        localStorage.setItem('openid', tUserData.openid);
+        localStorage.setItem('nickname', tUserData.nickname);
+        localStorage.setItem('headimg', tUserData.headimgurl);
+		if(tUserData.hasOwnProperty('mobile'))
+		{
+			localStorage.setItem('Mobile', tUserData.mobile);
+		}
+	}
+}
+
+var tStrOpenID = localStorage.getItem('openid');
+var tStrMobile = localStorage.getItem('Mobile');
+if(tStrOpenID == null || tStrOpenID == "")
+{
+	window.location.replace('oauth.html?source=6&target=index.html&pageName='+page);
+	return false;
+}
 
 if(localStorage.getItem('openid') !== null)
 {
   if(page=='index.html'){
 
     $(".tag").html(localStorage.getItem('nickname'));
+	if(tStrMobile !== null)
+	{
+	    $(".mobile").html(tStrMobile);
+	}
     if(localStorage.getItem('headimg')!==null)
     {
       $("#userimg").attr("src",localStorage.getItem('headimg')); 
     }
     var Key = "KoeIy12Ay~oEuN3" + new Date().Format("yyyyMMdd");
-    if(localStorage.getItem('Mobile') !== null ){
+    if(tStrMobile !== null ){
               //正式
               //http://120.55.161.84:8064/
-              console.log(localStorage.getItem('Mobile'));
+              console.log(tStrMobile);
               $.ajax({
                 //url : 'http://121.40.185.130:8072/api/CreditKey/userCreditCapitalHis',
                 url : 'http://120.55.161.84:8064/api/CreditKey/userCreditCapitalHis',
-                data : {'checkMsg':$.md5(Key),mobile:localStorage.getItem('Mobile')},
+                data : {'checkMsg':$.md5(Key),mobile:tStrMobile},
                 type:'POST',
                 dataType : 'json',
                 async : false,
@@ -70,7 +104,11 @@ if(localStorage.getItem('openid') !== null)
               error : function(XMLHttpRequest,textStatus, errorThrown) {}
             });
             }
-          }
+          }else if(page == 'register.html' && localStorage.getItem('Mobliel') !== null)
+		  {
+			  //已绑定的用户，点击手机号码，无效
+		   	  return false;
+		  }
         }else{
           if(location.search==""){
             //console.log(2); 
@@ -104,7 +142,7 @@ if(localStorage.getItem('openid') !== null)
                $.ajax({
                   //url : 'http://121.40.185.130:8072/api/CreditKey/userCreditCapitalHis',
                   url : 'http://120.55.161.84:8064/api/CreditKey/userCreditCapitalHis',
-                  data : {'checkMsg':$.md5(Key),mobile:localStorage.getItem('Mobile')},
+                  data : {'checkMsg':$.md5(Key),mobile:tStrMobile},
                   type:'POST',
                   dataType : 'json',
                   async : false,

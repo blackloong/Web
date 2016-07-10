@@ -106,7 +106,7 @@ public class WeixinController extends BaseController{
 		
 		
 		JSONObject jsonResponse = JSONObject.fromObject(responseStr);
- 		//log.info("通过code换取网页授权access_token : " +jsonResponse);
+		System.out.println("通过code换取网页授权access_token : " +jsonResponse);
 		String openid = jsonResponse.getString("openid");
 		String  access_token = jsonResponse.getString("access_token");
 		String userDetailUrl = "https://api.weixin.qq.com/sns/userinfo?access_token="+access_token+"&openid="+openid+"&lang=zh_CN";
@@ -154,11 +154,15 @@ public class WeixinController extends BaseController{
 		if(checkMobile.size()>0){
 			 JSONObject ujson=JSONObject.fromObject(checkMobile.get(0));
 			if(ujson.containsKey("mobile")){
-				urls="redirect:http://keyofcredit.eifm.net/view/public/index.html?map="+userJSON;
+				userJSON.put("mobile", ujson.get("mobile"));
+				//urls="redirect:http://keyofcredit.eifm.net/view/public/index.html?map="+userJSON + "mobile="+ujson.get("mobile");
+				urls="redirect:http://4n6x1kiaop.proxy.qqbrowser.cc/yxjrs/testview/index.html?map="+userJSON;
 
 			}
 			else{
-				urls="redirect:http://keyofcredit.eifm.net/view/public/register.html?map="+userJSON;
+				//urls="redirect:http://keyofcredit.eifm.net/view/public/register.html?map="+userJSON;
+				//urls="redirect:http://4n6x1kiaop.proxy.qqbrowser.cc/yxjrs/testview/register.html?map="+userJSON;
+				urls="redirect:http://4n6x1kiaop.proxy.qqbrowser.cc/yxjrs/testview/"+ data.getString("pageName") + "?map="+userJSON;
 
 			}
 

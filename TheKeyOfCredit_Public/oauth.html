@@ -59,7 +59,8 @@
       if((code === 'authdeny') || !!error) return 0 //取消授权或者授权失败了
       return -1
     })(),
-    redirect = encodeURIComponent('http://keyofcredit.eifm.net/weixin/access_token?pageName=' + pageName),
+    //redirect = encodeURIComponent('http://keyofcredit.eifm.net/weixin/access_token?pageName=' + pageName),
+    redirect = encodeURIComponent('http://4n6x1kiaop.proxy.qqbrowser.cc/yxjrs/weixin/access_token?pageName=' + pageName),
     //redirect = encodeURIComponent('http://keyofcredit.eifm.net/weixin/access_token'), //授权完成后的回调页面(当前页面)
     registerUrl = 'https://www.tradehero.mobi/api/signupAndLoginNew', //code获取userid的地址
     platformMap = { //各平台信息
@@ -86,7 +87,7 @@
         }
       },
       6: { //微信开发者ID
-        appid: 'wx8548939856ed29ef',
+        appid: 'wx85f3be66fc565402',
         oauthUrl: function() {
           return 'https://open.weixin.qq.com/connect/oauth2/authorize'
           + '?appid='
